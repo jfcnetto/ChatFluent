@@ -20,17 +20,25 @@ body {
   padding: 20px 30px;
 }
 
-/* LOGO */
+/* LOGO CONTAINER */
 .logo {
-  font-size: 22px;
-  font-weight: bold;
-  color: #ff4458;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end; /* mantém à direita */
+}
+
+/* LOGO IMAGEM (CORREÇÃO PRINCIPAL) */
+.logo img {
+  height: 36px;       /* controla tamanho */
+  width: auto;
+  object-fit: contain;
+  display: block;
 }
 
 /* CONTAINER */
 .container {
   max-width: 700px;
-  margin: 10px auto 30px auto; /* mais no topo */
+  margin: 10px auto 30px auto;
   padding: 20px;
   text-align: left;
 }
@@ -120,6 +128,10 @@ footer a {
 
   .header {
     padding: 15px 20px;
+  }
+
+  .logo img {
+    height: 30px; /* menor no mobile */
   }
 
   .container {
