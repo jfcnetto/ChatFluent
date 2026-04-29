@@ -1,26 +1,18 @@
 <!DOCTYPE html>
-<html lang="pt">
+<html>
 <head>
 <meta charset="UTF-8">
-<title>Aprender inglês grátis</title>
-<link rel="stylesheet" href="../css/style.css">
+<script>
+let lang = navigator.language.slice(0,2);
+
+// IMPORTANTE: inclui o nome do repositório
+const base = "/ChatFluent/";
+
+if(lang === "pt"){
+  location.href = base + "pt/index.html";
+} else {
+  location.href = base + "en/index.html";
+}
+</script>
 </head>
-
-<body>
-
-<div class="container">
-<h1>Aprenda inglês grátis</h1>
-<!-- ADSENSE -->
-<div>SEU CODIGO ADSENSE AQUI</div>
-
-<a href="historia.html"><button>Começar</button></a>
-
-<a href="seo/aprender-ingles.html">Ver conteúdo</a>
-
-</div>
-
-<!-- ADSENSE -->
-<div>SEU CODIGO ADSENSE AQUI</div>
-
-</body>
 </html>
