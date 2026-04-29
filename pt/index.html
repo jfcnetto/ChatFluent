@@ -18,12 +18,8 @@
 
 <body>
 
-<!-- HEADER -->
-<div class="header">
-  <div class="brand">
-    <img src="/ChatFluent/img/logo.png" alt="ChatFluent" class="logo-img">
-  </div>
-</div>
+<!-- HEADER (CARREGADO DINAMICAMENTE) -->
+<div id="header"></div>
 
 <!-- ADSENSE TOPO -->
 <div class="ads-slot"></div>
@@ -38,7 +34,7 @@
 <p>Treine sua conversação, receba feedback imediato e evolua rapidamente.</p>
 
 <!-- BOTÃO -->
-<a href="historia.html">
+<a href="/ChatFluent/pt/historia.html">
   <button>Começar agora</button>
 </a>
 
@@ -47,15 +43,23 @@
 <!-- ADSENSE FINAL -->
 <div class="ads-slot"></div>
 
-<!-- RODAPÉ -->
-<footer>
-<a href="privacidade.html">Privacidade</a> |
-<a href="termos.html">Termos</a> |
-<a href="contato.html">Contato</a>
-</footer>
+<!-- FOOTER (CARREGADO DINAMICAMENTE) -->
+<div id="footer"></div>
 
 <!-- SCRIPT ADSENSE -->
 <script src="/ChatFluent/js/adsense.js"></script>
+
+<!-- SCRIPT DE COMPONENTES -->
+<script>
+async function loadComponent(id, file) {
+  const res = await fetch(file);
+  const html = await res.text();
+  document.getElementById(id).innerHTML = html;
+}
+
+loadComponent("header", "/ChatFluent/components/header.html");
+loadComponent("footer", "/ChatFluent/components/footer.html");
+</script>
 
 </body>
 </html>
