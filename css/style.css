@@ -8,40 +8,39 @@
 /* BASE */
 body {
   font-family: 'Segoe UI', Arial, sans-serif;
-  background: linear-gradient(135deg, #ff4458, #ff7a18);
+  background: #f5f6f7; /* cinza claro */
   color: #333;
-  text-align: center;
 }
 
 /* CONTAINER */
 .container {
   max-width: 800px;
-  margin: 40px auto;
-  background: #fff;
-  padding: 30px;
-  border-radius: 16px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+  margin: 30px auto;
+  background: #ffffff;
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  text-align: center;
 }
 
 /* LOGO */
 .logo {
-  font-size: 28px;
+  font-size: 26px;
   font-weight: bold;
-  background: linear-gradient(135deg, #ff4458, #ff7a18);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  color: #222; /* agora visível */
   margin-bottom: 20px;
 }
 
 /* TÍTULOS */
 h1 {
-  font-size: 26px;
+  font-size: 24px;
   margin-bottom: 15px;
 }
 
 h2 {
   margin-top: 25px;
   margin-bottom: 10px;
+  font-size: 18px;
 }
 
 /* TEXTO */
@@ -55,25 +54,22 @@ button {
   padding: 14px;
   margin: 10px 0;
   width: 100%;
-  max-width: 320px;
-  background: linear-gradient(135deg, #ff4458, #ff7a18);
+  max-width: 300px;
+  background: #ff4458;
   color: white;
   border: none;
-  border-radius: 30px;
-  font-size: 16px;
+  border-radius: 8px;
+  font-size: 15px;
   cursor: pointer;
-  transition: 0.3s;
+  transition: 0.2s;
 }
 
 button:hover {
-  opacity: 0.9;
-  transform: scale(1.03);
+  background: #e63b4d;
 }
 
 /* LINKS */
 a {
-  display: inline-block;
-  margin-top: 10px;
   color: #ff4458;
   text-decoration: none;
   font-weight: bold;
@@ -96,16 +92,17 @@ li {
 
 /* ADS */
 .ads-slot {
-  margin: 20px auto;
+  margin: 25px auto;
   min-height: 90px;
 }
 
 /* FOOTER */
 footer {
-  margin-top: 30px;
-  padding: 20px;
-  font-size: 14px;
+  margin-top: 20px;
+  padding: 15px;
+  font-size: 13px;
   color: #777;
+  text-align: center;
 }
 
 footer a {
@@ -116,11 +113,11 @@ footer a {
 /* RESPONSIVO */
 @media (max-width: 600px) {
   .container {
-    margin: 20px;
+    margin: 15px;
     padding: 20px;
   }
 
   h1 {
-    font-size: 22px;
+    font-size: 20px;
   }
 }
