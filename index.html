@@ -4,8 +4,15 @@
 <meta charset="UTF-8">
 <script>
 let lang = navigator.language.slice(0,2);
-if(lang === "pt") location.href="/pt/";
-else location.href="/en/";
+
+// base do projeto no GitHub Pages
+let base = "/ChatFluent/";
+
+if(lang === "pt"){
+  location.href = base + "pt/index.html";
+} else {
+  location.href = base + "en/index.html";
+}
 </script>
 </head>
 <body></body>
