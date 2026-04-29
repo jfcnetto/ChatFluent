@@ -33,15 +33,15 @@ body {
   border-bottom: 1px solid #eee;
 }
 
-/* LOGO CONTAINER */
-.logo {
+/* BRAND (AJUSTADO PARA SEU HTML) */
+.brand {
   display: flex;
   align-items: center;
 }
 
-/* LOGO AJUSTADA (CORRIGIDA) */
-.logo img {
-  height: 32px; /* 🔥 ajuste equilibrado (desktop) */
+/* LOGO (AGORA CORRETA E CONTROLÁVEL) */
+.logo-img {
+  height: 32px;
   width: auto;
   max-width: 140px;
   object-fit: contain;
@@ -142,8 +142,8 @@ footer a {
     padding: 12px 16px;
   }
 
-  .logo img {
-    height: 24px; /* ajuste proporcional no mobile */
+  .logo-img {
+    height: 24px;
   }
 
   .container {
