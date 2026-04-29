@@ -1,1 +1,23 @@
+body {
+  font-family: Arial;
+  margin:0;
+  background:#f4f4f4;
+  text-align:center;
+}
 
+.container {
+  max-width:800px;
+  margin:auto;
+  background:white;
+  padding:20px;
+}
+
+button {
+  padding:12px;
+  margin:5px;
+  width:80%;
+  max-width:300px;
+  background:#007bff;
+  color:white;
+  border:none;
+}
