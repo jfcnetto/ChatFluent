@@ -15,3 +15,9 @@
  
  
  https://jfcnetto.github.io/ChatFluent/
+ 
+cd /c/ChatFluent
+git status
+git add .
+git commit -m "Atualização em 18:46 29042026 "
+git push
