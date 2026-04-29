@@ -41,7 +41,7 @@ body {
 
 /* 🔥 LOGO AJUSTADA (AGORA PEQUENA E PROFISSIONAL) */
 .logo img {
-  height: 26px; /* 🔥 principal ajuste */
+  height: 15px; /* 🔥 principal ajuste */
   width: auto;
   object-fit: contain;
   display: block;
