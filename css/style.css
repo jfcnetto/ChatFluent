@@ -70,15 +70,28 @@ body {
   cursor: pointer;
 }
 
-/* AJUSTE PARA O SLOT DE ANÚNCIOS - POSIÇÃO GLOBAL */
+/* AJUSTE PARA O SLOT DE ANÚNCIOS / BANNER PROVISÓRIO */
 .ads-slot {
   display: block;
   width: 100%;
   max-width: 1000px;
-  margin: 0 auto; 
-  min-height: 0; 
+  margin: 5px auto; /* Espaço mínimo para aproximar do header */
+  min-height: 50px; 
   overflow: hidden;
   text-align: center;
+}
+
+.ads-slot img {
+  max-width: 100%;
+  height: auto;
+  border: 2px solid var(--border);
+  border-bottom: 4px solid var(--border);
+  border-radius: 15px;
+  transition: transform 0.2s;
+}
+
+.ads-slot img:hover {
+  transform: scale(1.01);
 }
 
 /* DIAGRAMAÇÃO DE CONTAINERS */
@@ -287,5 +300,6 @@ footer {
   .hero-text h1 { font-size: 32px; }
   .flag-icon { width: 28px; height: 28px; }
   .header { height: 60px; }
+  .logo-img { height: 50px; } /* Ajuste de logo para mobile */
   button, .contact-form button, .option-btn { width: 100%; }
 }

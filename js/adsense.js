@@ -1,7 +1,7 @@
-// COLOQUE SEU ID AQUI
+// Configurações
 const ADSENSE_CLIENT = "ca-pub-XXXXXXX";
+const FALLBACK_BANNER_URL = "/ChatFluent/img/banner-provisorio.png"; // Caminho da sua imagem
 
-// código do script principal (carrega só 1 vez)
 function loadAdsenseScript() {
   if (!document.querySelector("#adsense-script")) {
     const script = document.createElement("script");
@@ -13,35 +13,50 @@ function loadAdsenseScript() {
   }
 }
 
-// cria bloco de anúncio
-function createAdSlot() {
-  const ad = document.createElement("ins");
-  ad.className = "adsbygoogle";
-  ad.style.display = "block";
+function createFallbackBanner() {
+  const link = document.createElement("a");
+  link.href = "/ChatFluent/pt/index.html"; // Link para onde o banner aponta
+  
+  const img = document.createElement("img");
+  img.src = FALLBACK_BANNER_URL;
+  img.alt = "Pratique Inglês no ChatFluent";
+  img.style.width = "100%";
+  img.style.maxWidth = "1000px";
+  img.style.borderRadius = "15px";
+  img.style.display = "block";
+  img.style.margin = "0 auto";
 
-  ad.setAttribute("data-ad-client", ADSENSE_CLIENT);
-  ad.setAttribute("data-ad-slot", "1234567890"); // 🔴 TROCAR depois
-  ad.setAttribute("data-ad-format", "auto");
-  ad.setAttribute("data-full-width-responsive", "true");
-
-  return ad;
+  link.appendChild(img);
+  return link;
 }
 
-// inicializa anúncios
 function initAds() {
   loadAdsenseScript();
 
   document.querySelectorAll(".ads-slot").forEach(slot => {
-    const ad = createAdSlot();
+    // 1. Adicionamos o banner provisório primeiro
+    const fallback = createFallbackBanner();
+    slot.appendChild(fallback);
+
+    // 2. Criamos o slot do AdSense
+    const ad = document.createElement("ins");
+    ad.className = "adsbygoogle";
+    ad.style.display = "block";
+    ad.setAttribute("data-ad-client", ADSENSE_CLIENT);
+    ad.setAttribute("data-ad-slot", "1234567890"); 
+    ad.setAttribute("data-ad-format", "auto");
+    ad.setAttribute("data-full-width-responsive", "true");
+
     slot.appendChild(ad);
 
     try {
-      (adsbygoogle = window.adsbygoogle || []).push({});
+      (window.adsbygoogle = window.adsbygoogle || []).push({});
+      // Se o anúncio carregar, o AdSense geralmente preenche o slot.
+      // O banner ficará embaixo ou pode ser escondido via CSS se necessário.
     } catch (e) {
-      console.log("Adsense ainda não carregou");
+      console.log("AdSense offline - Banner visível");
     }
   });
 }
 
-// executa
 window.addEventListener("load", initAds);

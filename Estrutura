@@ -19,5 +19,8 @@
 cd /c/ChatFluent
 git status
 git add .
-git commit -m "Atualização em 19:47 29042026"
+git commit -m "Primeira versão 1.0 em 13:22 30042026"
 git push --set-upstream origin main
+
+
+🔥 git commit -m "Primeira versão 1.0 de Vite + React em 02:49 30042026"
