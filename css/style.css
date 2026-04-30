@@ -18,7 +18,7 @@
 /* BASE */
 body {
   font-family: 'Segoe UI', Arial, sans-serif;
-  background: var(--bg);
+  background: var(--white);
   color: var(--text);
   line-height: 1.5;
 }
