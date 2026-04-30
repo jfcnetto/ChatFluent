@@ -18,38 +18,51 @@
 
 <body>
 
-<!-- HEADER (CARREGADO DINAMICAMENTE) -->
+<!-- HEADER -->
 <div id="header"></div>
 
 <!-- ADSENSE TOPO -->
 <div class="ads-slot"></div>
 
-<!-- CONTEÚDO PRINCIPAL -->
+<!-- HERO SECTION (NOVO LAYOUT MODERNO) -->
 <div class="container">
 
-<h1>Aprenda inglês grátis</h1>
+  <div class="hero">
 
-<p>Pratique inglês com histórias interativas e situações reais do dia a dia.</p>
+    <!-- TEXTO -->
+    <div class="hero-text">
 
-<p>Treine sua conversação, receba feedback imediato e evolua rapidamente.</p>
+      <h1>Aprenda inglês grátis</h1>
 
-<!-- BOTÃO -->
-<a href="/ChatFluent/pt/historia.html">
-  <button>Começar agora</button>
-</a>
+      <p>Pratique inglês com histórias interativas e situações reais do dia a dia.</p>
+
+      <p>Treine sua conversação, receba feedback imediato e evolua rapidamente.</p>
+
+      <a href="/ChatFluent/pt/historia.html">
+        <button>Começar agora</button>
+      </a>
+
+    </div>
+
+    <!-- IMAGEM -->
+    <div class="hero-image">
+      <img src="/ChatFluent/img/hero.png" alt="Aprender inglês com ChatFluent">
+    </div>
+
+  </div>
 
 </div>
 
 <!-- ADSENSE FINAL -->
 <div class="ads-slot"></div>
 
-<!-- FOOTER (CARREGADO DINAMICAMENTE) -->
+<!-- FOOTER -->
 <div id="footer"></div>
 
 <!-- SCRIPT ADSENSE -->
 <script src="/ChatFluent/js/adsense.js"></script>
 
-<!-- SCRIPT DE COMPONENTES -->
+<!-- COMPONENTES -->
 <script>
 async function loadComponent(id, file) {
   const res = await fetch(file);
