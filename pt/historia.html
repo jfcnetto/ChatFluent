@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Praticar inglês com histórias | ChatFluent</title>
-    <meta name="description" content="Treine inglês com histórias interativas. Responda perguntas, ganhe pontos e evolua seu inglês gratuitamente com o ChatFluent.">
+    <meta name="description" content="Treine inglês com histórias interativas. Responda perguntas, ganhe pontos e suba de nível gratuitamente com o ChatFluent.">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/ChatFluent/css/style.css">
 </head>
@@ -23,15 +23,15 @@
 <main class="container">
     <section class="hero" style="text-align: center; padding: 20px 0;">
         <h1>Pratique inglês agora</h1>
-        <p>Aprenda com situações do dia a dia e ganhe pontos.</p>
+        <p>Aprenda com situações reais, ganhe pontos e <b>desbloqueie novos níveis</b>.</p>
     </section>
 
     <!-- ÁREA DO SIMULADOR (CHAT STYLE) -->
     <div class="training-container" style="margin-top: 0;">
         
-        <!-- CONTAINER DE PERGUNTA (Injetado via app.js com Avatar + Balão) -->
-        <div id="pergunta" style="min-height: 70px;">
-            <!-- O app.js injetará a estrutura <div class="chat-row"> aqui -->
+        <!-- CONTAINER DE PERGUNTA (O app.js injetará Avatar Simpsons Nerd + Balão aqui) -->
+        <div id="pergunta" style="min-height: 85px;">
+            <!-- Estrutura dinâmica injetada pelo JavaScript -->
         </div>
 
         <!-- OPÇÕES DO USUÁRIO (Injetadas via app.js) -->
@@ -40,11 +40,11 @@
         <!-- FEEDBACK E EXPLICAÇÃO (Aparece após a resposta) -->
         <div id="feedback" style="transition: 0.3s; margin-top: 20px; min-height: 30px; text-align: center;"></div>
 
-        <!-- PLACAR DE PONTOS E PROGRESSO -->
-        <div class="score-badge" style="display: flex; justify-content: center; gap: 15px; flex-wrap: wrap;">
-            <span>🏆 Pontos: <span id="pontos">0</span></span>
+        <!-- PLACAR E STATUS DE NÍVEL -->
+        <div class="score-badge" style="display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; margin-top: 25px; padding-top: 15px; border-top: 1px solid var(--border);">
+            <span>🏆 <span id="pontos">0</span> pontos</span>
             <span style="color: var(--border);">|</span>
-            <span>Lição: <b id="progresso">1 de 15</b></span>
+            <span id="progresso" style="font-weight: 700; color: var(--secondary);">Carregando nível...</span>
         </div>
     </div>
 </main>

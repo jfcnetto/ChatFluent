@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <title>Regras do Jogo | ChatFluent</title>
+    <meta name="description" content="Entenda como funciona o sistema de pontuação, níveis e progressão do ChatFluent.">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/ChatFluent/css/style.css">
+</head>
+
+<body>
+
+<!-- HEADER (DINÂMICO) -->
+<div id="header"></div>
+
+<!-- ADSENSE TOPO -->
+<div id="main-banner">
+    <script>
+        document.write('<img src="/ChatFluent/img/banner-provisorio.png" style="display:block; width:100%; max-width:1000px; margin:0 auto;">');
+    </script>
+</div>
+
+<main class="container">
+    <section class="hero">
+        <h1>Regras do Jogo</h1>
+        <p>Saiba como pontuar, subir de nível e dominar o inglês no ChatFluent.</p>
+    </section>
+
+    <!-- CONTEÚDO DAS REGRAS -->
+    <article class="legal-container">
+        <p>O ChatFluent utiliza um sistema de gamificação para tornar seu aprendizado mais eficiente. Abaixo, detalhamos as regras fundamentais da nossa plataforma.</p>
+
+        <h2>1. Sistema de Níveis</h2>
+        <p>O aprendizado é dividido em três níveis de proficiência, cada um com uma carga de perguntas específica para testar sua resistência e vocabulário:</p>
+        <ul>
+            <li><strong>Nível Básico 🌱:</strong> Lições compostas por 8 perguntas.</li>
+            <li><strong>Nível Intermediário 💪:</strong> Lições compostas por 15 perguntas.</li>
+            <li><strong>Nível Avançado 🏆:</strong> Lições compostas por 25 perguntas.</li>
+        </ul>
+
+        <h2>2. Pontuação e Competição</h2>
+        <p>Sua pontuação reflete a precisão e a rapidez do seu aprendizado. Note que o sistema permite <strong>pontuação negativa</strong> em caso de muitos erros consecutivos:</p>
+        <ul>
+            <li><strong>Acerto de Primeira (Perfect):</strong> Você ganha 10 pontos fixos + bônus de Streak (sequência).</li>
+            <li><strong>Acerto na Segunda Tentativa:</strong> Você ganha apenas 1 ponto e sua sequência (streak) é zerada.</li>
+            <li><strong>Penalidade de Erro:</strong> Cada clique em uma opção incorreta subtrai 2 pontos do seu total imediatamente.</li>
+        </ul>
+
+        <h2>3. Bônus de Streak (Sequência)</h2>
+        <p>Para incentivar a precisão, acertos consecutivos sem erros aumentam sua pontuação exponencialmente. Cada acerto direto soma <code>(Streak Atual x 2)</code> aos 10 pontos base.</p>
+
+        <h2>4. Progressão e Desbloqueio</h2>
+        <p>A pontuação é para o ranking, mas para <strong>desbloquear o próximo nível</strong>, o critério é a precisão:</p>
+        <p>Você deve acertar pelo menos <strong>80% das questões</strong> de uma lição para ser considerado apto ao próximo nível. Se não atingir a meta, deverá refazer a lição atual.</p>
+
+        <h2>5. O Mentor (NPC)</h2>
+        <p>Em caso de erro, o mentor fornecerá uma dica gramatical imediata. Você terá uma segunda chance para responder. Caso erre novamente, a questão é considerada perdida e o sistema avançará para a próxima pergunta.</p>
+
+        <h2>6. Relatório de Desempenho</h2>
+        <p>Ao final de cada sessão, você receberá um detalhamento de seus acertos, falhas e sua pontuação final, informando se o próximo nível foi desbloqueado com sucesso.</p>
+    </article>
+</main>
+
+<!-- ADSENSE RODAPÉ -->
+<div id="footer-banner" style="margin-top: 20px;">
+    <script>
+        document.write('<img src="/ChatFluent/img/banner-provisorio.png" style="display:block; width:100%; max-width:1000px; margin:0 auto;">');
+    </script>
+</div>
+
+<!-- FOOTER (DINÂMICO) -->
+<div id="footer"></div>
+
+<!-- SCRIPTS -->
+<script src="/ChatFluent/js/adsense.js"></script>
+<script>
+    async function loadComponent(id, file) {
+        try {
+            const res = await fetch(file);
+            const html = await res.text();
+            document.getElementById(id).innerHTML = html;
+        } catch (err) {
+            console.error("Erro ao carregar componente:", file);
+        }
+    }
+    loadComponent("header", "/ChatFluent/components/header.html");
+    loadComponent("footer", "/ChatFluent/components/footer.html");
+</script>
+
+</body>
+</html>
