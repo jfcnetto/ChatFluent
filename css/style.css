@@ -193,6 +193,33 @@ button:active, .option-btn:active {
 .training-container { max-width: 600px; margin-top: 10px; padding: 30px; border-radius: 24px; }
 .legal-container { max-width: 800px; margin-top: 10px; padding: 40px; border-radius: 24px; text-align: left; }
 
+/* --- FORMULÁRIOS (RESTALRADO) --- */
+.contact-form label {
+    display: block;
+    font-weight: 900;
+    margin-bottom: 6px;
+    text-transform: uppercase;
+    font-size: 13px;
+    text-align: left;
+}
+
+.contact-form input, .contact-form textarea {
+    width: 100%;
+    padding: 14px;
+    margin-bottom: 15px;
+    border: 2px solid var(--border);
+    border-radius: 16px;
+    font-family: inherit;
+    background-color: #f7f7f7;
+    font-size: 16px;
+}
+
+.contact-form input:focus, .contact-form textarea:focus {
+    outline: none; 
+    border-color: var(--secondary); 
+    background-color: #fff;
+}
+
 /* ESTILO PÁGINAS LEGAIS */
 .legal-container h2 {
     font-size: 24px;
@@ -251,7 +278,7 @@ footer {
         text-align: center; 
     }
     .hero-image { order: -1; margin-bottom: 20px; }
-    .header { height: 60px; }
+    .header { height: auto; min-height: 60px; } /* Adaptado para o novo header de bandeiras */
     .logo-img { height: 50px; } 
-    button, .btn, .option-btn { width: 100%; }
+    button, .btn, .option-btn, .contact-form button { width: 100%; }
 }
