@@ -278,7 +278,7 @@ footer {
         text-align: center; 
     }
     .hero-image { order: -1; margin-bottom: 20px; }
-    .header { height: auto; min-height: 60px; } /* Adaptado para o novo header de bandeiras */
+    .header { height: auto; min-height: 60px; } 
     .logo-img { height: 50px; } 
     button, .btn, .option-btn, .contact-form button { width: 100%; }
 }
@@ -299,18 +299,35 @@ footer {
     75% { transform: translateX(8px); }
 }
 
-/* ESTILO CHAT (NPC) */
+/* --- ESTILO CHAT (NPC + AVATAR WHATSAPP) --- */
+.chat-row {
+    display: flex;
+    align-items: flex-end; /* Alinha o avatar com o final do balão */
+    gap: 12px;
+    margin-bottom: 25px;
+    animation: fadeInUp 0.3s ease;
+}
+
+.avatar-npc {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid var(--border);
+    flex-shrink: 0;
+    background-color: #eee;
+}
+
 .npc-bubble {
     background: #f1f0f0;
     padding: 15px 20px;
-    border-radius: 18px 18px 18px 4px;
-    margin-bottom: 20px;
+    border-radius: 18px 18px 18px 4px; /* Ponta puxada para o lado do avatar */
     font-weight: 700;
     font-size: 18px;
     display: inline-block;
     max-width: 85%;
     border: 1px solid var(--border);
-    animation: fadeInUp 0.3s ease;
+    position: relative;
 }
 
 .options {

@@ -29,9 +29,9 @@
     <!-- ÁREA DO SIMULADOR (CHAT STYLE) -->
     <div class="training-container" style="margin-top: 0;">
         
-        <!-- BALÃO DO NPC (Injetado via app.js) -->
-        <div id="pergunta">
-            <h2 class="question" style="font-size: 18px; color: var(--text-light);">Carregando história...</h2>
+        <!-- CONTAINER DE PERGUNTA (Injetado via app.js com Avatar + Balão) -->
+        <div id="pergunta" style="min-height: 70px;">
+            <!-- O app.js injetará a estrutura <div class="chat-row"> aqui -->
         </div>
 
         <!-- OPÇÕES DO USUÁRIO (Injetadas via app.js) -->
@@ -40,9 +40,11 @@
         <!-- FEEDBACK E EXPLICAÇÃO (Aparece após a resposta) -->
         <div id="feedback" style="transition: 0.3s; margin-top: 20px; min-height: 30px; text-align: center;"></div>
 
-        <!-- PLACAR DE PONTOS -->
-        <div class="score-badge">
-            🏆 Pontos: <span id="pontos">0</span>
+        <!-- PLACAR DE PONTOS E PROGRESSO -->
+        <div class="score-badge" style="display: flex; justify-content: center; gap: 15px; flex-wrap: wrap;">
+            <span>🏆 Pontos: <span id="pontos">0</span></span>
+            <span style="color: var(--border);">|</span>
+            <span>Lição: <b id="progresso">1 de 15</b></span>
         </div>
     </div>
 </main>
