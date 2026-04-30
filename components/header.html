@@ -1,5 +1,5 @@
-<div class="header">
-  <div class="container-header" style="display: flex; align-items: center; justify-content: space-between; width: 100%; max-width: 1200px; margin: 0 auto; gap: 20px;">
+<div class="header" style="height: auto; min-height: 70px; padding: 10px 0;">
+  <div class="container-header" style="display: flex; align-items: center; justify-content: space-between; width: 100%; max-width: 1200px; margin: 0 auto; gap: 10px; padding: 0 15px; flex-wrap: wrap;">
     
     <!-- LOGO -->
     <div class="brand" style="flex-shrink: 0;">
@@ -9,28 +9,54 @@
     </div>
 
     <!-- SELETOR DE IDIOMAS (BANDEIRAS) -->
-    <nav class="languages-nav" style="display: flex; gap: 12px; overflow-x: auto; padding: 5px; scrollbar-width: none; -ms-overflow-style: none;">
-      <!-- Estilo para esconder scrollbar no Chrome/Safari -->
-      <style>.languages-nav::-webkit-scrollbar { display: none; }</style>
-      
-      <a href="/ChatFluent/pt/index.html" title="Português" style="flex-shrink: 0;"><img src="https://flagcdn.com/w40/br.png" class="flag-icon"></a>
-      <a href="/ChatFluent/en/index.html" title="Inglês" style="flex-shrink: 0;"><img src="https://flagcdn.com/w40/us.png" class="flag-icon"></a>
-      <a href="/ChatFluent/de/index.html" title="Alemão" style="flex-shrink: 0;"><img src="https://flagcdn.com/w40/de.png" class="flag-icon"></a>
-      <a href="/ChatFluent/pl/index.html" title="Polonês" style="flex-shrink: 0;"><img src="https://flagcdn.com/w40/pl.png" class="flag-icon"></a>
-      <a href="/ChatFluent/es/index.html" title="Espanhol" style="flex-shrink: 0;"><img src="https://flagcdn.com/w40/es.png" class="flag-icon"></a>
-      <a href="/ChatFluent/fr/index.html" title="Francês" style="flex-shrink: 0;"><img src="https://flagcdn.com/w40/fr.png" class="flag-icon"></a>
-      <a href="/ChatFluent/it/index.html" title="Italiano" style="flex-shrink: 0;"><img src="https://flagcdn.com/w40/it.png" class="flag-icon"></a>
-      <a href="/ChatFluent/nl/index.html" title="Holandês" style="flex-shrink: 0;"><img src="https://flagcdn.com/w40/nl.png" class="flag-icon"></a>
-      <a href="/ChatFluent/ru/index.html" title="Russo" style="flex-shrink: 0;"><img src="https://flagcdn.com/w40/ru.png" class="flag-icon"></a>
-      <a href="/ChatFluent/tr/index.html" title="Turco" style="flex-shrink: 0;"><img src="https://flagcdn.com/w40/tr.png" class="flag-icon"></a>
-      <a href="/ChatFluent/ja/index.html" title="Japonês" style="flex-shrink: 0;"><img src="https://flagcdn.com/w40/jp.png" class="flag-icon"></a>
+    <nav class="languages-nav" style="display: flex; gap: 8px; flex-wrap: wrap; justify-content: center; flex: 1;">
+      <a href="/ChatFluent/pt/index.html" title="Português"><img src="https://flagcdn.com/w40/br.png" class="flag-icon"></a>
+      <a href="/ChatFluent/en/index.html" title="Inglês"><img src="https://flagcdn.com/w40/us.png" class="flag-icon"></a>
+      <a href="/ChatFluent/de/index.html" title="Alemão"><img src="https://flagcdn.com/w40/de.png" class="flag-icon"></a>
+      <a href="/ChatFluent/pl/index.html" title="Polonês"><img src="https://flagcdn.com/w40/pl.png" class="flag-icon"></a>
+      <a href="/ChatFluent/es/index.html" title="Espanhol"><img src="https://flagcdn.com/w40/es.png" class="flag-icon"></a>
+      <a href="/ChatFluent/fr/index.html" title="Francês"><img src="https://flagcdn.com/w40/fr.png" class="flag-icon"></a>
+      <a href="/ChatFluent/it/index.html" title="Italiano"><img src="https://flagcdn.com/w40/it.png" class="flag-icon"></a>
+      <a href="/ChatFluent/nl/index.html" title="Holandês"><img src="https://flagcdn.com/w40/nl.png" class="flag-icon"></a>
+      <a href="/ChatFluent/ru/index.html" title="Russo"><img src="https://flagcdn.com/w40/ru.png" class="flag-icon"></a>
+      <a href="/ChatFluent/tr/index.html" title="Turco"><img src="https://flagcdn.com/w40/tr.png" class="flag-icon"></a>
+      <a href="/ChatFluent/ja/index.html" title="Japonês"><img src="https://flagcdn.com/w40/jp.png" class="flag-icon"></a>
     </nav>
 
     <!-- MENU AUXILIAR COM BOTÃO -->
     <nav class="header-action" style="flex-shrink: 0;">
-      <a href="/ChatFluent/pt/contato.html" class="btn" style="padding: 8px 16px; font-size: 14px; text-decoration: none;">
+      <a href="/ChatFluent/pt/contato.html" class="btn" style="padding: 8px 16px; font-size: 14px; text-decoration: none; display: inline-block;">
         Contato
       </a>
     </nav>
   </div>
 </div>
+
+<style>
+  /* AJUSTE ESPECÍFICO PARA MOBILE */
+  @media (max-width: 768px) {
+    .header {
+      height: auto !important; /* Permite que o header cresça se as bandeiras quebrarem linha */
+    }
+    .container-header {
+      justify-content: center !important; /* Centraliza logo e botão no mobile */
+      gap: 15px !important;
+    }
+    .languages-nav {
+      order: 3; /* Move as bandeiras para baixo da logo e do botão no mobile */
+      width: 100%;
+      justify-content: center !important;
+      gap: 10px !important;
+    }
+    .brand {
+      order: 1;
+    }
+    .header-action {
+      order: 2;
+    }
+    .flag-icon {
+      width: 28px !important; /* Diminui um pouco as bandeiras para caberem mais */
+      height: 28px !important;
+    }
+  }
+</style>
