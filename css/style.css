@@ -1,14 +1,14 @@
-/* IMPORTAÇÃO DE FONTE */
+/* IMPORTAÇÃO DE FONTE AMIGÁVEL */
 @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;900&display=swap');
 
-/* RESET */
+/* RESET GLOBAL */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-/* VARIÁVEIS */
+/* VARIÁVEIS DE DESIGN (DUOLINGO STYLE) */
 :root {
   --primary: #58cc02;
   --primary-dark: #46a302;
@@ -20,7 +20,7 @@
   --border: #e5e5e5;
 }
 
-/* BASE */
+/* BASE DO CORPO */
 body {
   font-family: 'Nunito', sans-serif;
   background: var(--bg);
@@ -29,7 +29,7 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-/* HEADER MODERNO */
+/* HEADER FIXO E COMPACTO */
 .header {
   height: 70px;
   display: flex;
@@ -53,6 +53,7 @@ body {
   transform: scale(1.05) rotate(-2deg);
 }
 
+/* NAVEGAÇÃO DE IDIOMAS (BANDEIRAS) */
 .flag-icon {
   width: 32px;
   height: 32px;
@@ -69,11 +70,18 @@ body {
   cursor: pointer;
 }
 
-/* CONTAINERS E DIAGRAMAÇÃO (AJUSTADO PARA REDUZIR ESPAÇO) */
+/* DIAGRAMAÇÃO DE CONTAINERS (REDUÇÃO DE ESPAÇOS MORTOS) */
 .container {
   max-width: 1000px;
   margin: 0 auto;
-  padding: 10px 20px; /* Reduzido o padding superior de 40px para 10px */
+  padding: 10px 20px; /* Padding superior mínimo para colar no header */
+}
+
+/* HERO SECTION (PÁGINA INICIAL E INTERNAS) */
+.hero {
+  text-align: center;
+  padding: 10px 0;
+  margin-bottom: 10px;
 }
 
 .hero-grid {
@@ -81,24 +89,27 @@ body {
   grid-template-columns: 1fr 1fr;
   gap: 40px;
   align-items: center;
-  padding: 20px 0; /* Reduzido de 60px para 20px */
+  padding: 20px 0;
 }
 
-/* TEXTOS E TÍTULOS */
-.hero-text h1 {
-  font-size: 48px;
+.hero h1, .hero-text h1 {
+  font-size: 32px; /* Padrão para internas */
   font-weight: 900;
   color: var(--primary);
   line-height: 1.2;
   margin-top: 0;
-  margin-bottom: 24px;
+  margin-bottom: 12px;
 }
 
-.hero-text p {
-  font-size: 20px;
+.hero-text h1 {
+  font-size: 48px; /* Destaque maior apenas na home grid */
+}
+
+.hero p, .hero-text p {
+  font-size: 19px;
   color: var(--text-light);
   font-weight: 700;
-  margin-bottom: 32px;
+  margin-bottom: 20px;
 }
 
 .hero-image img {
@@ -108,7 +119,7 @@ body {
   margin: 0 auto;
 }
 
-/* BOTÕES ESTILO DUOLINGO (3D) */
+/* BOTÕES GERAIS COM EFEITO 3D PRESSIONÁVEL */
 button, .btn, .option-btn {
   display: inline-block;
   padding: 14px 24px;
@@ -135,34 +146,27 @@ button:active, .option-btn:active {
   transform: translateY(4px);
 }
 
-/* CARDS E SEÇÕES */
-.features-section, .features-grid {
-  margin-top: 40px; /* Reduzido de 80px */
-  text-align: center;
-}
-
-.features-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 30px;
-}
-
+/* CARDS E CONTAINERS DE CONTEÚDO */
 .feature-card, .contact-card, .training-container, .legal-container {
   border: 2px solid var(--border);
   border-bottom: 4px solid var(--border);
   background: #fff;
-  transition: transform 0.2s;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-.feature-card { border-radius: 20px; padding: 30px; }
-.contact-card { max-width: 500px; margin: 20px auto; padding: 30px; border-radius: 20px; }
-.training-container { max-width: 600px; margin: 20px auto; padding: 30px; border-radius: 24px; }
-.legal-container { max-width: 800px; margin: 20px auto; padding: 40px; border-radius: 24px; }
+.feature-card { border-radius: 20px; padding: 30px; transition: transform 0.2s; }
+.feature-card:hover { transform: translateY(-5px); border-color: var(--secondary); }
 
+.contact-card { max-width: 500px; margin-top: 10px; padding: 30px; border-radius: 20px; }
+.training-container { max-width: 600px; margin-top: 10px; padding: 30px; border-radius: 24px; }
+.legal-container { max-width: 800px; margin-top: 10px; padding: 40px; border-radius: 24px; text-align: left; }
+
+/* ESTILO PARA PÁGINAS LEGAIS (PRIVACIDADE/TERMOS) */
 .legal-container h2 {
   font-size: 24px;
   font-weight: 900;
-  margin: 30px 0 15px 0;
+  margin: 25px 0 10px 0;
   display: flex;
   align-items: center;
   gap: 10px;
@@ -176,11 +180,18 @@ button:active, .option-btn:active {
   border-radius: 4px;
 }
 
+.legal-container p {
+  font-size: 17px;
+  color: var(--text-light);
+  line-height: 1.6;
+  margin-bottom: 15px;
+}
+
 /* FORMULÁRIOS */
 .contact-form label {
   display: block;
   font-weight: 900;
-  margin-bottom: 8px;
+  margin-bottom: 6px;
   text-transform: uppercase;
   font-size: 13px;
 }
@@ -188,7 +199,7 @@ button:active, .option-btn:active {
 .contact-form input, .contact-form textarea {
   width: 100%;
   padding: 14px;
-  margin-bottom: 20px;
+  margin-bottom: 15px;
   border: 2px solid var(--border);
   border-radius: 16px;
   font-family: inherit;
@@ -199,12 +210,12 @@ button:active, .option-btn:active {
   outline: none; border-color: var(--secondary); background-color: #fff;
 }
 
-/* GAMIFICAÇÃO */
+/* GAMIFICAÇÃO E PROGRESSO */
 .progress-container {
   background: var(--border);
   border-radius: 20px;
   height: 16px;
-  margin: 20px 0 30px 0;
+  margin: 15px 0 25px 0;
   overflow: hidden;
 }
 
@@ -223,10 +234,10 @@ button:active, .option-btn:active {
   border-radius: 12px;
   font-weight: 900;
   border-bottom: 3px solid #e5a500;
-  margin-top: 20px;
+  margin-top: 15px;
 }
 
-/* FOOTER */
+/* FOOTER PADRONIZADO */
 footer {
   margin-top: 40px;
   padding: 40px 20px;
@@ -241,7 +252,7 @@ footer {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 20px;
+  gap: 15px;
 }
 
 .footer-menu {
@@ -252,19 +263,19 @@ footer {
 }
 
 .footer-menu a {
-  font-size: 15px;
+  font-size: 14px;
   color: #afafaf;
   text-transform: uppercase;
   font-weight: 700;
   text-decoration: none;
 }
 
-/* RESPONSIVO UNIFICADO */
+/* RESPONSIVO ÚNICO */
 @media (max-width: 768px) {
   .hero-grid { grid-template-columns: 1fr; text-align: center; }
-  .hero-image { order: -1; }
+  .hero-image { order: -1; margin-bottom: 20px; }
   .hero-text h1 { font-size: 32px; }
   .flag-icon { width: 28px; height: 28px; }
   .header { height: 60px; }
-  button, .contact-form button { width: 100%; }
+  button, .contact-form button, .option-btn { width: 100%; }
 }

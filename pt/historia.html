@@ -17,13 +17,14 @@
 <div class="ads-slot"></div>
 
 <main class="container">
-    <section class="hero" style="margin-bottom: 20px;">
+    <!-- Removido o estilo inline para usar a compactação do style.css -->
+    <section class="hero">
         <h1>Pratique inglês agora</h1>
         <p>Responda as perguntas abaixo e veja seu progresso em tempo real.</p>
     </section>
 
-    <!-- ÁREA DE TREINO CENTRALIZADA -->
-    <div class="training-container">
+    <!-- ÁREA DE TREINO CENTRALIZADA - Ajustada para colar mais no hero -->
+    <div class="training-container" style="margin-top: 0;">
         <!-- PERGUNTA -->
         <h2 id="pergunta" class="question">Carregando pergunta...</h2>
 
@@ -40,7 +41,7 @@
     </div>
 </main>
 
-<!-- ADSENSE FINAL -->
+<!-- FOOTER (DINÂMICO) -->
 <div id="footer"></div>
 
 <!-- SCRIPTS DO APP -->
@@ -54,10 +55,11 @@
     async function loadComponent(id, file) {
         try {
             const res = await fetch(file);
+            if (!res.ok) throw new Error(`Erro ao carregar ${file}`);
             const html = await res.text();
             document.getElementById(id).innerHTML = html;
         } catch (err) {
-            console.error("Erro ao carregar componente:", file);
+            console.error(err);
         }
     }
     loadComponent("header", "/ChatFluent/components/header.html");
