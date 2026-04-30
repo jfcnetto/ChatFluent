@@ -10,8 +10,8 @@
 
 /* VARIÁVEIS DE DESIGN (DUOLINGO STYLE) */
 :root {
-  --primary: #58cc02;
-  --primary-dark: #46a302;
+  --primary: #f9373f;
+  --primary-dark: #eb0610;
   --secondary: #1cb0f6;
   --secondary-dark: #1899d6;
   --bg: #ffffff;
@@ -44,7 +44,7 @@ body {
 }
 
 .logo-img {
-  height: 42px;
+  height: 70px;
   width: auto;
   transition: transform 0.3s ease;
 }
@@ -278,4 +278,21 @@ footer {
   .flag-icon { width: 28px; height: 28px; }
   .header { height: 60px; }
   button, .contact-form button, .option-btn { width: 100%; }
+  
+  /* AJUSTE PARA O SLOT DE ANÚNCIOS */
+.ads-slot {
+  display: block;
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto; /* Centraliza */
+  min-height: 0;   /* Não ocupa espaço se estiver vazio */
+  overflow: hidden;
+  text-align: center;
+}
+
+/* Reduz o espaço logo após o header nas páginas que têm anúncios no topo */
+.header + .ads-slot {
+  margin-top: 5px;   /* Espaço mínimo entre header e anúncio */
+  margin-bottom: 5px; /* Espaço mínimo entre anúncio e conteúdo */
+}
 }
