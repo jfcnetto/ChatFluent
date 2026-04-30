@@ -41,7 +41,7 @@ body {
 
 /* LOGO (AGORA CORRETA E CONTROLÁVEL) */
 .logo-img {
-  height: 32px;
+  height: 65px;
   width: auto;
   max-width: 140px;
   object-fit: contain;
