@@ -19,7 +19,7 @@
 cd /c/ChatFluent
 git status
 git add .
-git commit -m "Primeira versão 1.0 em 13:22 30042026"
+git commit -m "Primeira versão 1.0 em 16:03 30/04/2026"
 git push --set-upstream origin main
 
 
