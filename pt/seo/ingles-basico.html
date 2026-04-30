@@ -1,0 +1,86 @@
+<!DOCTYPE html> 
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <title>Inglês básico para iniciantes | ChatFluent</title>
+    <meta name="description" content="Aprenda inglês básico do zero com dicas simples e práticas. Comece hoje com o ChatFluent.">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="canonical" href="https://jfcnetto.github.io/ChatFluent/pt/seo/ingles-basico.html">
+    <link rel="stylesheet" href="../../css/style.css">
+</head>
+
+<body>
+
+<!-- HEADER DINÂMICO -->
+<div id="header"></div>
+
+<main class="container">
+    <section class="hero">
+        <h1>Inglês básico para iniciantes</h1>
+        <p>Dê o primeiro passo rumo à fluência de forma prática e divertida!</p>
+        
+        <!-- BARRA DE PROGRESSO -->
+        <div class="progress-container">
+            <div class="progress-bar" style="width: 10%;"></div>
+        </div>
+        <p style="font-size: 14px; color: var(--text-light); margin-top: -30px; font-weight: 900;">INÍCIO DA JORNADA: 10% CONCLUÍDO</p>
+    </section>
+
+    <!-- CONTEÚDO EM CARD -->
+    <article class="legal-container">
+        <p>Se você está começando no inglês, o segredo é focar em situações reais do cotidiano para construir uma base sólida.</p>
+
+        <h2>Por onde começar?</h2>
+        <ul class="seo-card-list">
+            <li>Aprenda frases simples</li>
+            <li>Ouça inglês diariamente</li>
+            <li>Pratique conversação</li>
+        </ul>
+
+        <h2>Evite erros comuns</h2>
+        <ul class="seo-card-list">
+            <li style="border-color: #ff4b4b;">Traduzir ao pé da letra</li>
+            <li style="border-color: #ff4b4b;">Focar só em gramática</li>
+            <li style="border-color: #ff4b4b;">Não praticar</li>
+        </ul>
+    </article>
+
+    <!-- CTA DESTACADO -->
+    <div style="text-align: center; margin: 50px 0;">
+        <a href="../historia.html">
+            <button style="width: 300px;">Começar agora</button>
+        </a>
+    </div>
+
+    <!-- SEÇÃO VEJA TAMBÉM -->
+    <section class="legal-container" style="background-color: #f7f7f7;">
+        <h3>Continue aprendendo</h3>
+        <nav class="footer-menu" style="justify-content: flex-start; gap: 15px; margin-top: 20px;">
+            <a href="frases-ingles.html">Frases em inglês</a>
+            <a href="aprender-ingles.html">Aprender inglês</a>
+            <a href="ingles-viagem.html">Inglês para viagem</a>
+        </nav>
+    </section>
+</main>
+
+<!-- FOOTER DINÂMICO -->
+<div id="footer"></div>
+
+<!-- SCRIPTS -->
+<script src="../../js/adsense.js"></script>
+<script>
+    async function loadComponent(id, file) {
+        try {
+            const res = await fetch(file);
+            const html = await res.text();
+            document.getElementById(id).innerHTML = html;
+        } catch (err) {
+            console.error("Erro ao carregar componente:", file);
+        }
+    }
+    loadComponent("header", "/ChatFluent/components/header.html");
+    loadComponent("footer", "/ChatFluent/components/footer.html");
+</script>
+
+</body>
+</html>

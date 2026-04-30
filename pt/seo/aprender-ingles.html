@@ -1,0 +1,88 @@
+<!DOCTYPE html> 
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <title>Aprender inglês grátis online | ChatFluent</title>
+    <meta name="description" content="Aprenda inglês grátis online com o ChatFluent. Pratique conversas reais, melhore sua fluência e evolua com histórias interativas.">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="canonical" href="https://jfcnetto.github.io/ChatFluent/pt/seo/aprender-ingles.html">
+    <link rel="stylesheet" href="../../css/style.css">
+</head>
+
+<body>
+
+<!-- HEADER DINÂMICO -->
+<div id="header"></div>
+
+<main class="container">
+    <section class="hero">
+        <h1>Aprender inglês grátis online</h1>
+        <p>Complete sua primeira lição hoje e comece sua jornada para a fluência!</p>
+        
+        <!-- ELEMENTO DE GAMIFICAÇÃO: BARRA DE PROGRESSO -->
+        <div class="progress-container">
+            <div class="progress-bar" style="width: 15%;"></div>
+        </div>
+        <p style="font-size: 14px; color: var(--text-light); margin-top: -30px; font-weight: 900;">STATUS DO CURSO: 15% CONCLUÍDO</p>
+    </section>
+
+    <!-- CARD DE CONTEÚDO -->
+    <article class="legal-container">
+        <h2>Por que aprender inglês online?</h2>
+        <p>O inglês é essencial para viagens, negócios e tecnologia. Estudar online com o ChatFluent permite flexibilidade total: você aprende no seu ritmo e de qualquer lugar.</p>
+
+        <!-- LISTA ESTILIZADA COMO CARDS -->
+        <h2>Como aprender inglês mais rápido</h2>
+        <ul class="seo-card-list">
+            <li>Pratique todos os dias</li>
+            <li>Use frases completas</li>
+            <li>Escute conteúdos reais</li>
+            <li>Foque em conversação</li>
+        </ul>
+
+        <h2>Como funciona o ChatFluent?</h2>
+        <p>Utilizamos histórias interativas para simular situações reais. Você escolhe respostas, recebe feedback imediato e aprende a pensar em inglês sem depender de tradução.</p>
+    </article>
+
+    <!-- BOTÃO DE AÇÃO DESTACADO (CTA) -->
+    <div style="text-align: center; margin: 50px 0;">
+        <a href="../historia.html">
+            <button style="width: 320px; font-size: 20px;">Treinar inglês agora</button>
+        </a>
+    </div>
+
+    <!-- SEÇÃO COMPLEMENTAR -->
+    <section class="legal-container" style="background-color: #f7f7f7;">
+        <h2>Inglês para iniciantes</h2>
+        <p>O mais importante é a consistência. Comece com frases básicas e veja seu vocabulário crescer naturalmente com a prática constante.</p>
+
+        <h3>Veja também</h3>
+        <nav class="footer-menu" style="justify-content: flex-start; gap: 15px; margin-top: 20px;">
+            <a href="ingles-viagem.html">Inglês para viagem</a>
+            <a href="frases-ingles.html">Frases em inglês</a>
+            <a href="ingles-basico.html">Inglês básico</a>
+        </nav>
+    </section>
+</main>
+
+<!-- FOOTER DINÂMICO -->
+<div id="footer"></div>
+
+<!-- SCRIPTS -->
+<script src="../../js/adsense.js"></script>
+<script>
+    async function loadComponent(id, file) {
+        try {
+            const res = await fetch(file);
+            const html = await res.text();
+            document.getElementById(id).innerHTML = html;
+        } catch (err) {
+            console.error("Erro ao carregar componente:", file);
+        }
+    }
+    loadComponent("header", "/ChatFluent/components/header.html");
+    loadComponent("footer", "/ChatFluent/components/footer.html");
+</script>
+
+</body>
+</html>

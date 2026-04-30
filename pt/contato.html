@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <title>Contato | ChatFluent</title>
+    <meta name="description" content="Entre em contato com o ChatFluent para dúvidas, sugestões ou suporte sobre a plataforma de aprendizado de inglês.">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/ChatFluent/css/style.css">
+</head>
+
+<body>
+
+<div id="header"></div>
+
+<main class="container">
+    <section class="hero">
+        <h1>Contato</h1>
+        <p>Fale com a equipe do ChatFluent. Responderemos o mais rápido possível.</p>
+    </section>
+
+    <!-- CARD DE CONTATO USANDO CLASSES DO STYLE.CSS -->
+    <div class="contact-card">
+        <form class="contact-form">
+            <label for="nome">Nome</label>
+            <input type="text" id="nome" name="nome" placeholder="Seu nome completo" required>
+
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" placeholder="Seu melhor email" required>
+
+            <label for="mensagem">Mensagem</label>
+            <textarea id="mensagem" name="mensagem" placeholder="Como podemos ajudar?" rows="5" required></textarea>
+
+            <button type="submit">Enviar Mensagem</button>
+        </form>
+    </div>
+</main>
+
+<div id="footer"></div>
+
+<script src="/ChatFluent/js/adsense.js"></script>
+<script>
+    async function loadComponent(id, file) {
+        try {
+            const res = await fetch(file);
+            const html = await res.text();
+            document.getElementById(id).innerHTML = html;
+        } catch (err) {
+            console.error("Erro ao carregar componente:", file);
+        }
+    }
+    loadComponent("header", "/ChatFluent/components/header.html");
+    loadComponent("footer", "/ChatFluent/components/footer.html");
+</script>
+
+</body>
+</html>

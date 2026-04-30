@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <title>Frases em inglês mais usadas | ChatFluent</title>
+    <meta name="description" content="Aprenda as frases em inglês mais usadas no dia a dia. Pratique grátis com o ChatFluent.">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="canonical" href="https://jfcnetto.github.io/ChatFluent/pt/seo/frases-ingles.html">
+    <link rel="stylesheet" href="../../css/style.css">
+</head>
+
+<body>
+
+<!-- HEADER DINÂMICO -->
+<div id="header"></div>
+
+<main class="container">
+    <section class="hero">
+        <h1>Frases em inglês mais usadas</h1>
+        <p>Domine as expressões essenciais e suba de nível no seu aprendizado!</p>
+        
+        <!-- BARRA DE PROGRESSO DE APRENDIZADO -->
+        <div class="progress-container">
+            <div class="progress-bar" style="width: 25%;"></div>
+        </div>
+        <p style="font-size: 14px; color: var(--text-light); margin-top: -30px; font-weight: 900;">VOCÊ JÁ CONHECE 25% DESTAS FRASES</p>
+    </section>
+
+    <article class="legal-container">
+        <p>Aprender frases completas em vez de palavras isoladas acelera sua fluência. Veja as expressões indispensáveis:</p>
+
+        <!-- CARDS DE FRASES ESTILIZADOS -->
+        <h2>Frases básicas</h2>
+        <ul class="seo-card-list">
+            <li style="background: #f7f7f7;">Hello, how are you?</li>
+            <li style="background: #f7f7f7;">Good morning</li>
+            <li style="background: #f7f7f7;">Thank you very much</li>
+            <li style="background: #f7f7f7;">See you later</li>
+        </ul>
+
+        <h2>Frases para conversação</h2>
+        <ul class="seo-card-list">
+            <li style="border-color: var(--secondary);">What do you do?</li>
+            <li style="border-color: var(--secondary);">Where are you from?</li>
+            <li style="border-color: var(--secondary);">Can you help me?</li>
+            <li style="border-color: var(--secondary);">I don’t understand</li>
+        </ul>
+    </article>
+
+    <!-- CTA COM BOTÃO DUOLINGO STYLE -->
+    <div style="text-align: center; margin: 50px 0;">
+        <a href="../historia.html">
+            <button style="width: 300px; font-size: 18px;">Praticar frases agora</button>
+        </a>
+    </div>
+
+    <!-- SEÇÃO DE DICAS -->
+    <section class="legal-container" style="background-color: var(--bg);">
+        <h2>Dicas de Mestre</h2>
+        <p>Repita as frases em voz alta. A repetição é a chave para a memorização e melhora imediata da sua pronúncia.</p>
+
+        <h3 style="margin-top: 30px;">Continue evoluindo</h3>
+        <nav class="footer-menu" style="justify-content: flex-start; gap: 15px; margin-top: 20px;">
+            <a href="aprender-ingles.html">Aprender inglês</a>
+            <a href="ingles-basico.html">Inglês básico</a>
+            <a href="ingles-viagem.html">Inglês para viagem</a>
+        </nav>
+    </section>
+</main>
+
+<!-- FOOTER DINÂMICO -->
+<div id="footer"></div>
+
+<!-- SCRIPTS -->
+<script src="../../js/adsense.js"></script>
+<script>
+    async function loadComponent(id, file) {
+        try {
+            const res = await fetch(file);
+            const html = await res.text();
+            document.getElementById(id).innerHTML = html;
+        } catch (err) {
+            console.error("Erro ao carregar componente:", file);
+        }
+    }
+    loadComponent("header", "/ChatFluent/components/header.html");
+    loadComponent("footer", "/ChatFluent/components/footer.html");
+</script>
+
+</body>
+</html>

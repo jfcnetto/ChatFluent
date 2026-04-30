@@ -1,15 +1,18 @@
-<!doctype html>
-<html lang="pt-BR">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="https://base44.com/logo_v2.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="ChatFluent - Aprenda inglês praticando conversas reais através de histórias interativas. 100% gratuito, 11 idiomas suportados." />
-    <link rel="manifest" href="/manifest.json" />
-    <title>ChatFluent - Aprenda Inglês com Histórias Interativas</title>
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
-  </body>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<script>
+let lang = navigator.language.slice(0,2);
+
+// IMPORTANTE: inclui o nome do repositório
+const base = "/ChatFluent/";
+
+if(lang === "pt"){
+  location.href = base + "pt/index.html";
+} else {
+  location.href = base + "en/index.html";
+}
+</script>
+</head>
 </html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html> 
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <title>Como aprender inglês rápido | ChatFluent</title>
+    <meta name="description" content="Descubra como aprender inglês rápido com métodos práticos e eficientes.">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="canonical" href="https://jfcnetto.github.io/ChatFluent/pt/seo/ingles-rapido.html">
+    <link rel="stylesheet" href="../../css/style.css">
+</head>
+
+<body>
+
+<!-- HEADER DINÂMICO (Com bandeiras e design moderno) -->
+<div id="header"></div>
+
+<main class="container">
+    <section class="hero">
+        <h1>Como aprender inglês rápido</h1>
+        <p>Acelere sua fluência com métodos práticos e foco no que realmente importa!</p>
+        
+        <!-- BARRA DE PROGRESSO DE ACELERAÇÃO -->
+        <div class="progress-container">
+            <div class="progress-bar" style="width: 45%; background: var(--secondary);"></div>
+        </div>
+        <p style="font-size: 14px; color: var(--text-light); margin-top: -30px; font-weight: 900;">TURBO ATIVADO: 45% MAIS RÁPIDO</p>
+    </section>
+
+    <!-- CARDS DE DICAS PRÁTICAS -->
+    <article class="legal-container">
+        <p>Aprender inglês rápido exige exposição constante ao idioma e o uso de ferramentas interativas que simulam a vida real.</p>
+
+        <h2>Dicas para acelerar</h2>
+        <ul class="seo-card-list">
+            <li style="border-color: var(--secondary);">Pratique todos os dias</li>
+            <li style="border-color: var(--secondary);">Fale em voz alta</li>
+            <li style="border-color: var(--secondary);">Use frases reais</li>
+            <li style="border-color: var(--secondary);">Consuma conteúdo em inglês</li>
+        </ul>
+
+        <h2>Foco em Conversação</h2>
+        <p>O ChatFluent ajuda você a pensar em inglês mais rápido ao pular a etapa de tradução mental, focando em respostas imediatas em situações cotidianas.</p>
+    </article>
+
+    <!-- BOTÃO DE AÇÃO DESTACADO -->
+    <div style="text-align: center; margin: 50px 0;">
+        <a href="../historia.html">
+            <button style="width: 320px; border-bottom-color: var(--secondary-dark); background: var(--secondary);">Treinar agora</button>
+        </a>
+    </div>
+
+    <!-- NAVEGAÇÃO DE APOIO -->
+    <section class="legal-container" style="background-color: #f7f7f7;">
+        <h3>Veja também</h3>
+        <nav class="footer-menu" style="justify-content: flex-start; gap: 15px; margin-top: 20px;">
+            <a href="ingles-basico.html">Inglês básico</a>
+            <a href="frases-ingles.html">Frases em inglês</a>
+            <a href="aprender-ingles.html">Aprender inglês</a>
+        </nav>
+    </section>
+</main>
+
+<!-- FOOTER DINÂMICO -->
+<div id="footer"></div>
+
+<!-- SCRIPTS -->
+<script src="../../js/adsense.js"></script>
+<script>
+    async function loadComponent(id, file) {
+        try {
+            const res = await fetch(file);
+            const html = await res.text();
+            document.getElementById(id).innerHTML = html;
+        } catch (err) {
+            console.error("Erro ao carregar componente:", file);
+        }
+    }
+    loadComponent("header", "/ChatFluent/components/header.html");
+    loadComponent("footer", "/ChatFluent/components/footer.html");
+</script>
+
+</body>
+</html>

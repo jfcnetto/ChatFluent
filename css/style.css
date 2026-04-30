@@ -1,0 +1,487 @@
+/* IMPORTAÇÃO DE FONTE AMIGÁVEL */
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;900&display=swap');
+
+/* RESET */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* VARIÁVEIS DUOLINGO STYLE */
+:root {
+  --primary: #58cc02;          /* Verde principal */
+  --primary-dark: #46a302;     /* Sombra do botão */
+  --secondary: #1cb0f6;       /* Azul Duolingo */
+  --secondary-dark: #1899d6;
+  --bg: #ffffff;
+  --text: #4b4b4b;             /* Cinza escuro suave */
+  --text-light: #777777;
+  --border: #e5e5e5;           /* Bordas sólidas e claras */
+}
+
+/* BASE */
+body {
+  font-family: 'Nunito', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* HEADER MODERNO */
+.header {
+  height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 20px;
+  border-bottom: 2px solid var(--border);
+  background: #fff;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+/* LOGO */
+.logo-img {
+  height: 42px;
+  width: auto;
+  transition: transform 0.3s ease;
+}
+
+.logo-img:hover {
+  transform: scale(1.05) rotate(-2deg);
+}
+
+/* ESTILO DAS BANDEIRAS NO HEADER */
+.flag-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid var(--border);
+  transition: all 0.2s ease;
+  display: block;
+}
+
+.flag-icon:hover {
+  transform: scale(1.15);
+  border-color: var(--primary);
+  cursor: pointer;
+}
+
+/* CONTAINER */
+.container {
+  max-width: 1000px; /* Aumentado para comportar o grid da home */
+  margin: 0 auto;
+  padding: 40px 20px;
+}
+
+/* LAYOUT DE SEÇÕES (HOME) */
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  align-items: center;
+  padding: 60px 0;
+}
+
+.hero-text h1 {
+  font-size: 48px;
+  font-weight: 900;
+  color: var(--primary);
+  line-height: 1.2;
+  margin-bottom: 24px;
+}
+
+.hero-text p {
+  font-size: 20px;
+  color: var(--text-light);
+  font-weight: 700;
+  margin-bottom: 32px;
+}
+
+.hero-image img {
+  width: 100%;
+  max-width: 400px;
+  display: block;
+  margin: 0 auto;
+}
+
+/* SEÇÃO DE RECURSOS (CARDS) */
+.features-section {
+  margin-top: 80px;
+  text-align: center;
+}
+
+.features-section h2 {
+  font-size: 32px;
+  font-weight: 900;
+  margin-bottom: 40px;
+}
+
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 30px;
+}
+
+.feature-card {
+  border: 2px solid var(--border);
+  border-bottom: 4px solid var(--border);
+  border-radius: 20px;
+  padding: 30px;
+  transition: transform 0.2s;
+}
+
+.feature-card:hover {
+  transform: translateY(-5px);
+  border-color: var(--secondary);
+}
+
+.feature-card h3 {
+  margin-bottom: 15px;
+  font-weight: 900;
+}
+
+/* BOTÕES ESTILO DUOLINGO (EFEITO 3D) */
+button, .btn {
+  display: inline-block;
+  padding: 14px 24px;
+  background: var(--primary);
+  color: #fff;
+  border: none;
+  border-bottom: 4px solid var(--primary-dark);
+  border-radius: 16px;
+  font-size: 17px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  cursor: pointer;
+  transition: all 0.1s ease;
+  width: auto;
+  text-align: center;
+}
+
+button:hover {
+  filter: brightness(1.1);
+}
+
+button:active {
+  border-bottom-width: 0;
+  transform: translateY(4px);
+}
+
+/* LINKS */
+a {
+  color: var(--secondary);
+  text-decoration: none;
+  font-weight: 700;
+}
+
+/* BOX DE EXERCÍCIOS/HISTÓRIAS */
+.story-box {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.question {
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 24px;
+  color: var(--text);
+}
+
+/* OPÇÕES COMO CARDS CLICÁVEIS */
+.options button {
+  display: block;
+  width: 100%;
+  margin: 12px 0;
+  text-align: left;
+  background: #fff;
+  color: var(--text);
+  border: 2px solid var(--border);
+  border-bottom: 4px solid var(--border);
+  text-transform: none;
+}
+
+.options button:hover {
+  background: #f7f7f7;
+  border-color: #cecece;
+}
+
+.options button:active {
+    border-bottom-width: 2px;
+}
+
+/* ANIMAÇÕES DE FEEDBACK */
+@keyframes shake-animation {
+  0% { transform: translateX(0); }
+  25% { transform: translateX(-5px); }
+  50% { transform: translateX(5px); }
+  75% { transform: translateX(-5px); }
+  100% { transform: translateX(0); }
+}
+
+.shake-animation {
+  animation: shake-animation 0.3s ease-in-out;
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.feedback {
+  margin-top: 20px;
+  padding: 15px;
+  border-radius: 12px;
+  font-weight: 700;
+  background: #f1f1f1;
+  transition: opacity 0.3s ease;
+}
+
+/* FOOTER */
+footer {
+  margin-top: 60px;
+  padding: 40px 20px;
+  border-top: 2px solid var(--border);
+  background: #fff;
+}
+
+.footer-content {
+  max-width: 800px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.footer-menu {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.footer-menu a {
+  font-size: 15px;
+  color: #afafaf;
+  text-transform: uppercase;
+}
+
+/* RESPONSIVO */
+@media (max-width: 768px) {
+  .hero-grid {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+  
+  .hero-image {
+    order: -1;
+  }
+
+  .hero-text h1 {
+    font-size: 32px;
+  }
+
+  .flag-icon {
+    width: 28px;
+    height: 28px;
+  }
+}
+
+@media (max-width: 600px) {
+  button {
+    width: 100%;
+  }
+
+  .header {
+    height: 60px;
+  }
+  /* FORMULÁRIOS ESTILO APP (ADIÇÃO AO STYLE.CSS) */
+.contact-card {
+  max-width: 500px;
+  margin: 40px auto;
+  padding: 30px;
+  border: 2px solid var(--border);
+  border-bottom: 4px solid var(--border);
+  border-radius: 20px;
+  background: #fff;
+}
+
+.contact-form label {
+  display: block;
+  font-weight: 900; /* Mais pesado para seguir o estilo Duolingo */
+  margin-bottom: 8px;
+  color: var(--text);
+  text-transform: uppercase;
+  font-size: 13px;
+  letter-spacing: 0.8px;
+}
+
+.contact-form input, 
+.contact-form textarea {
+  width: 100%;
+  padding: 14px;
+  margin-bottom: 20px;
+  border: 2px solid var(--border);
+  border-radius: 16px;
+  font-family: 'Nunito', sans-serif;
+  font-size: 16px;
+  color: var(--text);
+  background-color: #f7f7f7;
+  transition: all 0.2s ease;
+}
+
+.contact-form input:focus, 
+.contact-form textarea:focus {
+  outline: none;
+  border-color: var(--secondary);
+  background-color: #fff;
+}
+
+.contact-form button {
+  width: 100%; /* Botão largo no card de contato */
+}
+/* INTERFACE DE LIÇÕES (ADIÇÃO AO STYLE.CSS) */
+.training-container {
+  max-width: 600px;
+  margin: 40px auto;
+  padding: 30px;
+  background: #fff;
+  border: 2px solid var(--border);
+  border-bottom: 4px solid var(--border);
+  border-radius: 24px;
+}
+
+.score-badge {
+  display: inline-block;
+  padding: 8px 16px;
+  background: #ffc800; /* Cor de "ouro" para pontos */
+  color: #fff;
+  border-radius: 12px;
+  font-weight: 900;
+  border-bottom: 3px solid #e5a500;
+  margin-top: 20px;
+  text-transform: uppercase;
+  font-size: 14px;
+}
+
+#feedback {
+  min-height: 30px;
+  margin: 15px 0;
+  font-weight: 700;
+  transition: opacity 0.3s ease;
+}
+
+/* Estilo para as opções de resposta geradas pelo JS */
+.option-btn {
+  display: block;
+  width: 100%;
+  margin: 12px 0;
+  text-align: left;
+  background: #fff;
+  color: var(--text);
+  border: 2px solid var(--border);
+  border-bottom: 4px solid var(--border);
+  padding: 16px 20px;
+  border-radius: 16px;
+  font-family: 'Nunito', sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.1s ease;
+}
+
+.option-btn:hover {
+  background-color: #f7f7f7;
+}
+
+.option-btn:active {
+  border-bottom-width: 0;
+  transform: translateY(4px);
+}
+/* PÁGINAS INSTITUCIONAIS (ADIÇÃO AO STYLE.CSS) */
+.legal-container {
+  max-width: 800px;
+  margin: 40px auto;
+  padding: 40px;
+  background: #fff;
+  border: 2px solid var(--border);
+  border-bottom: 4px solid var(--border);
+  border-radius: 24px;
+}
+
+.legal-container h2 {
+  font-size: 24px;
+  font-weight: 900;
+  color: var(--text);
+  margin: 30px 0 15px 0;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Pequeno detalhe visual antes de cada título H2 para estilo Duolingo */
+.legal-container h2::before {
+  content: "";
+  display: inline-block;
+  width: 8px;
+  height: 24px;
+  background: var(--secondary);
+  border-radius: 4px;
+}
+
+.legal-container p {
+  font-size: 17px;
+  color: var(--text-light);
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+/* ELEMENTOS DE GAMIFICAÇÃO (ADIÇÃO AO STYLE.CSS) */
+.progress-container {
+  background: var(--border);
+  border-radius: 20px;
+  height: 16px;
+  width: 100%;
+  margin: 20px 0 40px 0;
+  overflow: hidden;
+  border: 1px solid var(--border);
+}
+
+.progress-bar {
+  background: var(--primary);
+  height: 100%;
+  width: 35%; /* Valor inicial para incentivar o progresso */
+  border-radius: 20px;
+  transition: width 0.5s ease-in-out;
+}
+
+.seo-card-list {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 15px;
+  margin: 25px 0;
+}
+
+.seo-card-list li {
+  background: #fff;
+  border: 2px solid var(--border);
+  border-bottom: 4px solid var(--border);
+  border-radius: 15px;
+  padding: 15px;
+  font-weight: 700;
+  color: var(--text);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.seo-card-list li::before {
+  content: "⭐";
+}
+}

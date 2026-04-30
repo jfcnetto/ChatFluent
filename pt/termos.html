@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <title>Termos de Uso | ChatFluent</title>
+    <meta name="description" content="Leia os termos de uso do ChatFluent e entenda as condições de utilização da plataforma.">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/ChatFluent/css/style.css">
+</head>
+
+<body>
+
+<!-- HEADER (DINÂMICO) -->
+<div id="header"></div>
+
+<!-- ADSENSE TOPO -->
+<div class="ads-slot"></div>
+
+<main class="container">
+    <section class="hero" style="margin-bottom: 20px;">
+        <h1>Termos de Uso</h1>
+        <p>Entenda as condições de utilização da nossa plataforma de aprendizado.</p>
+    </section>
+
+    <!-- CONTEÚDO INSTITUCIONAL UTILIZANDO O PADRÃO LEGAL-CONTAINER -->
+    <article class="legal-container">
+        <p>Ao acessar e utilizar o ChatFluent, você concorda com os termos e condições descritos abaixo.</p>
+
+        <h2>Uso do site</h2>
+        <p>O ChatFluent é uma plataforma educacional gratuita destinada ao aprendizado de idiomas. O conteúdo pode ser atualizado, modificado ou removido a qualquer momento sem aviso prévio.</p>
+
+        <h2>Responsabilidade</h2>
+        <p>O uso das informações disponibilizadas é de responsabilidade do usuário. Não garantimos resultados específicos no aprendizado, pois o progresso depende do uso individual da plataforma.</p>
+
+        <h2>Publicidade</h2>
+        <p>Este site pode exibir anúncios por meio de parceiros como o Google AdSense, que podem utilizar cookies para personalizar a experiência do usuário.</p>
+
+        <h2>Modificações</h2>
+        <p>Os termos de uso podem ser atualizados periodicamente. Recomendamos a revisão desta página regularmente.</p>
+    </article>
+</main>
+
+<!-- ADSENSE FINAL -->
+<div class="ads-slot"></div>
+
+<!-- FOOTER (DINÂMICO) -->
+<div id="footer"></div>
+
+<!-- SCRIPTS -->
+<script src="/ChatFluent/js/adsense.js"></script>
+<script>
+    async function loadComponent(id, file) {
+        try {
+            const res = await fetch(file);
+            const html = await res.text();
+            document.getElementById(id).innerHTML = html;
+        } catch (err) {
+            console.error("Erro ao carregar componente:", file);
+        }
+    }
+    loadComponent("header", "/ChatFluent/components/header.html");
+    loadComponent("footer", "/ChatFluent/components/footer.html");
+</script>
+
+</body>
+</html>

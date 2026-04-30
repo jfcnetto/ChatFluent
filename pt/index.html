@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <title>Aprender inglês grátis | ChatFluent</title>
+    <meta name="description" content="Aprenda inglês grátis com o ChatFluent! Pratique conversas reais, receba feedback imediato e evolua com histórias interativas online.">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/ChatFluent/css/style.css">
+</head>
+
+<body>
+
+<div id="header"></div>
+
+<main class="container">
+    <!-- SEÇÃO HERO -->
+    <section class="hero-grid">
+        <div class="hero-text">
+            <h1>A maneira gratuita, divertida e eficaz de aprender inglês!</h1>
+            <p>Pratique com histórias interativas que simulam situações reais e evolua seu vocabulário em minutos por dia.</p>
+            <a href="/ChatFluent/pt/historia.html">
+                <button style="width: 280px;">Começar agora</button>
+            </a>
+        </div>
+
+        <div class="hero-image">
+            <img src="/ChatFluent/img/hero.png" alt="Mascote ChatFluent">
+        </div>
+    </section>
+
+    <!-- SEÇÃO DE RECURSOS -->
+    <section class="features-section">
+        <h2>Por que praticar com o ChatFluent?</h2>
+        
+        <div class="features-grid">
+            <div class="feature-card">
+                <h3 style="color: var(--primary);">Eficaz e Prático</h3>
+                <p>Nossas lições focam no inglês que você realmente usa no dia a dia.</p>
+            </div>
+
+            <div class="feature-card">
+                <h3 style="color: var(--secondary);">Histórias Reais</h3>
+                <p>Aprenda através de contextos e diálogos interativos.</p>
+            </div>
+
+            <div class="feature-card">
+                <h3 style="color: #ffc800;">100% Gratuito</h3>
+                <p>Acreditamos no acesso universal à educação para sempre.</p>
+            </div>
+        </div>
+    </section>
+</main>
+
+<div id="footer"></div>
+
+<script src="/ChatFluent/js/adsense.js"></script>
+<script>
+    async function loadComponent(id, file) {
+        try {
+            const res = await fetch(file);
+            const html = await res.text();
+            document.getElementById(id).innerHTML = html;
+        } catch (err) {
+            console.error("Erro ao carregar componente:", file);
+        }
+    }
+    loadComponent("header", "/ChatFluent/components/header.html");
+    loadComponent("footer", "/ChatFluent/components/footer.html");
+</script>
+
+</body>
+</html>
