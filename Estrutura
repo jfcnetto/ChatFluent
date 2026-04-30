@@ -19,7 +19,7 @@
 cd /c/ChatFluent
 git status
 git add .
-git commit -m "Primeira versão Banner 1.0 em 16:42 30/04/2026"
+git commit -m "Primeira versão Historia 1.0 em 17:03 30/04/2026"
 git push --set-upstream origin main
 
 

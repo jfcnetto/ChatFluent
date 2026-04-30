@@ -282,3 +282,40 @@ footer {
     .logo-img { height: 50px; } 
     button, .btn, .option-btn, .contact-form button { width: 100%; }
 }
+
+/* ANIMAÇÕES PARA O SIMULADOR */
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.shake-animation {
+    animation: shake 0.4s ease-in-out;
+}
+
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-8px); }
+    75% { transform: translateX(8px); }
+}
+
+/* ESTILO CHAT (NPC) */
+.npc-bubble {
+    background: #f1f0f0;
+    padding: 15px 20px;
+    border-radius: 18px 18px 18px 4px;
+    margin-bottom: 20px;
+    font-weight: 700;
+    font-size: 18px;
+    display: inline-block;
+    max-width: 85%;
+    border: 1px solid var(--border);
+    animation: fadeInUp 0.3s ease;
+}
+
+.options {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 20px;
+}

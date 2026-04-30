@@ -13,7 +13,7 @@
 <!-- HEADER (DINÂMICO) -->
 <div id="header"></div>
 
-<!-- ADSENSE TOPO (BANNER PROVISÓRIO OU ADS) -->
+<!-- ADSENSE TOPO -->
 <div id="main-banner">
     <script>
         document.write('<img src="/ChatFluent/img/banner-provisorio.png" style="display:block; width:100%; max-width:1000px; margin:0 auto;">');
@@ -21,22 +21,24 @@
 </div>
 
 <main class="container">
-    <!-- Removido o estilo inline para usar a compactação do style.css -->
-    <section class="hero">
+    <section class="hero" style="text-align: center; padding: 20px 0;">
         <h1>Pratique inglês agora</h1>
-        <p>Responda as perguntas abaixo e veja seu progresso em tempo real.</p>
+        <p>Aprenda com situações do dia a dia e ganhe pontos.</p>
     </section>
 
-    <!-- ÁREA DE TREINO CENTRALIZADA - Ajustada para colar mais no hero -->
+    <!-- ÁREA DO SIMULADOR (CHAT STYLE) -->
     <div class="training-container" style="margin-top: 0;">
-        <!-- PERGUNTA -->
-        <h2 id="pergunta" class="question">Carregando pergunta...</h2>
+        
+        <!-- BALÃO DO NPC (Injetado via app.js) -->
+        <div id="pergunta">
+            <h2 class="question" style="font-size: 18px; color: var(--text-light);">Carregando história...</h2>
+        </div>
 
-        <!-- OPÇÕES (GERADAS PELO JS) -->
+        <!-- OPÇÕES DO USUÁRIO (Injetadas via app.js) -->
         <div id="opcoes" class="options"></div>
 
-        <!-- FEEDBACK VISUAL -->
-        <div id="feedback"></div>
+        <!-- FEEDBACK E EXPLICAÇÃO (Aparece após a resposta) -->
+        <div id="feedback" style="transition: 0.3s; margin-top: 20px; min-height: 30px; text-align: center;"></div>
 
         <!-- PLACAR DE PONTOS -->
         <div class="score-badge">
@@ -44,12 +46,14 @@
         </div>
     </div>
 </main>
-<!-- ADSENSE TOPO (BANNER PROVISÓRIO OU ADS) -->
-<div id="main-banner">
+
+<!-- ADSENSE RODAPÉ -->
+<div id="footer-banner" style="margin-top: 20px;">
     <script>
         document.write('<img src="/ChatFluent/img/banner-provisorio.png" style="display:block; width:100%; max-width:1000px; margin:0 auto;">');
     </script>
 </div>
+
 <!-- FOOTER (DINÂMICO) -->
 <div id="footer"></div>
 
@@ -68,7 +72,7 @@
             const html = await res.text();
             document.getElementById(id).innerHTML = html;
         } catch (err) {
-            console.error(err);
+            console.error("Erro ao carregar componente:", file);
         }
     }
     loadComponent("header", "/ChatFluent/components/header.html");
