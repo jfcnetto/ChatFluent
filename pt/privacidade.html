@@ -9,21 +9,19 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<link rel="stylesheet" href="../css/style.css">
+<link rel="stylesheet" href="/ChatFluent/css/style.css">
 
 </head>
 
 <body>
 
+<!-- HEADER (DINÂMICO) -->
+<div id="header"></div>
+
 <!-- ADSENSE TOPO -->
 <div class="ads-slot"></div>
 
 <div class="container">
-
-<!-- LOGO -->
-<div class="logo">
-  <img src="/ChatFluent/img/logo.png" alt="Chat Fluent">
-</div>
 
 <h1>Política de Privacidade</h1>
 
@@ -52,16 +50,12 @@
 <!-- ADSENSE FINAL -->
 <div class="ads-slot"></div>
 
+<!-- FOOTER (DINÂMICO) -->
+<div id="footer"></div>
 
-<!-- RODAPÉ -->
-<footer>
-<a href="privacidade.html">Privacidade</a> |
-<a href="termos.html">Termos</a> |
-<a href="contato.html">Contato</a>
-</footer>
+<!-- SCRIPTS -->
+<script src="/ChatFluent/js/adsense.js"></script>
 
-<!-- SCRIPT ADSENSE -->
-<script src="../js/adsense.js"></script>
 <script>
 async function loadComponent(id, file) {
   const res = await fetch(file);

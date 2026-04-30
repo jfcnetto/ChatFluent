@@ -5,48 +5,54 @@
 
 <title>Contato | ChatFluent</title>
 
-<meta name="description" content="Entre em contato com o ChatFluent para dúvidas, sugestões ou suporte.">
+<meta name="description" content="Entre em contato com o ChatFluent para dúvidas, sugestões ou suporte sobre a plataforma de aprendizado de inglês.">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<link rel="stylesheet" href="../css/style.css">
-
+<link rel="stylesheet" href="/ChatFluent/css/style.css">
 </head>
 
 <body>
+
+<!-- HEADER (DINÂMICO) -->
+<div id="header"></div>
 
 <!-- ADSENSE TOPO -->
 <div class="ads-slot"></div>
 
 <div class="container">
 
-<!-- LOGO -->
-<div class="logo">
-  <img src="/ChatFluent/img/logo.png" alt="Chat Fluent">
-</div>
-
 <h1>Contato</h1>
 
-<p>Se você tiver dúvidas, sugestões ou precisar de suporte, entre em contato conosco:</p>
+<p>Fale com a equipe do ChatFluent. Responderemos o mais rápido possível.</p>
 
-<p><strong>Email:</strong> jfcnetto@gmail.com</p>
+<!-- FORMULÁRIO SIMPLES -->
+<form>
 
-<p>Respondemos o mais breve possível.</p>
+  <label>Nome</label><br>
+  <input type="text" name="nome" placeholder="Seu nome" style="width:100%; padding:10px; margin:8px 0;"><br>
+
+  <label>Email</label><br>
+  <input type="email" name="email" placeholder="Seu email" style="width:100%; padding:10px; margin:8px 0;"><br>
+
+  <label>Mensagem</label><br>
+  <textarea name="mensagem" placeholder="Escreva sua mensagem" rows="5" style="width:100%; padding:10px; margin:8px 0;"></textarea><br>
+
+  <button type="submit">Enviar</button>
+
+</form>
 
 </div>
 
 <!-- ADSENSE FINAL -->
 <div class="ads-slot"></div>
 
-<!-- RODAPÉ -->
-<footer>
-<a href="privacidade.html">Privacidade</a> |
-<a href="termos.html">Termos</a> |
-<a href="contato.html">Contato</a>
-</footer>
+<!-- FOOTER (DINÂMICO) -->
+<div id="footer"></div>
 
-<!-- SCRIPT ADSENSE -->
-<script src="../js/adsense.js"></script>
+<!-- SCRIPTS -->
+<script src="/ChatFluent/js/adsense.js"></script>
+
 <script>
 async function loadComponent(id, file) {
   const res = await fetch(file);

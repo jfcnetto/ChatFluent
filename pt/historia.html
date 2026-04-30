@@ -9,20 +9,18 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<link rel="stylesheet" href="../css/style.css">
+<link rel="stylesheet" href="/ChatFluent/css/style.css">
 </head>
 
 <body>
 
-<!-- ADSENSE TOPO (leve) -->
+<!-- HEADER (DINÂMICO) -->
+<div id="header"></div>
+
+<!-- ADSENSE TOPO -->
 <div class="ads-slot"></div>
 
 <div class="container">
-
-<!-- LOGO -->
-<div class="logo">
-  <img src="/ChatFluent/img/logo.png" alt="Chat Fluent">
-</div>
 
 <h1>Pratique inglês agora</h1>
 
@@ -47,18 +45,18 @@
 <!-- ADSENSE FINAL -->
 <div class="ads-slot"></div>
 
-<!-- RODAPÉ -->
-<footer>
-<a href="privacidade.html">Privacidade</a> |
-<a href="termos.html">Termos</a> |
-<a href="contato.html">Contato</a>
-</footer>
+<!-- FOOTER (DINÂMICO) -->
+<div id="footer"></div>
 
-<!-- SCRIPTS -->
-<script src="../js/data.js"></script>
-<script src="../js/idiomas.js"></script>
-<script src="../js/app.js"></script>
-<script src="../js/adsense.js"></script>
+<!-- SCRIPTS DO APP -->
+<script src="/ChatFluent/js/data.js"></script>
+<script src="/ChatFluent/js/idiomas.js"></script>
+<script src="/ChatFluent/js/app.js"></script>
+
+<!-- ADSENSE -->
+<script src="/ChatFluent/js/adsense.js"></script>
+
+<!-- COMPONENTES (HEADER/FOOTER) -->
 <script>
 async function loadComponent(id, file) {
   const res = await fetch(file);
