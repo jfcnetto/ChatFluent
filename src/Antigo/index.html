@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<script>
+let lang = navigator.language.slice(0,2);
+
+// IMPORTANTE: inclui o nome do repositório
+const base = "/ChatFluent/";
+
+if(lang === "pt"){
+  location.href = base + "pt/index.html";
+} else {
+  location.href = base + "en/index.html";
+}
+</script>
+</head>
+</html>
