@@ -10,13 +10,14 @@
 
 <body>
 
+<!-- CONTAINER DO HEADER DINÂMICO -->
 <div id="header"></div>
 
-<!-- ADSENSE TOPO -->
+<!-- ADSENSE TOPO (BANNER PROVISÓRIO OU ADS) -->
 <div class="ads-slot"></div>
 
 <main class="container">
-    <!-- SEÇÃO HERO -->
+    <!-- SEÇÃO HERO - Padding superior zerado no CSS para colar no topo -->
     <section class="hero-grid">
         <div class="hero-text">
             <h1>A maneira gratuita, divertida e eficaz de aprender inglês!</h1>
@@ -54,21 +55,30 @@
     </section>
 </main>
 
-<!-- ADSENSE TOPO -->
+<!-- ADSENSE RODAPÉ -->
 <div class="ads-slot"></div>
+
+<!-- CONTAINER DO FOOTER DINÂMICO -->
 <div id="footer"></div>
 
+<!-- SCRIPTS DO APP E COMPONENTES -->
 <script src="/ChatFluent/js/adsense.js"></script>
 <script>
+    /**
+     * Carrega componentes HTML externos (Header/Footer)
+     */
     async function loadComponent(id, file) {
         try {
             const res = await fetch(file);
+            if (!res.ok) throw new Error(`Falha ao carregar ${file}`);
             const html = await res.text();
             document.getElementById(id).innerHTML = html;
         } catch (err) {
             console.error("Erro ao carregar componente:", file);
         }
     }
+
+    // Inicializa o carregamento dos arquivos externos
     loadComponent("header", "/ChatFluent/components/header.html");
     loadComponent("footer", "/ChatFluent/components/footer.html");
 </script>

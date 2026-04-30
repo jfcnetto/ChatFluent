@@ -70,15 +70,16 @@ body {
   cursor: pointer;
 }
 
-/* AJUSTE PARA O SLOT DE ANÚNCIOS / BANNER PROVISÓRIO */
+/* AJUSTE PARA O SLOT DE ANÚNCIOS / BANNER PROVISÓRIO - REMOVIDO ESPAÇO SUPERIOR */
 .ads-slot {
   display: block;
   width: 100%;
   max-width: 1000px;
-  margin: 5px auto; /* Espaço mínimo para aproximar do header */
-  min-height: 50px; 
+  margin: 0 auto; 
+  min-height: 0; 
   overflow: hidden;
   text-align: center;
+  line-height: 0; /* Remove vácuo abaixo da imagem */
 }
 
 .ads-slot img {
@@ -94,11 +95,11 @@ body {
   transform: scale(1.01);
 }
 
-/* DIAGRAMAÇÃO DE CONTAINERS */
+/* DIAGRAMAÇÃO DE CONTAINERS - ZERANDO TOP PADDING */
 .container {
   max-width: 1000px;
   margin: 0 auto;
-  padding: 10px 20px; 
+  padding: 0 20px 10px 20px; 
 }
 
 /* HERO SECTION (PÁGINA INICIAL E INTERNAS) */
@@ -113,7 +114,7 @@ body {
   grid-template-columns: 1fr 1fr;
   gap: 40px;
   align-items: center;
-  padding: 20px 0;
+  padding: 10px 0 20px 0; /* Padding superior reduzido para colar no topo */
 }
 
 .hero h1, .hero-text h1 {
@@ -293,6 +294,13 @@ footer {
   text-decoration: none;
 }
 
+/* FORÇANDO UNIÃO ENTRE ELEMENTOS DINÂMICOS */
+#header + .ads-slot, 
+#header + main,
+.ads-slot + main {
+  margin-top: 0 !important;
+}
+
 /* RESPONSIVO ÚNICO */
 @media (max-width: 768px) {
   .hero-grid { grid-template-columns: 1fr; text-align: center; }
@@ -300,6 +308,6 @@ footer {
   .hero-text h1 { font-size: 32px; }
   .flag-icon { width: 28px; height: 28px; }
   .header { height: 60px; }
-  .logo-img { height: 50px; } /* Ajuste de logo para mobile */
+  .logo-img { height: 50px; } 
   button, .contact-form button, .option-btn { width: 100%; }
 }
