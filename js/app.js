@@ -1,7 +1,7 @@
 /* 
     CHATFLUENT - CORE APP JS
     Lógica: Níveis Progressivos (8, 15, 25), Seleção Aleatória, 
-    Avatar WhatsApp e Pontuação Competitiva com suporte a valores negativos.
+    Avatar WhatsApp e Sistema de Compartilhamento de Desempenho/Site.
 */
 
 // ESTADO GLOBAL DO JOGO
@@ -13,7 +13,8 @@ let errosNaEtapa = 0;
 
 // Relatório Final da Sessão
 let totalAcertos = 0;
-let totalErros = 0;
+let totalErros = 0; // Erros fatais (perdeu a questão)
+let errosTentativa = 0; // Erros cometidos em tentativas individuais
 
 // Lista de perguntas filtradas para a sessão atual
 let perguntasSessao = [];
@@ -43,6 +44,7 @@ function prepararSessao() {
     etapa = 0;
     totalAcertos = 0;
     totalErros = 0;
+    errosTentativa = 0;
     streak = 0;
 }
 
@@ -57,9 +59,14 @@ function render() {
 
     if (!perguntasSessao[etapa]) return;
 
+    const totalAcoes = totalAcertos + errosTentativa + totalErros;
+    const percentual = totalAcoes > 0 
+        ? Math.round((totalAcertos / totalAcoes) * 100) 
+        : 0;
+
     const nomesNiveis = ["Básico 🌱", "Intermediário 💪", "Avançado 🏆"];
     if (progressoEl) {
-        progressoEl.innerHTML = `<b>${nomesNiveis[nivelAtual]}</b> | Lição ${etapa + 1} de ${perguntasSessao.length}`;
+        progressoEl.innerHTML = `<b>${nomesNiveis[nivelAtual]}</b> | Lição ${etapa + 1} de ${perguntasSessao.length} <br> <small>Desempenho Real: ${percentual}%</small>`;
     }
 
     errosNaEtapa = 0; 
@@ -87,6 +94,47 @@ function render() {
 }
 
 /**
+ * Lógica de compartilhamento de desempenho (Final da Lição)
+ */
+function compartilharDesempenho() {
+    const nomesNiveis = ["Básico 🌱", "Intermediário 💪", "Avançado 🏆"];
+    const totalAcoes = totalAcertos + errosTentativa + totalErros;
+    const aproveitamento = totalAcoes > 0 ? Math.round((totalAcertos / totalAcoes) * 100) : 0;
+    
+    const texto = `🔥 No ChatFluent, alcancei ${aproveitamento}% de acerto no nível ${nomesNiveis[nivelAtual]}! 🏆\n\nConsegue bater meu recorde e dominar o inglês também? 🚀`;
+    
+    if (navigator.share) {
+        navigator.share({
+            title: 'Meu Desempenho no ChatFluent',
+            text: texto,
+            url: window.location.href
+        }).catch(console.error);
+    } else {
+        const urlWhatsapp = `https://api.whatsapp.com/send?text=${encodeURIComponent(texto + " " + window.location.href)}`;
+        window.open(urlWhatsapp, '_blank');
+    }
+}
+
+/**
+ * Lógica de compartilhamento do SITE (Header/Footer)
+ */
+function compartilharSite() {
+    const texto = "🚀 Confira o ChatFluent! Uma forma incrível e gratuita de praticar inglês com situações reais e gamificação. 🏆";
+    const url = window.location.origin + "/ChatFluent/pt/index.html";
+
+    if (navigator.share) {
+        navigator.share({
+            title: 'ChatFluent - Aprenda Inglês Brincando',
+            text: texto,
+            url: url
+        }).catch(console.error);
+    } else {
+        const urlWhatsapp = `https://api.whatsapp.com/send?text=${encodeURIComponent(texto + " " + url)}`;
+        window.open(urlWhatsapp, '_blank');
+    }
+}
+
+/**
  * Processa a resposta e gerencia pontuação/erros
  */
 function responder(btn, i) {
@@ -97,7 +145,6 @@ function responder(btn, i) {
     if (feedbackEl.innerHTML.includes("Amazing") || feedbackEl.innerHTML.includes("errors")) return;
 
     if (i === perguntasSessao[etapa].correta) {
-        // --- LÓGICA DE ACERTO COMPETITIVO ---
         if (errosNaEtapa === 0) {
             pontos += 10 + (streak * 2);
             streak++;
@@ -106,7 +153,7 @@ function responder(btn, i) {
         } else {
             pontos += 1;
             streak = 0; 
-            totalAcertos++; 
+            totalAcertos++;
             feedbackEl.innerHTML = `<div style="color: #1cb0f6; font-weight: 900; margin-top: 10px;">Good recovery! +1 pt 👍</div>`;
         }
         
@@ -122,10 +169,10 @@ function responder(btn, i) {
         }, 2000); 
 
     } else {
-        // --- LÓGICA DE ERRO (Agora permite pontos negativos) ---
         errosNaEtapa++;
+        errosTentativa++; 
         streak = 0;
-        pontos -= 2; // Removido Math.max(0, ...) para permitir que o valor caia abaixo de zero
+        pontos -= 2; 
         
         btn.style.borderColor = "#ff4b4b";
         btn.style.backgroundColor = "#ffdbdb";
@@ -158,41 +205,66 @@ function responder(btn, i) {
  */
 function finalizarTreino() {
     const container = document.querySelector(".training-container");
-    const metaAprovacao = Math.ceil(perguntasSessao.length * 0.8); 
-    const passou = totalAcertos >= metaAprovacao;
+    const totalAcoes = totalAcertos + errosTentativa + totalErros;
+    const aproveitamento = totalAcoes > 0 ? Math.round((totalAcertos / totalAcoes) * 100) : 0;
+    const passou = aproveitamento >= 80;
     
     let acaoBotao = "";
-    let mensagemNivel = "";
+    let mensagemStatus = "";
 
     if (passou && nivelAtual < 2) {
-        mensagemNivel = "Você desbloqueou o próximo nível! 🔓";
-        acaoBotao = `<button onclick="irParaProximoNivel()">Ir para o Próximo Nível</button>`;
+        mensagemStatus = `<span style="color: #58cc02;">VOCÊ SUBIU DE NÍVEL! 🔓</span>`;
+        acaoBotao = `<button onclick="irParaProximoNivel()" style="width:100%; padding:15px; cursor:pointer;">Próximo Nível</button>`;
     } else if (passou && nivelAtual === 2) {
-        mensagemNivel = "Parabéns! Você é um mestre do inglês! 🏆";
-        acaoBotao = `<button onclick="location.reload()">Reiniciar do Zero</button>`;
+        mensagemStatus = `<span style="color: #58cc02;">MESTRIA TOTAL ALCANÇADA! 🏆</span>`;
+        acaoBotao = `<button onclick="location.reload()" style="width:100%; padding:15px; cursor:pointer;">Reiniciar Jornada</button>`;
     } else {
-        mensagemNivel = `Quase lá! Você precisa de ${metaAprovacao} acertos para avançar.`;
-        acaoBotao = `<button onclick="location.reload()">Tentar Novamente</button>`;
+        mensagemStatus = `<span style="color: #ff4b4b;">DESEMPENHO INSUFICIENTE 📚</span><br><small>Refaça a lição para avançar</small>`;
+        acaoBotao = `<button onclick="location.reload()" style="width:100%; padding:15px; cursor:pointer;">Tentar Novamente</button>`;
     }
 
     container.innerHTML = `
-        <div style="text-align: center; padding: 20px;">
-            <h2 style="font-size: 28px; color: var(--primary);">${passou ? 'Excelente!' : 'Continue praticando!'}</h2>
-            <p style="margin: 15px 0; font-weight: 700; color: var(--text-light);">${mensagemNivel}</p>
+        <div id="resultado-final" style="text-align: center; padding: 20px;">
+            <h2 style="font-size: 28px; color: var(--primary);">${passou ? 'Excelente!' : 'Não foi dessa vez!'}</h2>
+            <p style="margin: 10px 0; font-size: 18px; font-weight: 900;">${mensagemStatus}</p>
             
-            <div class="stats-card" style="display: flex; justify-content: space-around; background: #f7f7f7; padding: 15px; border-radius: 15px; margin-bottom: 20px;">
+            <div style="background: #f0f0f0; border-radius: 15px; padding: 15px; margin: 20px 0;">
+                <p style="font-size: 14px; color: #666; margin-bottom: 5px;">Seu Aproveitamento Real:</p>
+                <h3 style="font-size: 32px; color: ${passou ? '#58cc02' : '#ff4b4b'};">${aproveitamento}%</h3>
+                <p style="font-size: 12px; color: #999;">(Meta para avançar: 80%)</p>
+            </div>
+
+            <div class="stats-card" style="display: flex; justify-content: space-around; margin-bottom: 20px;">
                 <div class="stat"><span>✅ Acertos</span><br><strong>${totalAcertos}</strong></div>
+                <div class="stat"><span>⚠️ Erros</span><br><strong>${errosTentativa}</strong></div>
                 <div class="stat"><span>❌ Falhas</span><br><strong>${totalErros}</strong></div>
             </div>
 
-            <p style="font-size: 20px; margin: 20px 0; font-weight: 900;">Pontos Acumulados: ${pontos}</p>
-            ${acaoBotao}
+            <p style="font-size: 18px; margin-bottom: 20px;">Pontuação Total: <b>${pontos}</b></p>
+            
+            <div style="display: flex; flex-direction: column; gap: 10px;">
+                ${acaoBotao}
+                <button onclick="compartilharDesempenho()" style="background: #25d366; border-color: #128c7e; width: 100%;">
+                    Compartilhar Resultado no WhatsApp 📱
+                </button>
+            </div>
         </div>
     `;
 }
 
 function irParaProximoNivel() {
     nivelAtual++;
+    const container = document.querySelector(".training-container");
+    container.innerHTML = `
+        <div id="pergunta" style="min-height: 85px;"></div>
+        <div id="opcoes" class="options"></div>
+        <div id="feedback" style="transition: 0.3s; margin-top: 20px; min-height: 30px; text-align: center;"></div>
+        <div class="score-badge" style="display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; margin-top: 25px; padding-top: 15px; border-top: 1px solid var(--border);">
+            <span>🏆 <span id="pontos">${pontos}</span> pontos</span>
+            <span style="color: var(--border);">|</span>
+            <span id="progresso"></span>
+        </div>
+    `;
     prepararSessao();
     render();
 }

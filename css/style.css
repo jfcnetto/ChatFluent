@@ -18,6 +18,8 @@
     --text: #4b4b4b;
     --text-light: #777777;
     --border: #e5e5e5;
+    --whatsapp: #25d366;
+    --whatsapp-dark: #128c7e;
 }
 
 /* BASE DO CORPO */
@@ -176,6 +178,12 @@ button:active, .option-btn:active {
     transform: translateY(4px);
 }
 
+/* BOTÃO DE COMPARTILHAMENTO WHATSAPP (EXCLUSIVO) */
+button.share-whatsapp {
+    background: var(--whatsapp);
+    border-bottom-color: var(--whatsapp-dark);
+}
+
 /* CARDS E CONTAINERS DE CONTEÚDO (GLOBAL) */
 .feature-card, .contact-card, .training-container, .legal-container {
     border: 2px solid var(--border);
@@ -193,7 +201,7 @@ button:active, .option-btn:active {
 .training-container { max-width: 600px; margin-top: 10px; padding: 30px; border-radius: 24px; }
 .legal-container { max-width: 800px; margin-top: 10px; padding: 40px; border-radius: 24px; text-align: left; }
 
-/* --- FORMULÁRIOS (RESTALRADO) --- */
+/* --- FORMULÁRIOS --- */
 .contact-form label {
     display: block;
     font-weight: 900;
@@ -299,29 +307,47 @@ footer {
     75% { transform: translateX(8px); }
 }
 
-/* --- ESTILO CHAT (NPC + AVATAR WHATSAPP) --- */
+/* --- ESTILO CHAT (NPC + AVATAR PREMIUM) --- */
 .chat-row {
     display: flex;
-    align-items: flex-end; /* Alinha o avatar com o final do balão */
+    align-items: flex-end;
     gap: 12px;
     margin-bottom: 25px;
     animation: fadeInUp 0.3s ease;
 }
 
 .avatar-npc {
-    width: 50px;
-    height: 50px;
+    width: 55px; 
+    height: 55px;
     border-radius: 50%;
     object-fit: cover;
-    border: 2px solid var(--border);
     flex-shrink: 0;
-    background-color: #eee;
+    
+    padding: 3px; 
+    background: linear-gradient(
+        45deg, 
+        #ff8c00, 
+        #001f3f, 
+        #006400, 
+        #ff8c00
+    );
+    background-size: 300% 300%;
+    animation: gradient-rotate 6s linear infinite; 
+    
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+    border: none; 
+}
+
+@keyframes gradient-rotate {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
 }
 
 .npc-bubble {
     background: #f1f0f0;
     padding: 15px 20px;
-    border-radius: 18px 18px 18px 4px; /* Ponta puxada para o lado do avatar */
+    border-radius: 18px 18px 18px 4px;
     font-weight: 700;
     font-size: 18px;
     display: inline-block;
