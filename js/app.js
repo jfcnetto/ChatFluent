@@ -245,7 +245,7 @@ function finalizarTreino() {
             <div style="display: flex; flex-direction: column; gap: 10px;">
                 ${acaoBotao}
                 <button onclick="compartilharDesempenho()" style="background: #25d366; border-color: #128c7e; width: 100%;">
-                    Compartilhar Resultado no WhatsApp 📱
+                   📱Compartilhe 
                 </button>
             </div>
         </div>

@@ -11,12 +11,12 @@
     <!-- SELETOR DE IDIOMAS (BANDEIRAS) -->
     <nav class="languages-nav" style="display: flex; gap: 8px; flex-wrap: wrap; justify-content: center; flex: 1;">
       
-	  <a href="/ChatFluent/de/index.html" title="Alemão"><img src="https://flagcdn.com/w40/de.png" class="flag-icon"></a>
+      <a href="/ChatFluent/de/index.html" title="Alemão"><img src="https://flagcdn.com/w40/de.png" class="flag-icon"></a>
       <a href="/ChatFluent/es/index.html" title="Espanhol"><img src="https://flagcdn.com/w40/es.png" class="flag-icon"></a>
-	  <a href="/ChatFluent/fr/index.html" title="Francês"><img src="https://flagcdn.com/w40/fr.png" class="flag-icon"></a>
-	  <a href="/ChatFluent/it/index.html" title="Italiano"><img src="https://flagcdn.com/w40/it.png" class="flag-icon"></a>
-	  <a href="/ChatFluent/ja/index.html" title="Japonês"><img src="https://flagcdn.com/w40/jp.png" class="flag-icon"></a>
-	  <a href="/ChatFluent/nl/index.html" title="Holandês"><img src="https://flagcdn.com/w40/nl.png" class="flag-icon"></a>
+      <a href="/ChatFluent/fr/index.html" title="Francês"><img src="https://flagcdn.com/w40/fr.png" class="flag-icon"></a>
+      <a href="/ChatFluent/it/index.html" title="Italiano"><img src="https://flagcdn.com/w40/it.png" class="flag-icon"></a>
+      <a href="/ChatFluent/ja/index.html" title="Japonês"><img src="https://flagcdn.com/w40/jp.png" class="flag-icon"></a>
+      <a href="/ChatFluent/nl/index.html" title="Holandês"><img src="https://flagcdn.com/w40/nl.png" class="flag-icon"></a>
       <a href="/ChatFluent/pl/index.html" title="Polonês"><img src="https://flagcdn.com/w40/pl.png" class="flag-icon"></a>
       <a href="/ChatFluent/pt/index.html" title="Português"><img src="https://flagcdn.com/w40/br.png" class="flag-icon"></a>          
       <a href="/ChatFluent/ru/index.html" title="Russo"><img src="https://flagcdn.com/w40/ru.png" class="flag-icon"></a>
@@ -26,8 +26,9 @@
 
     <!-- MENU AUXILIAR COM BOTÃO -->
     <nav class="header-action" style="flex-shrink: 0;">
-      <a href="/ChatFluent/pt/contato.html" class="btn" style="padding: 8px 16px; font-size: 14px; text-decoration: none; display: inline-block;">
-        Contato
+      <!-- BOTÃO COMEÇAR AGORA (LINK PARA HISTORIA.HTML) -->
+      <a href="/ChatFluent/pt/historia.html" class="btn" style="padding: 8px 16px; font-size: 14px; text-decoration: none; display: inline-block;">
+        Comece Agora Mesmo
       </a>
     </nav>
   </div>
@@ -37,14 +38,14 @@
   /* AJUSTE ESPECÍFICO PARA MOBILE */
   @media (max-width: 768px) {
     .header {
-      height: auto !important; /* Permite que o header cresça se as bandeiras quebrarem linha */
+      height: auto !important;
     }
     .container-header {
-      justify-content: center !important; /* Centraliza logo e botão no mobile */
+      justify-content: center !important;
       gap: 15px !important;
     }
     .languages-nav {
-      order: 3; /* Move as bandeiras para baixo da logo e do botão no mobile */
+      order: 3;
       width: 100%;
       justify-content: center !important;
       gap: 10px !important;
@@ -56,7 +57,7 @@
       order: 2;
     }
     .flag-icon {
-      width: 28px !important; /* Diminui um pouco as bandeiras para caberem mais */
+      width: 28px !important;
       height: 28px !important;
     }
   }
