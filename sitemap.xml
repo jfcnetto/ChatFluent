@@ -1,6 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <!-- Rotas Raiz -->
+  <url><loc>https://www.chatfluent.com/</loc><priority>1.0</priority></url>
 
-<url><loc>https://seudominio.com/pt/</loc></url>
-<url><loc>https://seudominio.com/en/</loc></url>
+  <!-- Paginas Core por Idioma e SEO Landing Pages -->
+  <url><loc>https://www.chatfluent.com/pt/index.html</loc><priority>0.9</priority></url>
+  <url><loc>https://www.chatfluent.com/pt/historia.html</loc><priority>0.8</priority></url>
+  <url><loc>https://www.chatfluent.com/pt/seo/aprender-en.html</loc><priority>0.8</priority></url>
+  <url><loc>https://www.chatfluent.com/pt/seo/aprender-es.html</loc><priority>0.8</priority></url>
+  <url><loc>https://www.chatfluent.com/pt/seo/aprender-fr.html</loc><priority>0.8</priority></url>
+  <url><loc>https://www.chatfluent.com/pt/seo/aprender-it.html</loc><priority>0.8</priority></url>
+  <url><loc>https://www.chatfluent.com/pt/seo/aprender-de.html</loc><priority>0.8</priority></url>
+  <url><loc>https://www.chatfluent.com/pt/seo/aprender-nl.html</loc><priority>0.8</priority></url>
+  <url><loc>https://www.chatfluent.com/pt/seo/aprender-pl.html</loc><priority>0.8</priority></url>
+  <url><loc>https://www.chatfluent.com/pt/seo/aprender-ru.html</loc><priority>0.8</priority></url>
+  <url><loc>https://www.chatfluent.com/pt/seo/aprender-tr.html</loc><priority>0.8</priority></url>
+  <url><loc>https://www.chatfluent.com/pt/seo/aprender-ja.html</loc><priority>0.8</priority></url>
 
+  <url><loc>https://www.chatfluent.com/en/index.html</loc><priority>0.9</priority></url>
+  <url><loc>https://www.chatfluent.com/en/historia.html</loc><priority>0.8</priority></url>
+  <url><loc>https://www.chatfluent.com/en/seo/aprender-pt.html</loc><priority>0.8</priority></url>
+  <url><loc>https://www.chatfluent.com/en/seo/aprender-es.html</loc><priority>0.8</priority></url>
+  <url><loc>https://www.chatfluent.com/en/seo/aprender-fr.html</loc><priority>0.8</priority></url>
+  <url><loc>https://www.chatfluent.com/en/seo/aprender-it.html</loc><priority>0.8</priority></url>
+  <url><loc>https://www.chatfluent.com/en/seo/aprender-de.html</loc><priority>0.8</priority></url>
+  <url><loc>https://www.chatfluent.com/en/seo/aprender-nl.html</loc><priority>0.8</priority></url>
+  <url><loc>https://www.chatfluent.com/en/seo/aprender-pl.html</loc><priority>0.8</priority></url>
+  <url><loc>https://www.chatfluent.com/en/seo/aprender-ru.html</loc><priority>0.8</priority></url>
+  <url><loc>https://www.chatfluent.com/en/seo/aprender-tr.html</loc><priority>0.8</priority></url>
+  <url><loc>https://www.chatfluent.com/en/seo/aprender-ja.html</loc><priority>0.8</priority></url>
+
+  <url><loc>https://www.chatfluent.com/es/index.html</loc><priority>0.9</priority></url>
+  <url><loc>https://www.chatfluent.com/es/historia.html</loc><priority>0.8</priority></url>
+  <url><loc>https://www.chatfluent.com/es/seo/aprender-pt.html</loc><priority>0.8</priority></url>
+  <url><loc>https://www.chatfluent.com/es/seo/aprender-en.html</loc><priority>0.8</priority></url>
+  <url><loc>https://www.chatfluent.com/es/seo/aprender-fr.html</loc><priority>0.8</priority></url>
+  <url><loc>https://www.chatfluent.com/es/seo/aprender-it.html</loc><priority>0.8</priority></url>
+  <url><loc>https://www.chatfluent.com/es/seo/aprender-de.html</loc><priority>0.8</priority></url>
+  <url><loc>https://www.chatfluent.com/es/seo/aprender-nl.html</loc><priority>0.8</priority></url>
+  <url><loc>https://www.chatfluent.com/es/seo/aprender-pl.html</loc><priority>0.8</priority></url>
+  <url><loc>https://www.chatfluent.com/es/seo/aprender-ru.html</loc><priority>0.8</priority></url>
+  <url><loc>https://www.chatfluent.com/es/seo/aprender-tr.html</loc><priority>0.8</priority></url>
+  <url><loc>https://www.chatfluent.com/es/seo/aprender-ja.html</loc><priority>0.8</priority></url>
+
+  <url><loc>https://www.chatfluent.com/fr/index.html</loc><priority>0.9</priority></url>
+  <url><loc>https://www.chatfluent.com/fr/historia.html</loc><priority>0.8</priority></url>
+  <url><loc>https://www.chatfluent.com/fr/seo/aprender-pt.html</loc><priority>0.8</priority></url>
+  <url><loc>https://www.chatfluent.com/fr/seo/aprender-en.html</loc><priority>0.8</priority></url>
+  <url><loc>https://www.chatfluent.com/fr/seo/aprender-es.html</loc><priority>0.8</priority></url>
+  <url><loc>https://www.chatfluent.com/fr/seo/aprender-it.html</loc><priority>0.8</priority></url>
+  <url><loc>https://www.chatfluent.com/fr/seo/aprender-de.html</loc><priority>0.8</priority></url>
+  <url><loc>https://www.chatfluent.com/fr/seo/aprender-nl.html</loc><priority>0.8</priority></url>
+  <url><loc>https://www.chatfluent.com/fr/seo/aprender-pl.html</loc><priority>0.8</priority></url>
+  <url><loc>https://www.chatfluent.com/fr/seo/aprender-ru.html</loc><priority>0.8</priority></url>
+  <url><loc>https://www.chatfluent.com/fr/seo/aprender-tr.html</loc><priority>0.8</priority></url>
+  <url><loc>https://www.chatfluent.com/fr/seo/aprender-ja.html</loc><priority>0.8</priority></url>
+
+  <url><loc>https://www.chatfluent.com/it/index.html</loc><priority>0.9</priority></url>
+  <url><loc>https://www.chatfluent.com/it/historia.html</loc><priority>0.8</priority></url>
+  <url><loc>https://www.chatfluent.com/it/seo/aprender-pt.html</loc><priority>0.8</priority></url>
+  <url><loc>https://www.chatfluent.com/it/seo/aprender-en.html</loc><priority>0.8</priority></url>
+  <url><loc>https://www.chatfluent.com/it/seo/aprender-es.html</loc><priority>0.8</priority></url>
+  <url><loc>https://www.chatfluent.com/it/seo/aprender-fr.html</loc><priority>0.8</priority></url>
+  <url><loc>https://www.chatfluent.com/it/seo/aprender-de.html</loc><priority>0.8</priority></url>
+  <url><loc>https://www.chatfluent.com/it/seo/aprender-nl.html</loc><priority>0.8</priority></url>
+  <url><loc>https://www.chatfluent.com/it/seo/aprender-pl.html</loc><priority>0.8</priority></url>
+  <url><loc>https://www.chatfluent.com/it/seo/aprender-ru.html</loc><priority>0.8</priority></url>
+  <url><loc>https://www.chatfluent.com/it/seo/aprender-tr.html</loc><priority>0.8</priority></url>
+  <url><loc>https://www.chatfluent.com/it/seo/aprender-ja.html</loc><priority>0.8</priority></url>
+
+  <url><loc>https://www.chatfluent.com/de/index.html</loc><priority>0.9</priority></url>
+  <url><loc>https://www.chatfluent.com/de/historia.html</loc><priority>0.8</priority></url>
+  <url><loc>https://www.chatfluent.com/de/seo/aprender-pt.html</loc><priority>0.8</priority></url>
+  <url><loc>https://www.chatfluent.com/de/seo/aprender-en.html</loc><priority>0.8</priority></url>
+  <url><loc>https://www.chatfluent.com/de/seo/aprender-es.html</loc><priority>0.8</priority></url>
+  <url><loc>https://www.chatfluent.com/de/seo/aprender-fr.html</loc><priority>0.8</priority></url>
+  <url><loc>https://www.chatfluent.com/de/seo/aprender-it.html</loc><priority>0.8</priority></url>
+  <url><loc>https://www.chatfluent.com/de/seo/aprender-nl.html</loc><priority>0.8</priority></url>
+  <url><loc>https://www.chatfluent.com/de/seo/aprender-pl.html</loc><priority>0.8</priority></url>
+  <url><loc>https://www.chatfluent.com/de/seo/aprender-ru.html</loc><priority>0.8</priority></url>
+  <url><loc>https://www.chatfluent.com/de/seo/aprender-tr.html</loc><priority>0.8</priority></url>
+  <url><loc>https://www.chatfluent.com/de/seo/aprender-ja.html</loc><priority>0.8</priority></url>
 </urlset>

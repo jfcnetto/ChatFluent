@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <title>Simulador | ChatFluent</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/ChatFluent/css/style.css">
+</head>
+<body>
+<div id="header"></div>
+<main class="container">
+    <div class="training-container">
+        <!-- O APP.JS VAI RENDERIZAR O CHAT AQUI -->
+        <div id="pergunta" style="min-height: 85px;"></div>
+        <div id="opcoes" class="options"></div>
+        <div id="feedback" style="transition: 0.3s; margin-top: 20px; min-height: 30px; text-align: center;"></div>
+        <div class="score-badge" style="display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; margin-top: 25px; padding-top: 15px; border-top: 1px solid var(--border);">
+            <span>🏆 <span id="pontos">0</span> pontos</span>
+            <span style="color: var(--border);">|</span>
+            <span id="progresso"></span>
+        </div>
+    </div>
+</main>
+<div id="footer"></div>
+<script src="/ChatFluent/js/idiomas.js"></script>
+<script src="/ChatFluent/js/data.js"></script>
+<script src="/ChatFluent/js/app.js"></script>
+<script>
+    async function loadComponent(id, file) {
+        try {
+            const res = await fetch(file);
+            const html = await res.text();
+            document.getElementById(id).innerHTML = html;
+        } catch (err) { }
+    }
+    loadComponent("header", "/ChatFluent/components/header.html");
+    loadComponent("footer", "/ChatFluent/components/footer.html");
+</script>
+</body>
+</html>

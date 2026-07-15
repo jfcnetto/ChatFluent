@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <title>Aprender idiomas grátis | ChatFluent</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/ChatFluent/css/style.css">
+</head>
+<body>
+<div id="header"></div>
+<main class="container">
+    <section class="hero-grid">
+        <div class="hero-text">
+            <h1>A maneira gratuita, divertida e eficaz de aprender idiomas!</h1>
+            <p>UI Language: de</p>
+            <div style="margin: 20px 0;">
+                <label>Quero aprender:</label>
+                <select id="targetSelect" style="padding: 10px; font-size: 16px; border-radius: 8px;">
+                    <option value="pt">PT</option>
+                    <option value="en">EN</option>
+                    <option value="es">ES</option>
+                    <option value="fr">FR</option>
+                    <option value="it">IT</option>
+                    <option value="de">DE</option>
+                    <option value="nl">NL</option>
+                    <option value="pl">PL</option>
+                    <option value="ru">RU</option>
+                    <option value="tr">TR</option>
+                    <option value="ja">JA</option>
+                </select>
+            </div>
+            <button onclick="comecar()" style="width: 280px;">Começar agora</button>
+            <script>
+                function comecar() {
+                    const target = document.getElementById('targetSelect').value;
+                    window.location.href = '/ChatFluent/de/historia.html?ui=de&target=' + target;
+                }
+            </script>
+        </div>
+    </section>
+</main>
+<div id="footer"></div>
+<script src="/ChatFluent/js/adsense.js"></script>
+<script>
+    async function loadComponent(id, file) {
+        try {
+            const res = await fetch(file);
+            const html = await res.text();
+            document.getElementById(id).innerHTML = html;
+        } catch (err) { }
+    }
+    loadComponent("header", "/ChatFluent/components/header.html");
+    loadComponent("footer", "/ChatFluent/components/footer.html");
+</script>
+</body>
+</html>

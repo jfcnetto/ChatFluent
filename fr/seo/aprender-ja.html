@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Aprender JA | ChatFluent</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/ChatFluent/css/style.css">
+    <meta name="description" content="Aprenda JA de graça com o ChatFluent!">
+</head>
+<body>
+<div id="header"></div>
+<main class="container">
+    <div style="text-align: center; padding: 50px;">
+        <h1>SEO Landing Page: Aprender JA</h1>
+        <p>Aprenda rápido e fácil! Interface em fr.</p>
+        <a href="/ChatFluent/fr/historia.html?ui=fr&target=ja">
+            <button>Começar Curso de JA</button>
+        </a>
+    </div>
+</main>
+<script>
+    async function loadComponent(id, file) {
+        try {
+            const res = await fetch(file);
+            const html = await res.text();
+            document.getElementById(id).innerHTML = html;
+        } catch (err) { }
+    }
+    loadComponent("header", "/ChatFluent/components/header.html");
+</script>
+</body>
+</html>

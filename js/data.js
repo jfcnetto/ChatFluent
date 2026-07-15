@@ -3,7 +3,8 @@
     Metas: Nível 0 (8 perguntas), Nível 1 (15 perguntas), Nível 2 (25 perguntas).
 */
 
-const historia = [
+const baseDeDados = {
+    "en": [
     // --- NÍVEL 0: BÁSICO (8 Perguntas) ---
     {
         "npc": "Hi! How are you?",
@@ -345,4 +346,15 @@ const historia = [
         "nivel": 2,
         "explicacao": { "pt": "'Full coverage' é o seguro total." }
     }
-];
+    ],
+    "es": [],
+    "fr": [],
+    "it": [],
+    "de": [],
+    "nl": [],
+    "pl": [],
+    "ru": [],
+    "tr": [],
+    "ja": [],
+    "pt": []
+};
