@@ -142,7 +142,7 @@
             const target = searchParams.get('target') || 'en';
             
             let newPath = window.location.pathname;
-            newPath = newPath.replace(/\/[a-z]{2}\/[a-z0-9_-]+\.html/, `/${ui}/$1.html`);
+            newPath = newPath.replace(/\/[a-z]{2}\/([a-z0-9_-]+)\.html/, `/${ui}/$1.html`);
             
             // Caso especial de redirecionamento genérico se o replace falhar
             if (newPath === window.location.pathname) {
