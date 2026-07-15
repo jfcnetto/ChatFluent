@@ -2,7 +2,7 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <title>Privacy Policy | ChatFluent</title>
+    <title>Politique de Confidentialité | ChatFluent</title>
     <meta name="description" content="Saiba como o ChatFluent coleta, usa e protege seus dados ao utilizar nossa plataforma.">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/style.css">
@@ -10,9 +10,8 @@
 
 <body>
 
-<!-- HEADER (DINÂMICO) -->
 <div class="header" style="height: auto; min-height: 70px; padding: 10px 0;">
-  <div class="container-header" style="display: flex; align-items: center; justify-content: space-between; width: 100%; max-width: 1200px; margin: 0 auto; gap: 10px; padding: 0 15px; flex-wrap: wrap;">
+  <div class="container-header" style="display: flex; align-items: center; justify-content: space-between; width: 100%; max-width: 1200px; margin: 0 auto; gap: 15px; padding: 0 15px; flex-wrap: wrap;">
     
     <!-- LOGO -->
     <div class="brand" style="flex-shrink: 0;">
@@ -21,8 +20,13 @@
       </a>
     </div>
 
-    <!-- SELETOR DE IDIOMAS (CUSTOM DROPDOWN COM BANDEIRAS) -->
-    <nav class="languages-nav" style="display: flex; gap: 8px; flex-wrap: wrap; justify-content: center; flex: 1;">
+    <!-- SLOGAN (CENTRALIZADO) -->
+    <div id="headerSlogan" style="flex: 1; text-align: center; font-size: 15px; color: #777; font-weight: 700; font-style: italic; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 600px;">
+      Learn languages by chatting with AI
+    </div>
+
+    <!-- SELETOR DE IDIOMAS (CUSTOM DROPDOWN COM BANDEIRAS - ALINHADO À DIREITA) -->
+    <nav class="languages-nav" style="display: flex; gap: 8px; flex-wrap: wrap; justify-content: flex-end; flex-shrink: 0;">
       <div class="custom-select-wrapper" id="headerUiSelectWrapper">
          <div class="custom-select-trigger" onclick="toggleHeaderDropdown(event)">
              <div style="display:flex; align-items:center; gap:8px;">
@@ -82,15 +86,33 @@
             'ja': { flag: 'jp', name: '日本語' }
         };
 
+        const sloganMap = {
+            'pt': 'Aprenda idiomas conversando com IA',
+            'en': 'Learn languages by chatting with AI',
+            'es': 'Aprende idiomas conversando con IA',
+            'fr': 'Apprenez les langues en discutant avec l\'IA',
+            'it': 'Impara le lingue chattando con l\'IA',
+            'de': 'Sprachen lernen durch Chatten mit KI',
+            'nl': 'Talen leren door te chatten met AI',
+            'pl': 'Ucz się języków, rozmawiając z AI',
+            'ru': 'Изучайте языки, общаясь с ИИ',
+            'tr': 'Yapay zeka ile sohbet ederek dil öğrenin',
+            'ja': 'AIとのチャットで語学を学ぶ'
+        };
+
         setTimeout(() => {
-           const pathMatch = window.location.pathname.match(/\/([a-z]{2})\/index\.html|\/([a-z]{2})\/historia\.html/);
-           const ui = pathMatch ? (pathMatch[1] || pathMatch[2]) : 'pt';
+           const pathMatch = window.location.pathname.match(/\/([a-z]{2})\/index\.html|\/([a-z]{2})\/historia\.html|\/([a-z]{2})\/[a-z]+\.html/);
+           const ui = pathMatch ? (pathMatch[1] || pathMatch[2] || pathMatch[3]) : 'pt';
            const isSeo = window.location.pathname.includes('/seo/');
            const depth = isSeo ? '../../' : '../';
 
            if(flagsMap[ui]) {
                document.getElementById('headerUiFlag').src = `https://flagcdn.com/w20/${flagsMap[ui].flag}.png`;
                document.getElementById('headerUiText').innerText = flagsMap[ui].name;
+           }
+
+           if(sloganMap[ui]) {
+               document.getElementById('headerSlogan').innerText = sloganMap[ui];
            }
 
            // Torna a logo dinâmica
@@ -123,7 +145,17 @@
             const target = searchParams.get('target') || 'en';
             
             let newPath = window.location.pathname;
-            newPath = newPath.replace(/\/[a-z]{2}\/(index|historia)\.html/, `/${ui}/$1.html`);
+            newPath = newPath.replace(/\/[a-z]{2}\/[a-z0-9_-]+\.html/, `/${ui}/$1.html`);
+            
+            // Caso especial de redirecionamento genérico se o replace falhar
+            if (newPath === window.location.pathname) {
+                const parts = window.location.pathname.split('/');
+                const langIndex = parts.findIndex(p => flagsMap[p]);
+                if (langIndex !== -1) {
+                    parts[langIndex] = ui;
+                    newPath = parts.join('/');
+                }
+            }
             
             if (isHistoria) {
                 window.location.href = newPath + `?ui=${ui}&target=${target}`;
@@ -134,12 +166,7 @@
       </script>
     </nav>
 
-    <!-- MENU AUXILIAR COM BOTÃO -->
-    <nav class="header-action" style="flex-shrink: 0;">
-      <a href="#" onclick="event.preventDefault(); const pathMatch = window.location.pathname.match(/\/([a-z]{2})\//); const ui = pathMatch ? pathMatch[1] : 'pt'; const isSeo = window.location.pathname.includes('/seo/'); const depth = isSeo ? '../../' : '../'; window.location.href = `${depth}${ui}/index.html`;" class="btn" style="padding: 8px 16px; font-size: 14px; text-decoration: none; display: inline-block;">
-        Home
-      </a>
-    </nav>
+
   </div>
 </div>
 
@@ -167,8 +194,6 @@
     }
   }
 </style>
-
-<!-- ADSENSE TOPO (BANNER PROVISÓRIO OU ADS) -->
 <div id="main-banner">
     <script>
         document.write('<img src="../img/banner-provisorio.png" style="display:block; width:100%; max-width:1000px; margin:0 auto;">');
@@ -178,25 +203,25 @@
 <main class="container">
     <!-- Removido o style="margin-bottom: 20px;" para evitar conflito com o novo style.css -->
     <section class="hero">
-        <h1>Privacy Policy</h1>
-        <p>Transparência sobre como cuidamos dos seus dados no ChatFluent.</p>
+        <h1>Politique de Confidentialité</h1>
+        <p>Transparence sur la façon dont nous prenons soin de vos données sur ChatFluent.</p>
     </section>
 
     <!-- CONTEÚDO INSTITUCIONAL EM CARD -->
     <article class="legal-container">
-        <p>Esta política de privacidade descreve como coletamos, utilizamos e protegemos suas informações ao acessar o ChatFluent.</p>
+        <p>Cette politique de confidentialité décrit comment nous collectons, utilisons et protégeons vos informations lors de l'accès à ChatFluent.</p>
 
-        <h2>Informações coletadas</h2>
-        <p>Podemos coletar informações como endereço IP, tipo de navegador, páginas acessadas e tempo de permanência no site.</p>
+        <h2>Informations collectées</h2>
+        <p>Nous pouvons collecter des informations telles que l'adresse IP, le type de navigateur, les pages consultées et le temps passé sur le site.</p>
 
-        <h2>Uso das informações</h2>
-        <p>Os dados coletados são utilizados para melhorar a experiência do usuário, otimizar o conteúdo e aprimorar nossos serviços.</p>
+        <h2>Utilisation des informations</h2>
+        <p>Les données collectées sont utilisées pour améliorer l'expérience utilisateur, optimiser le contenu et améliorer nos services.</p>
 
         <h2>Cookies</h2>
-        <p>Utilizamos cookies para armazenar informações sobre preferências dos usuários e personalizar a experiência de navegação.</p>
+        <p>We utilise des cookies pour stocker des informations sur les préférences des utilisateurs et personnaliser l'expérience de navigation.</p>
 
-        <h2>Publicidade</h2>
-        <p>Este site pode exibir anúncios por meio de parceiros como o Google AdSense, que utiliza cookies para exibir anúncios relevantes com base nas visitas anteriores do usuário.</p>
+        <h2>Publicité</h2>
+        <p>Ce site peut afficher des publicités via des partenaires tels que Google AdSense, qui utilise des cookies pour afficher des publicités pertinentes basées sur les visites précédentes de l'utilisateur.</p>
 
         <h2>Consentimento</h2>
         <p>Ao utilizar nosso site, você concorda com nossa política de privacidade e com o uso de cookies.</p>
@@ -213,7 +238,6 @@
     </script>
 </div>
 
-<!-- FOOTER (DINÂMICO) -->
 <footer class="footer">
   <div class="footer-content" id="footerContainer">
     <!-- Será preenchido dinamicamente pelo script abaixo -->
@@ -260,6 +284,94 @@
                 { url: 'seo/aprender-it.html', text: 'Aprender Italiano' },
                 { url: 'seo/aprender-de.html', text: 'Aprender Alemán' }
             ]
+        },
+        'fr': {
+            home: 'Accueil', rules: 'Règles', privacy: 'Confidentialité', terms: 'Conditions', contact: 'Contact',
+            copyright: '2026 ChatFluent. Apprenez en jouant.',
+            seoLinks: [
+                { url: 'seo/aprender-en.html', text: 'Apprendre l\'anglais' },
+                { url: 'seo/aprender-es.html', text: 'Apprendre l\'espagnol' },
+                { url: 'seo/aprender-pt.html', text: 'Apprendre le portugais' },
+                { url: 'seo/aprender-de.html', text: 'Apprendre l\'allemand' },
+                { url: 'seo/aprender-it.html', text: 'Apprendre l\'italien' }
+            ]
+        },
+        'it': {
+            home: 'Home', rules: 'Regole', privacy: 'Privacy', terms: 'Termini', contact: 'Contatti',
+            copyright: '2026 ChatFluent. Impara giocando.',
+            seoLinks: [
+                { url: 'seo/aprender-en.html', text: 'Impara l\'inglese' },
+                { url: 'seo/aprender-es.html', text: 'Impara lo spagnolo' },
+                { url: 'seo/aprender-fr.html', text: 'Impara il francese' },
+                { url: 'seo/aprender-de.html', text: 'Impara il tedesco' },
+                { url: 'seo/aprender-pt.html', text: 'Impara il portoghese' }
+            ]
+        },
+        'de': {
+            home: 'Startseite', rules: 'Regeln', privacy: 'Datenschutz', terms: 'Bedingungen', contact: 'Kontakt',
+            copyright: '2026 ChatFluent. Spielerisch lernen.',
+            seoLinks: [
+                { url: 'seo/aprender-en.html', text: 'Englisch lernen' },
+                { url: 'seo/aprender-es.html', text: 'Spanisch lernen' },
+                { url: 'seo/aprender-fr.html', text: 'Französisch lernen' },
+                { url: 'seo/aprender-it.html', text: 'Italienisch lernen' },
+                { url: 'seo/aprender-pt.html', text: 'Portugiesisch lernen' }
+            ]
+        },
+        'nl': {
+            home: 'Home', rules: 'Regels', privacy: 'Privacy', terms: 'Voorwaarden', contact: 'Contact',
+            copyright: '2026 ChatFluent. Spelend leren.',
+            seoLinks: [
+                { url: 'seo/aprender-en.html', text: 'Engels leren' },
+                { url: 'seo/aprender-es.html', text: 'Spaans leren' },
+                { url: 'seo/aprender-fr.html', text: 'Frans leren' },
+                { url: 'seo/aprender-de.html', text: 'Duits leren' },
+                { url: 'seo/aprender-pt.html', text: 'Portugees leren' }
+            ]
+        },
+        'pl': {
+            home: 'Główna', rules: 'Zasady', privacy: 'Prywatność', terms: 'Warunki', contact: 'Kontakt',
+            copyright: '2026 ChatFluent. Nauka przez zabawę.',
+            seoLinks: [
+                { url: 'seo/aprender-en.html', text: 'Nauka angielskiego' },
+                { url: 'seo/aprender-es.html', text: 'Nauka hiszpańskiego' },
+                { url: 'seo/aprender-fr.html', text: 'Nauka francuskiego' },
+                { url: 'seo/aprender-de.html', text: 'Nauka niemieckiego' },
+                { url: 'seo/aprender-ru.html', text: 'Nauka rosyjskiego' }
+            ]
+        },
+        'ru': {
+            home: 'Главная', rules: 'Правила', privacy: 'Конфиденциальность', terms: 'Условия', contact: 'Контакты',
+            copyright: '2026 ChatFluent. Учитесь играя.',
+            seoLinks: [
+                { url: 'seo/aprender-en.html', text: 'Учить английский' },
+                { url: 'seo/aprender-es.html', text: 'Учить испанский' },
+                { url: 'seo/aprender-fr.html', text: 'Учить французский' },
+                { url: 'seo/aprender-de.html', text: 'Учить немецкий' },
+                { url: 'seo/aprender-ja.html', text: 'Учить японский' }
+            ]
+        },
+        'tr': {
+            home: 'Ana Sayfa', rules: 'Kurallar', privacy: 'Gizlilik', terms: 'Koşullar', contact: 'İletişim',
+            copyright: '2026 ChatFluent. Oynayarak öğrenin.',
+            seoLinks: [
+                { url: 'seo/aprender-en.html', text: 'İngilizce Öğren' },
+                { url: 'seo/aprender-es.html', text: 'İspanyolca Öğren' },
+                { url: 'seo/aprender-fr.html', text: 'Fransızca Öğren' },
+                { url: 'seo/aprender-de.html', text: 'Almanca Öğren' },
+                { url: 'seo/aprender-it.html', text: 'İtalyanca Öğren' }
+            ]
+        },
+        'ja': {
+            home: 'ホーム', rules: 'ルール', privacy: 'プライバシー', terms: '利用規約', contact: 'お問い合わせ',
+            copyright: '2026 ChatFluent。遊びながら学ぶ。',
+            seoLinks: [
+                { url: 'seo/aprender-en.html', text: '英語を学ぶ' },
+                { url: 'seo/aprender-es.html', text: 'スペイン語を学ぶ' },
+                { url: 'seo/aprender-fr.html', text: 'フランス語を学ぶ' },
+                { url: 'seo/aprender-de.html', text: 'ドイツ語を学ぶ' },
+                { url: 'seo/aprender-pt.html', text: 'ポルトガル語を学ぶ' }
+            ]
         }
     };
 
@@ -294,11 +406,4 @@
 
     document.getElementById('footerContainer').innerHTML = html;
 })();
-</script>
-
-<!-- SCRIPTS -->
-<script src="../js/adsense.js"></script>
-
-
-</body>
-</html>
+</script><script src="../js/adsense.js"></script></body></html>

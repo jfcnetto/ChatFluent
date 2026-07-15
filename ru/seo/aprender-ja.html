@@ -2,14 +2,14 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <title>Learn JA Free | ChatFluent</title>
+    <title>Учить Японский Бесплатно | ChatFluent</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../../css/style.css">
-    <meta name="description" content="Aprenda JA rápido com histórias interativas e divertidas.">
+    <meta name="description" content="Учите Японский быстро с помощью интерактивных и увлекательных историй.">
 </head>
 <body>
 <div class="header" style="height: auto; min-height: 70px; padding: 10px 0;">
-  <div class="container-header" style="display: flex; align-items: center; justify-content: space-between; width: 100%; max-width: 1200px; margin: 0 auto; gap: 10px; padding: 0 15px; flex-wrap: wrap;">
+  <div class="container-header" style="display: flex; align-items: center; justify-content: space-between; width: 100%; max-width: 1200px; margin: 0 auto; gap: 15px; padding: 0 15px; flex-wrap: wrap;">
     
     <!-- LOGO -->
     <div class="brand" style="flex-shrink: 0;">
@@ -18,8 +18,13 @@
       </a>
     </div>
 
-    <!-- SELETOR DE IDIOMAS (CUSTOM DROPDOWN COM BANDEIRAS) -->
-    <nav class="languages-nav" style="display: flex; gap: 8px; flex-wrap: wrap; justify-content: center; flex: 1;">
+    <!-- SLOGAN (CENTRALIZADO) -->
+    <div id="headerSlogan" style="flex: 1; text-align: center; font-size: 15px; color: #777; font-weight: 700; font-style: italic; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 600px;">
+      Learn languages by chatting with AI
+    </div>
+
+    <!-- SELETOR DE IDIOMAS (CUSTOM DROPDOWN COM BANDEIRAS - ALINHADO À DIREITA) -->
+    <nav class="languages-nav" style="display: flex; gap: 8px; flex-wrap: wrap; justify-content: flex-end; flex-shrink: 0;">
       <div class="custom-select-wrapper" id="headerUiSelectWrapper">
          <div class="custom-select-trigger" onclick="toggleHeaderDropdown(event)">
              <div style="display:flex; align-items:center; gap:8px;">
@@ -79,15 +84,33 @@
             'ja': { flag: 'jp', name: '日本語' }
         };
 
+        const sloganMap = {
+            'pt': 'Aprenda idiomas conversando com IA',
+            'en': 'Learn languages by chatting with AI',
+            'es': 'Aprende idiomas conversando con IA',
+            'fr': 'Apprenez les langues en discutant avec l\'IA',
+            'it': 'Impara le lingue chattando con l\'IA',
+            'de': 'Sprachen lernen durch Chatten mit KI',
+            'nl': 'Talen leren door te chatten met AI',
+            'pl': 'Ucz się języków, rozmawiając z AI',
+            'ru': 'Изучайте языки, общаясь с ИИ',
+            'tr': 'Yapay zeka ile sohbet ederek dil öğrenin',
+            'ja': 'AIとのチャットで語学を学ぶ'
+        };
+
         setTimeout(() => {
-           const pathMatch = window.location.pathname.match(/\/([a-z]{2})\/index\.html|\/([a-z]{2})\/historia\.html/);
-           const ui = pathMatch ? (pathMatch[1] || pathMatch[2]) : 'pt';
+           const pathMatch = window.location.pathname.match(/\/([a-z]{2})\/index\.html|\/([a-z]{2})\/historia\.html|\/([a-z]{2})\/[a-z]+\.html/);
+           const ui = pathMatch ? (pathMatch[1] || pathMatch[2] || pathMatch[3]) : 'pt';
            const isSeo = window.location.pathname.includes('/seo/');
            const depth = isSeo ? '../../' : '../';
 
            if(flagsMap[ui]) {
                document.getElementById('headerUiFlag').src = `https://flagcdn.com/w20/${flagsMap[ui].flag}.png`;
                document.getElementById('headerUiText').innerText = flagsMap[ui].name;
+           }
+
+           if(sloganMap[ui]) {
+               document.getElementById('headerSlogan').innerText = sloganMap[ui];
            }
 
            // Torna a logo dinâmica
@@ -120,7 +143,17 @@
             const target = searchParams.get('target') || 'en';
             
             let newPath = window.location.pathname;
-            newPath = newPath.replace(/\/[a-z]{2}\/(index|historia)\.html/, `/${ui}/$1.html`);
+            newPath = newPath.replace(/\/[a-z]{2}\/[a-z0-9_-]+\.html/, `/${ui}/$1.html`);
+            
+            // Caso especial de redirecionamento genérico se o replace falhar
+            if (newPath === window.location.pathname) {
+                const parts = window.location.pathname.split('/');
+                const langIndex = parts.findIndex(p => flagsMap[p]);
+                if (langIndex !== -1) {
+                    parts[langIndex] = ui;
+                    newPath = parts.join('/');
+                }
+            }
             
             if (isHistoria) {
                 window.location.href = newPath + `?ui=${ui}&target=${target}`;
@@ -166,11 +199,11 @@
 
 <main class="container">
     <div style="text-align: center; padding: 50px;">
-        <h1>Want to Learn JA for Free?</h1>
-        <p>Join our interactive dialogue simulator and level up fast.</p>
+        <h1>Хотите учить Японский бесплатно?</h1>
+        <p>Присоединяйтесь к нашему интерактивному симулятору диалогов и развивайтесь быстро.</p>
         
         <a href="../../ru/historia.html?ui=ru&target=ja">
-            <button style="margin-top: 20px; padding: 12px 30px;">Start Now</button>
+            <button style="margin-top: 20px; padding: 12px 30px;">Начать Сейчас</button>
         </a>
     </div>
 </main>
