@@ -24,13 +24,7 @@ function getHtmlFiles(dir, fileList = []) {
 }
 
 const htmlFiles = getHtmlFiles(baseDir);
-console.log(`Encontrados ${htmlFiles.length} arquivos HTML para atualizar.`);
-
-const sloganDivRegex = /<!-- SLOGAN \(CENTRALIZADO\) -->\s*<div id="headerSlogan"[\s\S]*?<\/div>/;
-
-const sloganScriptRegex = /const sloganMap = \{[\s\S]*?setTimeout\(\(\) => \{[\s\S]*?\}\s*if\(sloganMap\[ui\]\) \{[\s\S]*?\}\s*([^\n]*\/\/ Torna a logo dinâmica)/;
-
-const footerLangRegex = /const pathMatch = window\.location\.pathname\.match\(\/\\\(\[a-z\]\{2\}\)\\\/index\\\.html\|\\\(\[a-z\]\{2\}\)\\\/historia\\\.html\/\);\s*const ui = pathMatch \? \(pathMatch\[1\] \|\| pathMatch\[2\]\) : 'pt';/;
+console.log(`Encontrados ${htmlFiles.length} arquivos HTML para analisar.`);
 
 const targetSloganMenu = `<!-- MENU (CENTRALIZADO) -->
     <nav id="headerMenu" style="flex: 1; display: flex; justify-content: center; gap: 20px;">
@@ -85,7 +79,10 @@ const targetScriptMenu = `const menuTranslations = {
                contactLink.href = \`\${depth}\${ui}/contato.html\`;
            }
 
-           $1`;
+           // Torna a logo dinâmica`;
+
+const oldFooterPart = `const pathMatch = window.location.pathname.match(/\\/([a-z]{2})\\/index\\.html|\\/([a-z]{2})\\/historia\\.html/);
+    const ui = pathMatch ? (pathMatch[1] || pathMatch[2]) : 'pt';`;
 
 const targetFooterLang = `const urlParams = new URLSearchParams(window.location.search);
     let ui = urlParams.get('ui');
@@ -95,37 +92,54 @@ const targetFooterLang = `const urlParams = new URLSearchParams(window.location.
     }
     `;
 
+// Slogan selectors
+const sloganDivRegex = /<!-- SLOGAN \(CENTRALIZADO\) -->\s*<div id="headerSlogan"[\s\S]*?<\/div>/;
+const sloganScriptRegex = /const sloganMap = \{[\s\S]*?setTimeout\(\(\) => \{[\s\S]*?\}\s*if\(sloganMap\[ui\]\) \{[\s\S]*?\}\s*([^\n]*\/\/ Torna a logo dinâmica)/;
+
 let updatedCount = 0;
 
 for (const file of htmlFiles) {
     let content = fs.readFileSync(file, 'utf8');
     let modified = false;
 
+    // 1. Replace slogan div
     if (sloganDivRegex.test(content)) {
         content = content.replace(sloganDivRegex, targetSloganMenu);
         modified = true;
     }
 
+    // 2. Replace slogan script
     if (sloganScriptRegex.test(content)) {
         content = content.replace(sloganScriptRegex, targetScriptMenu);
         modified = true;
     }
 
-    if (footerLangRegex.test(content)) {
+    // 3. Replace footer language logic (exact string matching)
+    if (content.includes(oldFooterPart)) {
+        content = content.replace(oldFooterPart, targetFooterLang);
+        modified = true;
+    }
+
+    // 4. Fallback/Alternative footer pattern matching if spaces vary
+    const footerLangRegex = /const pathMatch = window\.location\.pathname\.match\(\/\\\/\\\(\[a-z\]\{2\}\)\\\/index\\\.html\|\\\/\\\(\[a-z\]\{2\}\)\\\/historia\\\.html\/\);\s*const ui = pathMatch \? \(pathMatch\[1\] \|\| pathMatch\[2\]\) : 'pt';/;
+    if (!modified && footerLangRegex.test(content)) {
         content = content.replace(footerLangRegex, targetFooterLang);
         modified = true;
     }
 
-    // Additional check if there are other places where ui is resolved in the header setTimeout
-    const headerUiResolveRegex = /const pathMatch = window\.location\.pathname\.match\(\/\\\/\\\(\[a-z\]\{2\}\)\\\/index\\\.html\|\\\/\\\(\[a-z\]\{2\}\)\\\/historia\\\.html\|\\\/\\\(\[a-z\]\{2\}\)\\\/\\\[a-z\\\]\+\\\.html\/\);\s*const ui = pathMatch \? \(pathMatch\[1\] \|\| pathMatch\[2\] \|\| pathMatch\[3\]\) : 'pt';/;
-    if (headerUiResolveRegex.test(content)) {
-        const targetHeaderUiResolve = `const urlParams = new URLSearchParams(window.location.search);
+    // 5. Replace header UI logic if header path match regex exists and hasn't been replaced yet
+    const headerPathMatchStr = `const pathMatch = window.location.pathname.match(/\\/([a-z]{2})\\/index\\.html|\\/([a-z]{2})\\/historia\\.html|\\/([a-z]{2})\\/[a-z]+\\.html/);
+           const ui = pathMatch ? (pathMatch[1] || pathMatch[2] || pathMatch[3]) : 'pt';`;
+
+    const targetHeaderUiResolve = `const urlParams = new URLSearchParams(window.location.search);
            let ui = urlParams.get('ui');
            if (!ui) {
-               const pathMatch = window.location.pathname.match(/\\/([a-z]{2})\\/index\\.html|\\/([a-z]{2})\\/historia\\.html|\\/([a-z]{2})\\/[a-z]+\.html/);
+               const pathMatch = window.location.pathname.match(/\\/([a-z]{2})\\/index\\.html|\\/([a-z]{2})\\/historia\\.html|\\/([a-z]{2})\\/[a-z]+\\.html/);
                ui = pathMatch ? (pathMatch[1] || pathMatch[2] || pathMatch[3]) : 'pt';
            }`;
-        content = content.replace(headerUiResolveRegex, targetHeaderUiResolve);
+
+    if (content.includes(headerPathMatchStr)) {
+        content = content.replace(headerPathMatchStr, targetHeaderUiResolve);
         modified = true;
     }
 
