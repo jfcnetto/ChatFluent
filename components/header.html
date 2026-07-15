@@ -8,10 +8,12 @@
       </a>
     </div>
 
-    <!-- SLOGAN (CENTRALIZADO) -->
-    <div id="headerSlogan" style="flex: 1; text-align: center; font-size: 15px; color: #777; font-weight: 700; font-style: italic; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 600px;">
-      Learn languages by chatting with AI
-    </div>
+    <!-- MENU (CENTRALIZADO) -->
+    <nav id="headerMenu" style="flex: 1; display: flex; justify-content: center; gap: 20px;">
+      <a href="#" id="headerMenuHome" style="text-decoration: none; color: #333; font-weight: 600; font-size: 15px;">Home</a>
+      <a href="#" id="headerMenuRegras" style="text-decoration: none; color: #333; font-weight: 600; font-size: 15px;">Regras</a>
+      <a href="#" id="headerMenuContato" style="text-decoration: none; color: #333; font-weight: 600; font-size: 15px;">Contato</a>
+    </nav>
 
     <!-- SELETOR DE IDIOMAS (CUSTOM DROPDOWN COM BANDEIRAS - ALINHADO À DIREITA) -->
     <nav class="languages-nav" style="display: flex; gap: 8px; flex-wrap: wrap; justify-content: flex-end; flex-shrink: 0;">
@@ -74,23 +76,27 @@
             'ja': { flag: 'jp', name: '日本語' }
         };
 
-        const sloganMap = {
-            'pt': 'Aprenda idiomas conversando com IA',
-            'en': 'Learn languages by chatting with AI',
-            'es': 'Aprende idiomas conversando con IA',
-            'fr': 'Apprenez les langues en discutant avec l\'IA',
-            'it': 'Impara le lingue chattando con l\'IA',
-            'de': 'Sprachen lernen durch Chatten mit KI',
-            'nl': 'Talen leren door te chatten met AI',
-            'pl': 'Ucz się języków, rozmawiając z AI',
-            'ru': 'Изучайте языки, общаясь с ИИ',
-            'tr': 'Yapay zeka ile sohbet ederek dil öğrenin',
-            'ja': 'AIとのチャットで語学を学ぶ'
+        const menuTranslations = {
+            'pt': { home: 'Home', rules: 'Regras', contact: 'Contato' },
+            'en': { home: 'Home', rules: 'Rules', contact: 'Contact' },
+            'es': { home: 'Inicio', rules: 'Reglas', contact: 'Contacto' },
+            'fr': { home: 'Accueil', rules: 'Règles', contact: 'Contact' },
+            'it': { home: 'Home', rules: 'Regole', contact: 'Contatti' },
+            'de': { home: 'Startseite', rules: 'Regeln', contact: 'Kontakt' },
+            'nl': { home: 'Home', rules: 'Regels', contact: 'Contact' },
+            'pl': { home: 'Główna', rules: 'Zasady', contact: 'Kontakt' },
+            'ru': { home: 'Главная', rules: 'Правила', contact: 'Контакты' },
+            'tr': { home: 'Ana Sayfa', rules: 'Kurallar', contact: 'İletişim' },
+            'ja': { home: 'ホーム', rules: 'ルール', contact: 'お問い合わせ' }
         };
 
         setTimeout(() => {
-           const pathMatch = window.location.pathname.match(/\/([a-z]{2})\/index\.html|\/([a-z]{2})\/historia\.html|\/([a-z]{2})\/[a-z]+\.html/);
-           const ui = pathMatch ? (pathMatch[1] || pathMatch[2] || pathMatch[3]) : 'pt';
+           const urlParams = new URLSearchParams(window.location.search);
+           let ui = urlParams.get('ui');
+           if (!ui) {
+               const pathMatch = window.location.pathname.match(/\/([a-z]{2})\/index\.html|\/([a-z]{2})\/historia\.html|\/([a-z]{2})\/[a-z]+\.html/);
+               ui = pathMatch ? (pathMatch[1] || pathMatch[2] || pathMatch[3]) : 'pt';
+           }
            const isSeo = window.location.pathname.includes('/seo/');
            const depth = isSeo ? '../../' : '../';
 
@@ -99,8 +105,21 @@
                document.getElementById('headerUiText').innerText = flagsMap[ui].name;
            }
 
-           if(sloganMap[ui]) {
-               document.getElementById('headerSlogan').innerText = sloganMap[ui];
+           const tMenu = menuTranslations[ui] || menuTranslations['en'];
+           const homeLink = document.getElementById('headerMenuHome');
+           const rulesLink = document.getElementById('headerMenuRegras');
+           const contactLink = document.getElementById('headerMenuContato');
+           if (homeLink) {
+               homeLink.innerText = tMenu.home;
+               homeLink.href = `${depth}${ui}/index.html`;
+           }
+           if (rulesLink) {
+               rulesLink.innerText = tMenu.rules;
+               rulesLink.href = `${depth}${ui}/regras.html`;
+           }
+           if (contactLink) {
+               contactLink.innerText = tMenu.contact;
+               contactLink.href = `${depth}${ui}/contato.html`;
            }
 
            // Torna a logo dinâmica
