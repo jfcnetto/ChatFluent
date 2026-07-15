@@ -173,15 +173,24 @@ function compartilharDesempenho() {
     
     const texto = `🔥 No ChatFluent, alcancei ${aproveitamento}% de acerto no nível ${nomesNiveis[nivelAtual]}! 🏆\n\nConsegue bater meu recorde e dominar um novo idioma também? 🚀`;
     
+    const fallbackShare = () => {
+        const urlWhatsapp = `https://api.whatsapp.com/send?text=${encodeURIComponent(texto + " " + window.location.href)}`;
+        window.open(urlWhatsapp, '_blank');
+    };
+
     if (navigator.share) {
         navigator.share({
             title: 'Meu Desempenho no ChatFluent',
             text: texto,
             url: window.location.href
-        }).catch(console.error);
+        }).then(() => {
+            console.log("Compartilhado com sucesso!");
+        }).catch(err => {
+            console.warn("navigator.share falhou ou foi cancelado, usando WhatsApp:", err);
+            fallbackShare();
+        });
     } else {
-        const urlWhatsapp = `https://api.whatsapp.com/send?text=${encodeURIComponent(texto + " " + window.location.href)}`;
-        window.open(urlWhatsapp, '_blank');
+        fallbackShare();
     }
 }
 
