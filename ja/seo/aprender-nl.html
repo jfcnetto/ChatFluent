@@ -2,31 +2,268 @@
 <html lang="ja">
 <head>
     <meta charset="UTF-8">
-    <title>Aprender NL | ChatFluent</title>
+    <title>Learn NL Free | ChatFluent</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/ChatFluent/css/style.css">
-    <meta name="description" content="Aprenda NL de graça com o ChatFluent!">
+    <link rel="stylesheet" href="../../css/style.css">
+    <meta name="description" content="Aprenda NL rápido com histórias interativas e divertidas.">
 </head>
 <body>
-<div id="header"></div>
+<div class="header" style="height: auto; min-height: 70px; padding: 10px 0;">
+  <div class="container-header" style="display: flex; align-items: center; justify-content: space-between; width: 100%; max-width: 1200px; margin: 0 auto; gap: 10px; padding: 0 15px; flex-wrap: wrap;">
+    
+    <!-- LOGO -->
+    <div class="brand" style="flex-shrink: 0;">
+      <a href="../../pt/index.html" id="headerLogoLink">
+        <img src="../../img/logo.png" class="logo-img" alt="ChatFluent" id="headerLogoImg">
+      </a>
+    </div>
+
+    <!-- SELETOR DE IDIOMAS (CUSTOM DROPDOWN COM BANDEIRAS) -->
+    <nav class="languages-nav" style="display: flex; gap: 8px; flex-wrap: wrap; justify-content: center; flex: 1;">
+      <div class="custom-select-wrapper" id="headerUiSelectWrapper">
+         <div class="custom-select-trigger" onclick="toggleHeaderDropdown(event)">
+             <div style="display:flex; align-items:center; gap:8px;">
+                 <img src="https://flagcdn.com/w20/br.png" id="headerUiFlag" alt="Flag">
+                 <span id="headerUiText">Português</span>
+             </div>
+             <span class="arrow-icon">▼</span>
+         </div>
+         <div class="custom-options" id="headerUiOptions">
+             <div class="custom-option" onclick="changeUiLang('pt', 'br', 'Português')">
+                 <img src="https://flagcdn.com/w20/br.png" alt="pt"> Português
+             </div>
+             <div class="custom-option" onclick="changeUiLang('en', 'us', 'English')">
+                 <img src="https://flagcdn.com/w20/us.png" alt="en"> English
+             </div>
+             <div class="custom-option" onclick="changeUiLang('es', 'es', 'Español')">
+                 <img src="https://flagcdn.com/w20/es.png" alt="es"> Español
+             </div>
+             <div class="custom-option" onclick="changeUiLang('fr', 'fr', 'Français')">
+                 <img src="https://flagcdn.com/w20/fr.png" alt="fr"> Français
+             </div>
+             <div class="custom-option" onclick="changeUiLang('it', 'it', 'Italiano')">
+                 <img src="https://flagcdn.com/w20/it.png" alt="it"> Italiano
+             </div>
+             <div class="custom-option" onclick="changeUiLang('de', 'de', 'Deutsch')">
+                 <img src="https://flagcdn.com/w20/de.png" alt="de"> Deutsch
+             </div>
+             <div class="custom-option" onclick="changeUiLang('nl', 'nl', 'Nederlands')">
+                 <img src="https://flagcdn.com/w20/nl.png" alt="nl"> Nederlands
+             </div>
+             <div class="custom-option" onclick="changeUiLang('pl', 'pl', 'Polski')">
+                 <img src="https://flagcdn.com/w20/pl.png" alt="pl"> Polski
+             </div>
+             <div class="custom-option" onclick="changeUiLang('ru', 'ru', 'Русский')">
+                 <img src="https://flagcdn.com/w20/ru.png" alt="ru"> Русский
+             </div>
+             <div class="custom-option" onclick="changeUiLang('tr', 'tr', 'Türkçe')">
+                 <img src="https://flagcdn.com/w20/tr.png" alt="tr"> Türkçe
+             </div>
+             <div class="custom-option" onclick="changeUiLang('ja', 'jp', '日本語')">
+                 <img src="https://flagcdn.com/w20/jp.png" alt="ja"> 日本語
+             </div>
+         </div>
+      </div>
+      <script>
+        const flagsMap = {
+            'pt': { flag: 'br', name: 'Português' },
+            'en': { flag: 'us', name: 'English' },
+            'es': { flag: 'es', name: 'Español' },
+            'fr': { flag: 'fr', name: 'Français' },
+            'it': { flag: 'it', name: 'Italiano' },
+            'de': { flag: 'de', name: 'Deutsch' },
+            'nl': { flag: 'nl', name: 'Nederlands' },
+            'pl': { flag: 'pl', name: 'Polski' },
+            'ru': { flag: 'ru', name: 'Русский' },
+            'tr': { flag: 'tr', name: 'Türkçe' },
+            'ja': { flag: 'jp', name: '日本語' }
+        };
+
+        setTimeout(() => {
+           const pathMatch = window.location.pathname.match(/\/([a-z]{2})\/index\.html|\/([a-z]{2})\/historia\.html/);
+           const ui = pathMatch ? (pathMatch[1] || pathMatch[2]) : 'pt';
+           const isSeo = window.location.pathname.includes('/seo/');
+           const depth = isSeo ? '../../' : '../';
+
+           if(flagsMap[ui]) {
+               document.getElementById('headerUiFlag').src = `https://flagcdn.com/w20/${flagsMap[ui].flag}.png`;
+               document.getElementById('headerUiText').innerText = flagsMap[ui].name;
+           }
+
+           // Torna a logo dinâmica
+           const logoLink = document.getElementById('headerLogoLink');
+           const logoImg = document.getElementById('headerLogoImg');
+           if (logoLink) logoLink.href = `${depth}${ui}/index.html`;
+           if (logoImg) logoImg.src = `${depth}img/logo.png`;
+        }, 100);
+
+        function toggleHeaderDropdown(e) {
+            e.stopPropagation();
+            const wrapper = document.getElementById('headerUiSelectWrapper');
+            const options = document.getElementById('headerUiOptions');
+            wrapper.classList.toggle('open');
+            options.classList.toggle('open');
+        }
+
+        document.addEventListener('click', () => {
+            const wrapper = document.getElementById('headerUiSelectWrapper');
+            const options = document.getElementById('headerUiOptions');
+            if(wrapper && wrapper.classList.contains('open')) {
+                wrapper.classList.remove('open');
+                options.classList.remove('open');
+            }
+        });
+
+        function changeUiLang(ui, flag, name) {
+            const isHistoria = window.location.pathname.includes('historia.html');
+            const searchParams = new URLSearchParams(window.location.search);
+            const target = searchParams.get('target') || 'en';
+            
+            let newPath = window.location.pathname;
+            newPath = newPath.replace(/\/[a-z]{2}\/(index|historia)\.html/, `/${ui}/$1.html`);
+            
+            if (isHistoria) {
+                window.location.href = newPath + `?ui=${ui}&target=${target}`;
+            } else {
+                window.location.href = newPath;
+            }
+        }
+      </script>
+    </nav>
+
+    <!-- MENU AUXILIAR COM BOTÃO -->
+    <nav class="header-action" style="flex-shrink: 0;">
+      <a href="#" onclick="event.preventDefault(); const pathMatch = window.location.pathname.match(/\/([a-z]{2})\//); const ui = pathMatch ? pathMatch[1] : 'pt'; const isSeo = window.location.pathname.includes('/seo/'); const depth = isSeo ? '../../' : '../'; window.location.href = `${depth}${ui}/index.html`;" class="btn" style="padding: 8px 16px; font-size: 14px; text-decoration: none; display: inline-block;">
+        Home
+      </a>
+    </nav>
+  </div>
+</div>
+
+<style>
+  /* AJUSTE ESPECÍFICO PARA MOBILE */
+  @media (max-width: 768px) {
+    .header {
+      height: auto !important;
+    }
+    .container-header {
+      justify-content: center !important;
+      gap: 15px !important;
+    }
+    .languages-nav {
+      order: 3;
+      width: 100%;
+      justify-content: center !important;
+      gap: 10px !important;
+    }
+    .brand {
+      order: 1;
+    }
+    .header-action {
+      order: 2;
+    }
+  }
+</style>
+
+<div id="main-banner" style="text-align: center; margin: 20px auto; max-width: 1000px; padding: 0 15px;">
+    <img src="../../img/banner-provisorio.png" alt="Propaganda" style="width: 100%; max-width: 970px; height: auto; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.05);">
+</div>
+
 <main class="container">
     <div style="text-align: center; padding: 50px;">
-        <h1>SEO Landing Page: Aprender NL</h1>
-        <p>Aprenda rápido e fácil! Interface em ja.</p>
-        <a href="/ChatFluent/ja/historia.html?ui=ja&target=nl">
-            <button>Começar Curso de NL</button>
+        <h1>Want to Learn NL for Free?</h1>
+        <p>Join our interactive dialogue simulator and level up fast.</p>
+        
+        <a href="../../ja/historia.html?ui=ja&target=nl">
+            <button style="margin-top: 20px; padding: 12px 30px;">Start Now</button>
         </a>
     </div>
 </main>
+
+<div id="footer-banner" style="text-align: center; margin: 25px auto; max-width: 1000px; padding: 0 15px;">
+    <img src="../../img/banner-provisorio.png" alt="Propaganda" style="width: 100%; max-width: 970px; height: auto; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.05);">
+</div>
+
+<footer class="footer">
+  <div class="footer-content" id="footerContainer">
+    <!-- Será preenchido dinamicamente pelo script abaixo -->
+  </div>
+</footer>
+
 <script>
-    async function loadComponent(id, file) {
-        try {
-            const res = await fetch(file);
-            const html = await res.text();
-            document.getElementById(id).innerHTML = html;
-        } catch (err) { }
-    }
-    loadComponent("header", "/ChatFluent/components/header.html");
+(function() {
+    const pathMatch = window.location.pathname.match(/\/([a-z]{2})\/index\.html|\/([a-z]{2})\/historia\.html/);
+    const ui = pathMatch ? (pathMatch[1] || pathMatch[2]) : 'pt';
+    const isSeo = window.location.pathname.includes('/seo/');
+    const depth = isSeo ? '../../' : '../';
+
+    const translations = {
+        'pt': {
+            home: 'Home', rules: 'Regras', privacy: 'Privacidade', terms: 'Termos', contact: 'Contato',
+            copyright: '2026 ChatFluent. Aprenda brincando.',
+            seoLinks: [
+                { url: 'seo/aprender-en.html', text: 'Aprender Inglês' },
+                { url: 'seo/aprender-es.html', text: 'Aprender Espanhol' },
+                { url: 'seo/aprender-fr.html', text: 'Aprender Francês' },
+                { url: 'seo/aprender-it.html', text: 'Aprender Italiano' },
+                { url: 'seo/aprender-de.html', text: 'Aprender Alemão' }
+            ]
+        },
+        'en': {
+            home: 'Home', rules: 'Rules', privacy: 'Privacy', terms: 'Terms', contact: 'Contact',
+            copyright: '2026 ChatFluent. Learn by playing.',
+            seoLinks: [
+                { url: 'seo/aprender-pt.html', text: 'Learn Portuguese' },
+                { url: 'seo/aprender-es.html', text: 'Learn Spanish' },
+                { url: 'seo/aprender-fr.html', text: 'Learn French' },
+                { url: 'seo/aprender-it.html', text: 'Learn Italian' },
+                { url: 'seo/aprender-de.html', text: 'Learn German' }
+            ]
+        },
+        'es': {
+            home: 'Inicio', rules: 'Reglas', privacy: 'Privacidad', terms: 'Términos', contact: 'Contacto',
+            copyright: '2026 ChatFluent. Aprende jugando.',
+            seoLinks: [
+                { url: 'seo/aprender-en.html', text: 'Aprender Inglés' },
+                { url: 'seo/aprender-pt.html', text: 'Aprender Portugués' },
+                { url: 'seo/aprender-fr.html', text: 'Aprender Francés' },
+                { url: 'seo/aprender-it.html', text: 'Aprender Italiano' },
+                { url: 'seo/aprender-de.html', text: 'Aprender Alemán' }
+            ]
+        }
+    };
+
+    const t = translations[ui] || translations['en'];
+
+    let html = `
+        <a href="${depth}${ui}/index.html" class="footer-brand">
+          <img src="${depth}img/logo.png" class="logo-img" alt="ChatFluent" style="filter: grayscale(100%); opacity: 0.6;">
+        </a>
+
+        <nav class="footer-menu">
+          <a href="${depth}${ui}/index.html">${t.home}</a>
+          <a href="${depth}${ui}/regras.html">${t.rules}</a>
+          <a href="${depth}${ui}/privacidade.html">${t.privacy}</a>
+          <a href="${depth}${ui}/termos.html">${t.terms}</a>
+          <a href="${depth}${ui}/contato.html">${t.contact}</a>
+        </nav>
+
+        <nav class="footer-menu" style="margin-top: 15px; gap: 12px; flex-wrap: wrap;">
+    `;
+
+    t.seoLinks.forEach(link => {
+        html += `<a href="${depth}${ui}/${link.url}" style="font-size: 12px; color: #cecece;">${link.text}</a>`;
+    });
+
+    html += `
+        </nav>
+        <p style="margin-top: 25px; color: #afafaf; font-weight: 700; font-size: 11px; text-transform: uppercase; letter-spacing: 1px;">
+          &copy; ${t.copyright}
+        </p>
+    `;
+
+    document.getElementById('footerContainer').innerHTML = html;
+})();
 </script>
 </body>
 </html>

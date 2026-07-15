@@ -29,6 +29,35 @@ function getUrlParams() {
     };
 }
 
+// Usaremos localStorage para manter o histórico de perguntas usadas e evitar repetições
+function getPerguntasUsadas() {
+    try {
+        const stored = localStorage.getItem('chatfluent_perguntas_usadas');
+        return stored ? JSON.parse(stored) : [];
+    } catch (e) {
+        return [];
+    }
+}
+
+function salvarPerguntaUsada(npcText) {
+    try {
+        const usadas = getPerguntasUsadas();
+        if (!usadas.includes(npcText)) {
+            usadas.push(npcText);
+            localStorage.setItem('chatfluent_perguntas_usadas', JSON.stringify(usadas));
+        }
+    } catch (e) {}
+}
+
+function limparPerguntasUsadasDoNivel(target, nivel) {
+    try {
+        let usadas = getPerguntasUsadas();
+        const perguntasNivel = baseDeDados[target].filter(p => p.nivel === nivel).map(p => p.npc);
+        usadas = usadas.filter(npc => !perguntasNivel.includes(npc));
+        localStorage.setItem('chatfluent_perguntas_usadas', JSON.stringify(usadas));
+    } catch (e) {}
+}
+
 /**
  * Filtra e embaralha perguntas baseadas no nível e define o tamanho da lição
  */
@@ -45,7 +74,14 @@ function prepararSessao() {
     if (nivelAtual === 1) quantidadePorNivel = 15;
     if (nivelAtual === 2) quantidadePorNivel = 25;
 
-    let bancoFiltrado = baseDeDados[target].filter(p => p.nivel === nivelAtual);
+    const usadas = getPerguntasUsadas();
+    let bancoFiltrado = baseDeDados[target].filter(p => p.nivel === nivelAtual && !usadas.includes(p.npc));
+
+    // Se o número de perguntas inéditas for insuficiente, limpa o histórico daquele nível e tenta novamente
+    if (bancoFiltrado.length < quantidadePorNivel) {
+        limparPerguntasUsadasDoNivel(target, nivelAtual);
+        bancoFiltrado = baseDeDados[target].filter(p => p.nivel === nivelAtual);
+    }
 
     for (let i = bancoFiltrado.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
@@ -134,9 +170,13 @@ function responder(btn, i) {
     
     const { ui } = getUrlParams();
     // Default fallback to english if ui string not found
-    const trans = typeof uiTranslations !== 'undefined' && uiTranslations[ui] ? uiTranslations[ui] : uiTranslations['en'];
+    const trans = (typeof uiTranslations !== 'undefined' && uiTranslations[ui]) 
+        ? uiTranslations[ui] 
+        : (typeof uiTranslations !== 'undefined' ? uiTranslations['en'] : { perfect: "Perfect!", goodRecovery: "Good recovery!", tooManyErrors: "Too many errors. Moving on...", incorrect: "Incorrect. Tip:" });
 
     if (feedbackEl.innerHTML.includes("+") || feedbackEl.innerHTML.includes("❌")) return;
+
+    if (!perguntasSessao[etapa]) return;
 
     if (i === perguntasSessao[etapa].correta) {
         if (errosNaEtapa === 0) {
@@ -157,6 +197,9 @@ function responder(btn, i) {
 
         etapa++;
         
+        // Salva a pergunta resolvida para evitar repetições no futuro
+        salvarPerguntaUsada(perguntasSessao[etapa - 1].npc);
+
         setTimeout(() => {
             if (etapa < perguntasSessao.length) render();
             else finalizarTreino();
@@ -172,8 +215,11 @@ function responder(btn, i) {
         btn.style.backgroundColor = "#ffdbdb";
         btn.classList.add("shake-animation");
         
-        // Pega a explicação na lingua da UI
-        let dica = perguntasSessao[etapa].explicacao[ui] || perguntasSessao[etapa].explicacao['en'] || perguntasSessao[etapa].explicacao['pt'] || "";
+        // Pega a explicação de forma ultra-segura
+        let dica = "";
+        if (perguntasSessao[etapa] && perguntasSessao[etapa].explicacao) {
+            dica = perguntasSessao[etapa].explicacao[ui] || perguntasSessao[etapa].explicacao['en'] || perguntasSessao[etapa].explicacao['pt'] || "";
+        }
 
         if (errosNaEtapa >= 2) {
             totalErros++; 
@@ -181,6 +227,10 @@ function responder(btn, i) {
                                     <div class="tip-box" style="margin-top: 8px; font-size: 14px;">${dica}</div>`;
             feedbackEl.style.opacity = "1";
             etapa++;
+            
+            // Salva a pergunta resolvida/pulada para evitar repetições no futuro
+            salvarPerguntaUsada(perguntasSessao[etapa - 1].npc);
+
             setTimeout(() => {
                 if (etapa < perguntasSessao.length) render();
                 else finalizarTreino();

@@ -1,34 +1,81 @@
 <footer class="footer">
-  <div class="footer-content">
-
-    <!-- LOGO COM EFEITO SUAVE -->
-    <a href="/ChatFluent/pt/index.html" class="footer-brand">
-      <img src="/ChatFluent/img/logo.png" class="logo-img" alt="ChatFluent" style="filter: grayscale(100%); opacity: 0.6;">
-    </a>
-
-    <!-- MENU PRINCIPAL -->
-    <nav class="footer-menu">
-      <a href="/ChatFluent/pt/index.html">Home</a>
-      <a href="/ChatFluent/pt/regras.html">Regras</a>
-      <a href="/ChatFluent/pt/privacidade.html">Privacidade</a>
-      <a href="/ChatFluent/pt/termos.html">Termos</a>
-      <a href="/ChatFluent/pt/contato.html">Contato</a>
-    </nav>
-
-    <!-- LINKS DE SEO (DISCRETOS PARA O GOOGLE) -->
-    <nav class="footer-menu" style="margin-top: 15px; gap: 12px; flex-wrap: wrap;">
-      <a href="/ChatFluent/pt/seo/aprender-ingles.html" style="font-size: 12px; color: #cecece;">Aprender Inglês</a>
-      <a href="/ChatFluent/pt/seo/frases-ingles.html" style="font-size: 12px; color: #cecece;">Frases Úteis</a>
-      <a href="/ChatFluent/pt/seo/ingles-basico.html" style="font-size: 12px; color: #cecece;">Nível Básico</a>
-      <a href="/ChatFluent/pt/seo/ingles-iniciante.html" style="font-size: 12px; color: #cecece;">Inglês do Zero</a>
-      <a href="/ChatFluent/pt/seo/ingles-rapido.html" style="font-size: 12px; color: #cecece;">Aprender Rápido</a>
-      <a href="/ChatFluent/pt/seo/ingles-viagem.html" style="font-size: 12px; color: #cecece;">Inglês para Viagem</a>
-    </nav>
-
-    <!-- DIREITOS AUTORAIS -->
-    <p style="margin-top: 25px; color: #afafaf; font-weight: 700; font-size: 11px; text-transform: uppercase; letter-spacing: 1px;">
-      &copy; 2026 ChatFluent. Aprenda brincando.
-    </p>
-
+  <div class="footer-content" id="footerContainer">
+    <!-- Será preenchido dinamicamente pelo script abaixo -->
   </div>
 </footer>
+
+<script>
+(function() {
+    const pathMatch = window.location.pathname.match(/\/([a-z]{2})\/index\.html|\/([a-z]{2})\/historia\.html/);
+    const ui = pathMatch ? (pathMatch[1] || pathMatch[2]) : 'pt';
+    const isSeo = window.location.pathname.includes('/seo/');
+    const depth = isSeo ? '../../' : '../';
+
+    const translations = {
+        'pt': {
+            home: 'Home', rules: 'Regras', privacy: 'Privacidade', terms: 'Termos', contact: 'Contato',
+            copyright: '2026 ChatFluent. Aprenda brincando.',
+            seoLinks: [
+                { url: 'seo/aprender-en.html', text: 'Aprender Inglês' },
+                { url: 'seo/aprender-es.html', text: 'Aprender Espanhol' },
+                { url: 'seo/aprender-fr.html', text: 'Aprender Francês' },
+                { url: 'seo/aprender-it.html', text: 'Aprender Italiano' },
+                { url: 'seo/aprender-de.html', text: 'Aprender Alemão' }
+            ]
+        },
+        'en': {
+            home: 'Home', rules: 'Rules', privacy: 'Privacy', terms: 'Terms', contact: 'Contact',
+            copyright: '2026 ChatFluent. Learn by playing.',
+            seoLinks: [
+                { url: 'seo/aprender-pt.html', text: 'Learn Portuguese' },
+                { url: 'seo/aprender-es.html', text: 'Learn Spanish' },
+                { url: 'seo/aprender-fr.html', text: 'Learn French' },
+                { url: 'seo/aprender-it.html', text: 'Learn Italian' },
+                { url: 'seo/aprender-de.html', text: 'Learn German' }
+            ]
+        },
+        'es': {
+            home: 'Inicio', rules: 'Reglas', privacy: 'Privacidad', terms: 'Términos', contact: 'Contacto',
+            copyright: '2026 ChatFluent. Aprende jugando.',
+            seoLinks: [
+                { url: 'seo/aprender-en.html', text: 'Aprender Inglés' },
+                { url: 'seo/aprender-pt.html', text: 'Aprender Portugués' },
+                { url: 'seo/aprender-fr.html', text: 'Aprender Francés' },
+                { url: 'seo/aprender-it.html', text: 'Aprender Italiano' },
+                { url: 'seo/aprender-de.html', text: 'Aprender Alemán' }
+            ]
+        }
+    };
+
+    const t = translations[ui] || translations['en'];
+
+    let html = `
+        <a href="${depth}${ui}/index.html" class="footer-brand">
+          <img src="${depth}img/logo.png" class="logo-img" alt="ChatFluent" style="filter: grayscale(100%); opacity: 0.6;">
+        </a>
+
+        <nav class="footer-menu">
+          <a href="${depth}${ui}/index.html">${t.home}</a>
+          <a href="${depth}${ui}/regras.html">${t.rules}</a>
+          <a href="${depth}${ui}/privacidade.html">${t.privacy}</a>
+          <a href="${depth}${ui}/termos.html">${t.terms}</a>
+          <a href="${depth}${ui}/contato.html">${t.contact}</a>
+        </nav>
+
+        <nav class="footer-menu" style="margin-top: 15px; gap: 12px; flex-wrap: wrap;">
+    `;
+
+    t.seoLinks.forEach(link => {
+        html += `<a href="${depth}${ui}/${link.url}" style="font-size: 12px; color: #cecece;">${link.text}</a>`;
+    });
+
+    html += `
+        </nav>
+        <p style="margin-top: 25px; color: #afafaf; font-weight: 700; font-size: 11px; text-transform: uppercase; letter-spacing: 1px;">
+          &copy; ${t.copyright}
+        </p>
+    `;
+
+    document.getElementById('footerContainer').innerHTML = html;
+})();
+</script>
