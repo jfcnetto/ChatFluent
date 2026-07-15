@@ -130,12 +130,7 @@
       </script>
     </nav>
 
-    <!-- MENU AUXILIAR COM BOTÃO -->
-    <nav class="header-action" style="flex-shrink: 0;">
-      <a href="#" onclick="event.preventDefault(); const pathMatch = window.location.pathname.match(/\/([a-z]{2})\//); const ui = pathMatch ? pathMatch[1] : 'pt'; const isSeo = window.location.pathname.includes('/seo/'); const depth = isSeo ? '../../' : '../'; window.location.href = `${depth}${ui}/index.html`;" class="btn" style="padding: 8px 16px; font-size: 14px; text-decoration: none; display: inline-block;">
-        Home
-      </a>
-    </nav>
+
   </div>
 </div>
 
@@ -288,6 +283,94 @@
                 { url: 'seo/aprender-fr.html', text: 'Aprender Francés' },
                 { url: 'seo/aprender-it.html', text: 'Aprender Italiano' },
                 { url: 'seo/aprender-de.html', text: 'Aprender Alemán' }
+            ]
+        },
+        'fr': {
+            home: 'Accueil', rules: 'Règles', privacy: 'Confidentialité', terms: 'Conditions', contact: 'Contact',
+            copyright: '2026 ChatFluent. Apprenez en jouant.',
+            seoLinks: [
+                { url: 'seo/aprender-en.html', text: 'Apprendre l\'anglais' },
+                { url: 'seo/aprender-es.html', text: 'Apprendre l\'espagnol' },
+                { url: 'seo/aprender-pt.html', text: 'Apprendre le portugais' },
+                { url: 'seo/aprender-de.html', text: 'Apprendre l\'allemand' },
+                { url: 'seo/aprender-it.html', text: 'Apprendre l\'italien' }
+            ]
+        },
+        'it': {
+            home: 'Home', rules: 'Regole', privacy: 'Privacy', terms: 'Termini', contact: 'Contatti',
+            copyright: '2026 ChatFluent. Impara giocando.',
+            seoLinks: [
+                { url: 'seo/aprender-en.html', text: 'Impara l\'inglese' },
+                { url: 'seo/aprender-es.html', text: 'Impara lo spagnolo' },
+                { url: 'seo/aprender-fr.html', text: 'Impara il francese' },
+                { url: 'seo/aprender-de.html', text: 'Impara il tedesco' },
+                { url: 'seo/aprender-pt.html', text: 'Impara il portoghese' }
+            ]
+        },
+        'de': {
+            home: 'Startseite', rules: 'Regeln', privacy: 'Datenschutz', terms: 'Bedingungen', contact: 'Kontakt',
+            copyright: '2026 ChatFluent. Spielerisch lernen.',
+            seoLinks: [
+                { url: 'seo/aprender-en.html', text: 'Englisch lernen' },
+                { url: 'seo/aprender-es.html', text: 'Spanisch lernen' },
+                { url: 'seo/aprender-fr.html', text: 'Französisch lernen' },
+                { url: 'seo/aprender-it.html', text: 'Italienisch lernen' },
+                { url: 'seo/aprender-pt.html', text: 'Portugiesisch lernen' }
+            ]
+        },
+        'nl': {
+            home: 'Home', rules: 'Regels', privacy: 'Privacy', terms: 'Voorwaarden', contact: 'Contact',
+            copyright: '2026 ChatFluent. Spelend leren.',
+            seoLinks: [
+                { url: 'seo/aprender-en.html', text: 'Engels leren' },
+                { url: 'seo/aprender-es.html', text: 'Spaans leren' },
+                { url: 'seo/aprender-fr.html', text: 'Frans leren' },
+                { url: 'seo/aprender-de.html', text: 'Duits leren' },
+                { url: 'seo/aprender-pt.html', text: 'Portugees leren' }
+            ]
+        },
+        'pl': {
+            home: 'Główna', rules: 'Zasady', privacy: 'Prywatność', terms: 'Warunki', contact: 'Kontakt',
+            copyright: '2026 ChatFluent. Nauka przez zabawę.',
+            seoLinks: [
+                { url: 'seo/aprender-en.html', text: 'Nauka angielskiego' },
+                { url: 'seo/aprender-es.html', text: 'Nauka hiszpańskiego' },
+                { url: 'seo/aprender-fr.html', text: 'Nauka francuskiego' },
+                { url: 'seo/aprender-de.html', text: 'Nauka niemieckiego' },
+                { url: 'seo/aprender-ru.html', text: 'Nauka rosyjskiego' }
+            ]
+        },
+        'ru': {
+            home: 'Главная', rules: 'Правила', privacy: 'Конфиденциальность', terms: 'Условия', contact: 'Контакты',
+            copyright: '2026 ChatFluent. Учитесь играя.',
+            seoLinks: [
+                { url: 'seo/aprender-en.html', text: 'Учить английский' },
+                { url: 'seo/aprender-es.html', text: 'Учить испанский' },
+                { url: 'seo/aprender-fr.html', text: 'Учить французский' },
+                { url: 'seo/aprender-de.html', text: 'Учить немецкий' },
+                { url: 'seo/aprender-ja.html', text: 'Учить японский' }
+            ]
+        },
+        'tr': {
+            home: 'Ana Sayfa', rules: 'Kurallar', privacy: 'Gizlilik', terms: 'Koşullar', contact: 'İletişim',
+            copyright: '2026 ChatFluent. Oynayarak öğrenin.',
+            seoLinks: [
+                { url: 'seo/aprender-en.html', text: 'İngilizce Öğren' },
+                { url: 'seo/aprender-es.html', text: 'İspanyolca Öğren' },
+                { url: 'seo/aprender-fr.html', text: 'Fransızca Öğren' },
+                { url: 'seo/aprender-de.html', text: 'Almanca Öğren' },
+                { url: 'seo/aprender-it.html', text: 'İtalyanca Öğren' }
+            ]
+        },
+        'ja': {
+            home: 'ホーム', rules: 'ルール', privacy: 'プライバシー', terms: '利用規約', contact: 'お問い合わせ',
+            copyright: '2026 ChatFluent。遊びながら学ぶ。',
+            seoLinks: [
+                { url: 'seo/aprender-en.html', text: '英語を学ぶ' },
+                { url: 'seo/aprender-es.html', text: 'スペイン語を学ぶ' },
+                { url: 'seo/aprender-fr.html', text: 'フランス語を学ぶ' },
+                { url: 'seo/aprender-de.html', text: 'ドイツ語を学ぶ' },
+                { url: 'seo/aprender-pt.html', text: 'ポルトガル語を学ぶ' }
             ]
         }
     };

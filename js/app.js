@@ -11,6 +11,7 @@ let etapa = 0;
 let pontos = 0;
 let streak = 0;
 let errosNaEtapa = 0;
+let bloqueado = false;
 
 // Relatório Final da Sessão
 let totalAcertos = 0;
@@ -83,12 +84,34 @@ function prepararSessao() {
         bancoFiltrado = baseDeDados[target].filter(p => p.nivel === nivelAtual);
     }
 
-    for (let i = bancoFiltrado.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [bancoFiltrado[i], bancoFiltrado[j]] = [bancoFiltrado[j], bancoFiltrado[i]];
+    // Garante que o banco de perguntas tenha pelo menos o tamanho necessário, duplicando se necessário
+    let bancoExpandido = [...bancoFiltrado];
+    while (bancoExpandido.length < quantidadePorNivel && bancoFiltrado.length > 0) {
+        const copia = JSON.parse(JSON.stringify(bancoFiltrado));
+        bancoExpandido = bancoExpandido.concat(copia);
     }
 
-    perguntasSessao = bancoFiltrado.slice(0, quantidadePorNivel);
+    for (let i = bancoExpandido.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [bancoExpandido[i], bancoExpandido[j]] = [bancoExpandido[j], bancoExpandido[i]];
+    }
+
+    // Embaralha e atualiza o índice da resposta correta para cada pergunta da sessão
+    perguntasSessao = bancoExpandido.slice(0, quantidadePorNivel).map(originalPergunta => {
+        // Cópia profunda para não bagunçar a base de dados em memória
+        const pergunta = JSON.parse(JSON.stringify(originalPergunta));
+        const respostaCorretaTexto = pergunta.opcoes[pergunta.correta];
+        
+        // Fisher-Yates shuffle nas opções da pergunta
+        for (let i = pergunta.opcoes.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [pergunta.opcoes[i], pergunta.opcoes[j]] = [pergunta.opcoes[j], pergunta.opcoes[i]];
+        }
+        
+        // Atualiza a propriedade correta com o novo índice
+        pergunta.correta = pergunta.opcoes.indexOf(respostaCorretaTexto);
+        return pergunta;
+    });
     
     etapa = 0;
     totalAcertos = 0;
@@ -119,6 +142,7 @@ function render() {
     }
 
     errosNaEtapa = 0; 
+    bloqueado = false;
     feedbackEl.style.opacity = "0";
     feedbackEl.innerHTML = "";
 
@@ -174,11 +198,12 @@ function responder(btn, i) {
         ? uiTranslations[ui] 
         : (typeof uiTranslations !== 'undefined' ? uiTranslations['en'] : { perfect: "Perfect!", goodRecovery: "Good recovery!", tooManyErrors: "Too many errors. Moving on...", incorrect: "Incorrect. Tip:" });
 
-    if (feedbackEl.innerHTML.includes("+") || feedbackEl.innerHTML.includes("❌")) return;
+    if (bloqueado) return;
 
     if (!perguntasSessao[etapa]) return;
 
     if (i === perguntasSessao[etapa].correta) {
+        bloqueado = true;
         if (errosNaEtapa === 0) {
             pontos += 10 + (streak * 2);
             streak++;
@@ -222,6 +247,7 @@ function responder(btn, i) {
         }
 
         if (errosNaEtapa >= 2) {
+            bloqueado = true;
             totalErros++; 
             feedbackEl.innerHTML = `<div style="color: #ff4b4b; font-weight: 900; margin-top: 10px;">❌ ${trans.tooManyErrors}</div>
                                     <div class="tip-box" style="margin-top: 8px; font-size: 14px;">${dica}</div>`;
