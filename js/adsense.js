@@ -1,6 +1,8 @@
 // Configurações
 const ADSENSE_CLIENT = "ca-pub-XXXXXXX";
-const FALLBACK_BANNER_URL = "/ChatFluent/img/banner-provisorio.png"; // Caminho da sua imagem
+const base = window.location.pathname.startsWith('/ChatFluent/') ? "/ChatFluent/" : "/";
+const cleanBase = base.endsWith('/') ? base : base + '/';
+const FALLBACK_BANNER_URL = cleanBase + "img/banner-provisorio.png"; // Caminho da sua imagem
 
 function loadAdsenseScript() {
   if (!document.querySelector("#adsense-script")) {
@@ -15,7 +17,7 @@ function loadAdsenseScript() {
 
 function createFallbackBanner() {
   const link = document.createElement("a");
-  link.href = "/ChatFluent/pt/index.html"; // Link para onde o banner aponta
+  link.href = cleanBase + "pt/index.html"; // Link para onde o banner aponta
   
   const img = document.createElement("img");
   img.src = FALLBACK_BANNER_URL;

@@ -4,13 +4,16 @@
 <meta charset="UTF-8">
 <script>
 let lang = navigator.language.slice(0,2);
-const base = "/ChatFluent/";
+const base = window.location.pathname.startsWith('/ChatFluent/') ? "/ChatFluent/" : "/";
 const supportedLangs = ['pt', 'en', 'es', 'fr', 'it', 'de', 'nl', 'pl', 'ru', 'tr', 'ja'];
 
+// Remove a barra final do base se já existir no path para evitar barras duplas
+const cleanBase = base.endsWith('/') ? base : base + '/';
+
 if(supportedLangs.includes(lang)){
-  location.href = base + lang + "/index.html";
+  location.href = cleanBase + lang + "/index.html";
 } else {
-  location.href = base + "en/index.html";
+  location.href = cleanBase + "en/index.html";
 }
 </script>
 </head>
