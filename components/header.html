@@ -26,9 +26,9 @@
       <script>
         // Seta o valor correto do dropdown com base na URL
         setTimeout(() => {
-           const pathParts = window.location.pathname.split('/');
-           // ex: /ChatFluent/pt/index.html -> pt
-           const ui = pathParts.length > 2 ? pathParts[2] : 'pt';
+           // Descobre qual pasta de idioma estamos (pt, en, es) olhando para o pathname
+           const pathMatch = window.location.pathname.match(/\/([a-z]{2})\/index\.html|\/([a-z]{2})\/historia\.html/);
+           const ui = pathMatch ? (pathMatch[1] || pathMatch[2]) : 'pt';
            const select = document.getElementById('uiLangSelect');
            if (select) {
                select.value = ui;
@@ -39,10 +39,23 @@
             const select = document.getElementById('uiLangSelect');
             if(select) {
                 const ui = select.value;
+                const isHistoria = window.location.pathname.includes('historia.html');
+                
+                // Pega os parametros atuais (se houver) para manter o target se estiver na tela do simulador
                 const searchParams = new URLSearchParams(window.location.search);
                 const target = searchParams.get('target') || 'en';
-                // Redireciona para o index da nova lingua
-                window.location.href = \`/ChatFluent/\${ui}/index.html\`;
+                
+                // Constrói a nova URL baseada na pasta atual para evitar erros em testes locais file:///
+                let newPath = window.location.pathname;
+                
+                // Substitui o idioma antigo (/pt/, /en/) pelo novo idioma (/ui/)
+                newPath = newPath.replace(/\/[a-z]{2}\/(index|historia)\.html/, \`/\${ui}/$1.html\`);
+                
+                if (isHistoria) {
+                    window.location.href = newPath + \`?ui=\${ui}&target=\${target}\`;
+                } else {
+                    window.location.href = newPath;
+                }
             }
         }
       </script>
