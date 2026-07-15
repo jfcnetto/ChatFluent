@@ -8,54 +8,105 @@
       </a>
     </div>
 
-    <!-- SELETOR DE IDIOMAS (DROPDOWN) -->
+    <!-- SELETOR DE IDIOMAS (CUSTOM DROPDOWN COM BANDEIRAS) -->
     <nav class="languages-nav" style="display: flex; gap: 8px; flex-wrap: wrap; justify-content: center; flex: 1;">
-      <select id="uiLangSelect" style="padding: 8px; font-size: 14px; border-radius: 8px; font-weight: bold; border: 2px solid #e5e5e5; background: #fff; cursor: pointer;" onchange="changeUiLang()">
-        <option value="pt">🇧🇷 Português</option>
-        <option value="en">🇺🇸 English</option>
-        <option value="es">🇪🇸 Español</option>
-        <option value="fr">🇫🇷 Français</option>
-        <option value="it">🇮🇹 Italiano</option>
-        <option value="de">🇩🇪 Deutsch</option>
-        <option value="nl">🇳🇱 Nederlands</option>
-        <option value="pl">🇵🇱 Polski</option>
-        <option value="ru">🇷🇺 Русский</option>
-        <option value="tr">🇹🇷 Türkçe</option>
-        <option value="ja">🇯🇵 日本語</option>
-      </select>
+      <div class="custom-select-wrapper" id="headerUiSelectWrapper">
+         <div class="custom-select-trigger" onclick="toggleHeaderDropdown(event)">
+             <div style="display:flex; align-items:center; gap:8px;">
+                 <img src="https://flagcdn.com/w20/br.png" id="headerUiFlag" alt="Flag">
+                 <span id="headerUiText">Português</span>
+             </div>
+             <span class="arrow-icon">▼</span>
+         </div>
+         <div class="custom-options" id="headerUiOptions">
+             <div class="custom-option" onclick="changeUiLang('pt', 'br', 'Português')">
+                 <img src="https://flagcdn.com/w20/br.png" alt="pt"> Português
+             </div>
+             <div class="custom-option" onclick="changeUiLang('en', 'us', 'English')">
+                 <img src="https://flagcdn.com/w20/us.png" alt="en"> English
+             </div>
+             <div class="custom-option" onclick="changeUiLang('es', 'es', 'Español')">
+                 <img src="https://flagcdn.com/w20/es.png" alt="es"> Español
+             </div>
+             <div class="custom-option" onclick="changeUiLang('fr', 'fr', 'Français')">
+                 <img src="https://flagcdn.com/w20/fr.png" alt="fr"> Français
+             </div>
+             <div class="custom-option" onclick="changeUiLang('it', 'it', 'Italiano')">
+                 <img src="https://flagcdn.com/w20/it.png" alt="it"> Italiano
+             </div>
+             <div class="custom-option" onclick="changeUiLang('de', 'de', 'Deutsch')">
+                 <img src="https://flagcdn.com/w20/de.png" alt="de"> Deutsch
+             </div>
+             <div class="custom-option" onclick="changeUiLang('nl', 'nl', 'Nederlands')">
+                 <img src="https://flagcdn.com/w20/nl.png" alt="nl"> Nederlands
+             </div>
+             <div class="custom-option" onclick="changeUiLang('pl', 'pl', 'Polski')">
+                 <img src="https://flagcdn.com/w20/pl.png" alt="pl"> Polski
+             </div>
+             <div class="custom-option" onclick="changeUiLang('ru', 'ru', 'Русский')">
+                 <img src="https://flagcdn.com/w20/ru.png" alt="ru"> Русский
+             </div>
+             <div class="custom-option" onclick="changeUiLang('tr', 'tr', 'Türkçe')">
+                 <img src="https://flagcdn.com/w20/tr.png" alt="tr"> Türkçe
+             </div>
+             <div class="custom-option" onclick="changeUiLang('ja', 'jp', '日本語')">
+                 <img src="https://flagcdn.com/w20/jp.png" alt="ja"> 日本語
+             </div>
+         </div>
+      </div>
       <script>
-        // Seta o valor correto do dropdown com base na URL
+        const flagsMap = {
+            'pt': { flag: 'br', name: 'Português' },
+            'en': { flag: 'us', name: 'English' },
+            'es': { flag: 'es', name: 'Español' },
+            'fr': { flag: 'fr', name: 'Français' },
+            'it': { flag: 'it', name: 'Italiano' },
+            'de': { flag: 'de', name: 'Deutsch' },
+            'nl': { flag: 'nl', name: 'Nederlands' },
+            'pl': { flag: 'pl', name: 'Polski' },
+            'ru': { flag: 'ru', name: 'Русский' },
+            'tr': { flag: 'tr', name: 'Türkçe' },
+            'ja': { flag: 'jp', name: '日本語' }
+        };
+
         setTimeout(() => {
-           // Descobre qual pasta de idioma estamos (pt, en, es) olhando para o pathname
            const pathMatch = window.location.pathname.match(/\/([a-z]{2})\/index\.html|\/([a-z]{2})\/historia\.html/);
            const ui = pathMatch ? (pathMatch[1] || pathMatch[2]) : 'pt';
-           const select = document.getElementById('uiLangSelect');
-           if (select) {
-               select.value = ui;
+           if(flagsMap[ui]) {
+               document.getElementById('headerUiFlag').src = `https://flagcdn.com/w20/${flagsMap[ui].flag}.png`;
+               document.getElementById('headerUiText').innerText = flagsMap[ui].name;
            }
         }, 100);
 
-        function changeUiLang() {
-            const select = document.getElementById('uiLangSelect');
-            if(select) {
-                const ui = select.value;
-                const isHistoria = window.location.pathname.includes('historia.html');
-                
-                // Pega os parametros atuais (se houver) para manter o target se estiver na tela do simulador
-                const searchParams = new URLSearchParams(window.location.search);
-                const target = searchParams.get('target') || 'en';
-                
-                // Constrói a nova URL baseada na pasta atual para evitar erros em testes locais file:///
-                let newPath = window.location.pathname;
-                
-                // Substitui o idioma antigo (/pt/, /en/) pelo novo idioma (/ui/)
-                newPath = newPath.replace(/\/[a-z]{2}\/(index|historia)\.html/, \`/\${ui}/$1.html\`);
-                
-                if (isHistoria) {
-                    window.location.href = newPath + \`?ui=\${ui}&target=\${target}\`;
-                } else {
-                    window.location.href = newPath;
-                }
+        function toggleHeaderDropdown(e) {
+            e.stopPropagation();
+            const wrapper = document.getElementById('headerUiSelectWrapper');
+            const options = document.getElementById('headerUiOptions');
+            wrapper.classList.toggle('open');
+            options.classList.toggle('open');
+        }
+
+        document.addEventListener('click', () => {
+            const wrapper = document.getElementById('headerUiSelectWrapper');
+            const options = document.getElementById('headerUiOptions');
+            if(wrapper && wrapper.classList.contains('open')) {
+                wrapper.classList.remove('open');
+                options.classList.remove('open');
+            }
+        });
+
+        function changeUiLang(ui, flag, name) {
+            const isHistoria = window.location.pathname.includes('historia.html');
+            const searchParams = new URLSearchParams(window.location.search);
+            const target = searchParams.get('target') || 'en';
+            
+            let newPath = window.location.pathname;
+            newPath = newPath.replace(/\/[a-z]{2}\/(index|historia)\.html/, `/${ui}/$1.html`);
+            
+            if (isHistoria) {
+                window.location.href = newPath + `?ui=${ui}&target=${target}`;
+            } else {
+                window.location.href = newPath;
             }
         }
       </script>

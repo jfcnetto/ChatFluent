@@ -88,7 +88,7 @@ function render() {
 
     perguntaEl.innerHTML = `
         <div class="chat-row">
-            <img src="/ChatFluent/img/avatar-npc.png" class="avatar-npc" alt="Mentor">
+            <img src="../img/avatar-npc.png" class="avatar-npc" alt="Mentor">
             <div class="npc-bubble">
                 ${perguntasSessao[etapa].npc}
             </div>
