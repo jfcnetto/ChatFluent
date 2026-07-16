@@ -289,29 +289,47 @@ function finalizarTreino() {
     const aproveitamento = totalAcoes > 0 ? Math.round((totalAcertos / totalAcoes) * 100) : 0;
     const passou = aproveitamento >= 80;
     
+    const { ui } = getUrlParams();
+    const trans = (typeof uiTranslations !== 'undefined' && uiTranslations[ui]) 
+        ? uiTranslations[ui] 
+        : (typeof uiTranslations !== 'undefined' ? uiTranslations['en'] : {
+            excellent: "Excellent!",
+            notThisTime: "Better luck next time!",
+            successLevelUp: "LEVEL UP! 🔓",
+            successMastered: "MASTERED! 🏆",
+            failTryAgain: "Try again",
+            restartJourney: "Restart Journey",
+            tryAgain: "Try Again",
+            nextLevel: "Next Level",
+            performance: "Performance:",
+            metaAdvance: "(Goal to advance: 80%)",
+            totalScore: "Total Score:",
+            share: "Share"
+        });
+
     let acaoBotao = "";
     let mensagemStatus = "";
 
     if (passou && nivelAtual < 2) {
-        mensagemStatus = `<span style="color: #58cc02;"> LEVEL UP! 🔓</span>`;
-        acaoBotao = `<button onclick="irParaProximoNivel()" style="width:100%; padding:15px; cursor:pointer;">Próximo Nível</button>`;
+        mensagemStatus = `<span style="color: #58cc02;"> ${trans.successLevelUp}</span>`;
+        acaoBotao = `<button onclick="irParaProximoNivel()" style="width:100%; padding:15px; cursor:pointer;">${trans.nextLevel}</button>`;
     } else if (passou && nivelAtual === 2) {
-        mensagemStatus = `<span style="color: #58cc02;">MASTERED! 🏆</span>`;
-        acaoBotao = `<button onclick="location.reload()" style="width:100%; padding:15px; cursor:pointer;">Reiniciar Jornada</button>`;
+        mensagemStatus = `<span style="color: #58cc02;">${trans.successMastered}</span>`;
+        acaoBotao = `<button onclick="location.reload()" style="width:100%; padding:15px; cursor:pointer;">${trans.restartJourney}</button>`;
     } else {
-        mensagemStatus = `<span style="color: #ff4b4b;">FAILED 📚</span><br><small>Tente novamente</small>`;
-        acaoBotao = `<button onclick="location.reload()" style="width:100%; padding:15px; cursor:pointer;">Tentar Novamente</button>`;
+        mensagemStatus = `<span style="color: #ff4b4b;">FAILED 📚</span><br><small>${trans.failTryAgain}</small>`;
+        acaoBotao = `<button onclick="location.reload()" style="width:100%; padding:15px; cursor:pointer;">${trans.tryAgain}</button>`;
     }
 
     container.innerHTML = `
         <div id="resultado-final" style="text-align: center; padding: 20px;">
-            <h2 style="font-size: 28px; color: var(--primary);">${passou ? 'Excelente!' : 'Não foi dessa vez!'}</h2>
+            <h2 style="font-size: 28px; color: var(--primary);">${passou ? trans.excellent : trans.notThisTime}</h2>
             <p style="margin: 10px 0; font-size: 18px; font-weight: 900;">${mensagemStatus}</p>
             
             <div style="background: #f0f0f0; border-radius: 15px; padding: 15px; margin: 20px 0;">
-                <p style="font-size: 14px; color: #666; margin-bottom: 5px;">Aproveitamento:</p>
+                <p style="font-size: 14px; color: #666; margin-bottom: 5px;">${trans.performance}</p>
                 <h3 style="font-size: 32px; color: ${passou ? '#58cc02' : '#ff4b4b'};">${aproveitamento}%</h3>
-                <p style="font-size: 12px; color: #999;">(Meta para avançar: 80%)</p>
+                <p style="font-size: 12px; color: #999;">${trans.metaAdvance}</p>
             </div>
 
             <div class="stats-card" style="display: flex; justify-content: space-around; margin-bottom: 20px;">
@@ -320,12 +338,12 @@ function finalizarTreino() {
                 <div class="stat"><span>❌ </span><br><strong>${totalErros}</strong></div>
             </div>
 
-            <p style="font-size: 18px; margin-bottom: 20px;">Pontuação Total: <b>${pontos}</b></p>
+            <p style="font-size: 18px; margin-bottom: 20px;">${trans.totalScore} <b>${pontos}</b></p>
             
             <div style="display: flex; flex-direction: column; gap: 10px;">
                 ${acaoBotao}
                 <button onclick="compartilharDesempenho()" style="background: #25d366; border-color: #128c7e; width: 100%;">
-                   📱 Compartilhe 
+                   📱 ${trans.share}
                 </button>
             </div>
         </div>
