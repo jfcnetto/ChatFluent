@@ -1715,16 +1715,12 @@ const oldQDefinition = `function q(nivel, correta, en, pt, es, fr, ja, opEn, opP
 // Substitui a definição antiga de q() pela nova
 let updatedData = originalData.replace(oldQDefinition, newQDefinition);
 
-// Injeta o translationsMap e o mapeamento de índices logo acima da declaração de rawQuestions no arquivo
-const rawQuestionsIndexMapDef = `\n// Mapeamento de índices para mesclar traduções adicionais sem mexer na lógica existente
-const rawQuestionsIndexMap = {};
-const translationsMap = ${JSON.stringify(translationsMap, null, 4)};
-translationsMap.forEach((item, idx) => {
-    rawQuestionsIndexMap[item.npc.en] = idx;
-});\n\n`;
+// Injeta o translationsMap logo acima da declaração de rawQuestions no arquivo
+const translationsMapDef = `\n// Mapa de traduções para idiomas adicionais mescladas sequencialmente por índice
+const translationsMap = ${JSON.stringify(translationsMap, null, 4)};\n\n`;
 
 // Insere a definição do mapa de traduções antes do array rawQuestions
-updatedData = updatedData.replace('const rawQuestions = [', rawQuestionsIndexMapDef + 'const rawQuestions = [');
+updatedData = updatedData.replace('const rawQuestions = [', translationsMapDef + 'const rawQuestions = [');
 
 // Grava as alterações de volta no arquivo
 fs.writeFileSync(dataPath, updatedData, 'utf8');

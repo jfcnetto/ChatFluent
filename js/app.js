@@ -67,7 +67,17 @@ function prepararSessao() {
     
     if (typeof baseDeDados === 'undefined' || !baseDeDados[target] || baseDeDados[target].length === 0) {
         console.error("Erro: Banco de dados não encontrado para o idioma alvo: " + target);
-        document.getElementById("pergunta").innerHTML = "<b>Desculpe! O banco de dados para aprender " + target.toUpperCase() + " ainda está sendo construído. Volte em breve!</b>";
+        
+        const langInfo = typeof idiomasSuportados !== 'undefined' ? idiomasSuportados.find(i => i.id === target) : null;
+        const targetName = langInfo ? langInfo.nativo : target.toUpperCase();
+        
+        let errorMsg = "Desculpe! O banco de dados para aprender " + targetName + " ainda está sendo construído. Volte em breve!";
+        const { ui } = getUrlParams();
+        if (typeof uiTranslations !== 'undefined' && uiTranslations[ui] && uiTranslations[ui].dbError) {
+            errorMsg = uiTranslations[ui].dbError.replace("{lang}", targetName);
+        }
+        
+        document.getElementById("pergunta").innerHTML = "<b>" + errorMsg + "</b>";
         return;
     }
 
