@@ -1675,9 +1675,8 @@ const originalData = fs.readFileSync(dataPath, 'utf8');
 
 // 1. Reescrever a função q() para mapear dinamicamente todos os 11 idiomas passados
 const newQDefinition = `function q(nivel, correta, en, pt, es, fr, ja, opEn, opPt, opEs, opFr, opJa) {
-    // Encontra as traduções adicionais no mapa de traduções usando a correspondência do texto em inglês
-    const index = rawQuestionsIndexMap[en];
-    const trans = index !== undefined ? translationsMap[index] : null;
+    const index = questionCounter++;
+    const trans = translationsMap[index];
 
     return {
         nivel, correta,
@@ -1712,12 +1711,34 @@ const oldQDefinition = `function q(nivel, correta, en, pt, es, fr, ja, opEn, opP
     };
 }`;
 
-// Substitui a definição antiga de q() pela nova
-let updatedData = originalData.replace(oldQDefinition, newQDefinition);
+// Remove qualquer declaração anterior do translationsMap ou rawQuestionsIndexMap para evitar duplicatas
+let cleanedData = originalData;
+
+// Remove bloco de mapeamento e translationsMap antigo se já existir no arquivo
+const mapStartMarker = '// Mapa de traduções para idiomas adicionais mescladas sequencialmente por índice';
+const mapStartIdx = cleanedData.indexOf(mapStartMarker);
+if (mapStartIdx !== -1) {
+    const rawQuestionsIdx = cleanedData.indexOf('const rawQuestions = [');
+    if (rawQuestionsIdx !== -1 && rawQuestionsIdx > mapStartIdx) {
+        cleanedData = cleanedData.substring(0, mapStartIdx) + cleanedData.substring(rawQuestionsIdx);
+    }
+}
+
+// Remove declaração antiga (código legado com rawQuestionsIndexMap) se existir
+const legacyStartMarker = '// Mapeamento de índices para mesclar traduções adicionais sem mexer na lógica existente';
+const legacyStartIdx = cleanedData.indexOf(legacyStartMarker);
+if (legacyStartIdx !== -1) {
+    const rawQuestionsIdx = cleanedData.indexOf('const rawQuestions = [');
+    if (rawQuestionsIdx !== -1 && rawQuestionsIdx > legacyStartIdx) {
+        cleanedData = cleanedData.substring(0, legacyStartIdx) + cleanedData.substring(rawQuestionsIdx);
+    }
+}
+
+// Substitui a definição antiga de q() pela nova se ainda estiver no formato antigo
+let updatedData = cleanedData.replace(oldQDefinition, newQDefinition);
 
 // Injeta o translationsMap logo acima da declaração de rawQuestions no arquivo
-const translationsMapDef = `\n// Mapa de traduções para idiomas adicionais mescladas sequencialmente por índice
-const translationsMap = ${JSON.stringify(translationsMap, null, 4)};\n\n`;
+const translationsMapDef = `${mapStartMarker}\nconst translationsMap = ${JSON.stringify(translationsMap, null, 4)};\n\n`;
 
 // Insere a definição do mapa de traduções antes do array rawQuestions
 updatedData = updatedData.replace('const rawQuestions = [', translationsMapDef + 'const rawQuestions = [');
