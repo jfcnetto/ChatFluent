@@ -81,9 +81,6 @@ const targetScriptMenu = `const menuTranslations = {
 
            // Torna a logo dinâmica`;
 
-const oldFooterPart = `const pathMatch = window.location.pathname.match(/\\/([a-z]{2})\\/index\\.html|\\/([a-z]{2})\\/historia\\.html/);
-    const ui = pathMatch ? (pathMatch[1] || pathMatch[2]) : 'pt';`;
-
 const targetFooterLang = `const urlParams = new URLSearchParams(window.location.search);
     let ui = urlParams.get('ui');
     if (!ui) {
@@ -96,38 +93,34 @@ const targetFooterLang = `const urlParams = new URLSearchParams(window.location.
 const sloganDivRegex = /<!-- SLOGAN \(CENTRALIZADO\) -->\s*<div id="headerSlogan"[\s\S]*?<\/div>/;
 const sloganScriptRegex = /const sloganMap = \{[\s\S]*?setTimeout\(\(\) => \{[\s\S]*?\}\s*if\(sloganMap\[ui\]\) \{[\s\S]*?\}\s*([^\n]*\/\/ Torna a logo dinâmica)/;
 
+// Expressão regular flexível e testada para casar com a lógica de idioma do rodapé
+const footerLangRegex = /const pathMatch = window\.location\.pathname\.match\(\/\\\/([a-z]\{2\})\\\/index\\\.html\|\\\/([a-z]\{2\})\\\/historia\\\.html\/\);\s*const ui = pathMatch \? \(pathMatch\[1\] \|\| pathMatch\[2\]\) : 'pt';/;
+
 let updatedCount = 0;
 
 for (const file of htmlFiles) {
     let content = fs.readFileSync(file, 'utf8');
     let modified = false;
 
-    // 1. Replace slogan div
+    // 1. Substituir div do slogan
     if (sloganDivRegex.test(content)) {
         content = content.replace(sloganDivRegex, targetSloganMenu);
         modified = true;
     }
 
-    // 2. Replace slogan script
+    // 2. Substituir script do slogan
     if (sloganScriptRegex.test(content)) {
         content = content.replace(sloganScriptRegex, targetScriptMenu);
         modified = true;
     }
 
-    // 3. Replace footer language logic (exact string matching)
-    if (content.includes(oldFooterPart)) {
-        content = content.replace(oldFooterPart, targetFooterLang);
-        modified = true;
-    }
-
-    // 4. Fallback/Alternative footer pattern matching if spaces vary
-    const footerLangRegex = /const pathMatch = window\.location\.pathname\.match\(\/\\\/\\\(\[a-z\]\{2\}\)\\\/index\\\.html\|\\\/\\\(\[a-z\]\{2\}\)\\\/historia\\\.html\/\);\s*const ui = pathMatch \? \(pathMatch\[1\] \|\| pathMatch\[2\]\) : 'pt';/;
-    if (!modified && footerLangRegex.test(content)) {
+    // 3. Substituir lógica do rodapé usando regex robusta
+    if (footerLangRegex.test(content)) {
         content = content.replace(footerLangRegex, targetFooterLang);
         modified = true;
     }
 
-    // 5. Replace header UI logic if header path match regex exists and hasn't been replaced yet
+    // 4. Substituir cabeçalho antigo se houver padrão antigo de UI
     const headerPathMatchStr = `const pathMatch = window.location.pathname.match(/\\/([a-z]{2})\\/index\\.html|\\/([a-z]{2})\\/historia\\.html|\\/([a-z]{2})\\/[a-z]+\\.html/);
            const ui = pathMatch ? (pathMatch[1] || pathMatch[2] || pathMatch[3]) : 'pt';`;
 
