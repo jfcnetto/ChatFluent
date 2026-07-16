@@ -164,6 +164,52 @@ function render() {
     });
 
     opcoesEl.innerHTML = html;
+
+    // Atualiza os anúncios de propaganda de forma dinâmica sem resetar os estudos
+    atualizarAnunciosAdSense();
+}
+
+/**
+ * Recarrega anúncios do AdSense (ou banners de placeholder) de forma dinâmica
+ */
+function atualizarAnunciosAdSense() {
+    const banners = ['#main-banner', '#footer-banner'];
+    banners.forEach(selector => {
+        const container = document.querySelector(selector);
+        if (!container) return;
+
+        const adElement = container.querySelector('.adsbygoogle');
+        
+        if (adElement) {
+            // Se houver um anúncio do Google AdSense real ativo na página, recria o bloco e dispara a carga
+            const client = adElement.getAttribute('data-ad-client') || '';
+            const slot = adElement.getAttribute('data-ad-slot') || '';
+            const format = adElement.getAttribute('data-ad-format') || 'auto';
+            const responsive = adElement.getAttribute('data-full-width-responsive') || 'true';
+
+            container.innerHTML = `
+                <ins class="adsbygoogle"
+                     style="display:block"
+                     data-ad-client="${client}"
+                     data-ad-slot="${slot}"
+                     data-ad-format="${format}"
+                     data-full-width-responsive="${responsive}"></ins>
+            `;
+            try {
+                (adsbygoogle = window.adsbygoogle || []).push({});
+            } catch (e) {
+                console.log("AdSense refresh disparado.");
+            }
+        } else {
+            // Se for a imagem provisória (placeholder de teste), atualizamos a imagem dinamicamente para alternar
+            const img = container.querySelector('img');
+            if (img) {
+                // Adiciona um query param aleatório para forçar o navegador a recarregar a imagem do banner de forma limpa
+                const currentSrc = img.src.split('?')[0];
+                img.src = `${currentSrc}?t=${new Date().getTime()}`;
+            }
+        }
+    });
 }
 
 function compartilharDesempenho() {
