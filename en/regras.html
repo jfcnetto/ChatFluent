@@ -278,8 +278,8 @@
     const urlParams = new URLSearchParams(window.location.search);
     let ui = urlParams.get('ui');
     if (!ui) {
-        const pathMatch = window.location.pathname.match(/\/([a-z]{2})\/index\.html|\/([a-z]{2})\/historia\.html/);
-        ui = pathMatch ? (pathMatch[1] || pathMatch[2]) : 'pt';
+        const pathMatch = window.location.pathname.match(/\/([a-z]{2})\/[a-z0-9-_]+\.html/);
+        ui = pathMatch ? pathMatch[1] : 'pt';
     }
     
     const isSeo = window.location.pathname.includes('/seo/');
@@ -287,7 +287,7 @@
 
     const translations = {
         'pt': {
-            home: 'Home', rules: 'Regras', privacy: 'Privacidade', terms: 'Termos', contact: 'Contact',
+            home: 'Home', rules: 'Regras', privacy: 'Privacidade', terms: 'Termos', contact: 'Contato',
             copyright: '2026 ChatFluent. Aprenda brincando.',
             seoLinks: [
                 { url: 'seo/aprender-en.html', text: 'Aprender Inglês' },

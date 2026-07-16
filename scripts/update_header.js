@@ -84,8 +84,8 @@ const targetScriptMenu = `const menuTranslations = {
 const targetFooterLang = `const urlParams = new URLSearchParams(window.location.search);
     let ui = urlParams.get('ui');
     if (!ui) {
-        const pathMatch = window.location.pathname.match(/\\/([a-z]{2})\\/index\\.html|\\/([a-z]{2})\\/historia\\.html/);
-        ui = pathMatch ? (pathMatch[1] || pathMatch[2]) : 'pt';
+        const pathMatch = window.location.pathname.match(/\\/([a-z]{2})\\/[a-z0-9-_]+\\.html/);
+        ui = pathMatch ? pathMatch[1] : 'pt';
     }
     `;
 
@@ -94,7 +94,7 @@ const sloganDivRegex = /<!-- SLOGAN \(CENTRALIZADO\) -->\s*<div id="headerSlogan
 const sloganScriptRegex = /const sloganMap = \{[\s\S]*?setTimeout\(\(\) => \{[\s\S]*?\}\s*if\(sloganMap\[ui\]\) \{[\s\S]*?\}\s*([^\n]*\/\/ Torna a logo dinâmica)/;
 
 // Expressão regular flexível e testada para casar com a lógica de idioma do rodapé
-const footerLangRegex = /const pathMatch = window\.location\.pathname\.match\(\/\\\/([a-z]\{2\})\\\/index\\\.html\|\\\/([a-z]\{2\})\\\/historia\\\.html\/\);\s*const ui = pathMatch \? \(pathMatch\[1\] \|\| pathMatch\[2\]\) : 'pt';/;
+const footerLangRegex = /const\s+pathMatch\s*=\s*window\.location\.pathname\.match\(\/\\\/([a-z]\{2\})\\\/index\\\.html\|\\\/([a-z]\{2\})\\\/historia\\\.html\/\);\s*ui\s*=\s*pathMatch\s*\?\s*\(pathMatch\[1\]\s*\|\|\s*pathMatch\[2\]\)\s*:\s*'pt';|const\s+pathMatch\s*=\s*window\.location\.pathname\.match\(\/\\\/\(\[a-z\]\{2\}\)\\\/index\\\.html\|\\\/\(\[a-z\]\{2\}\)\\\/historia\\\.html\/\);\s*let\s+ui\s*=\s*urlParams\.get\('ui'\);\s*if\s*\(!ui\)\s*\{\s*const\s+pathMatch\s*=\s*window\.location\.pathname\.match\(\/\\\/\(\[a-z\]\{2\}\)\\\/index\\\.html\|\\\/\(\[a-z\]\{2\}\)\\\/historia\\\.html\/\);\s*ui\s*=\s*pathMatch\s*\?\s*\(pathMatch\[1\]\s*\|\|\s*pathMatch\[2\]\)\s*:\s*'pt';\s*\}/g;
 
 let updatedCount = 0;
 
