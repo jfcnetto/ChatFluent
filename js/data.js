@@ -11661,28 +11661,28 @@ const rawQuestions = [
     // ==========================================
     q(0, 0, "Hi! How are you?", "Olá! Como você está?", "¡Hola! ¿Cómo estás?", "Salut! Comment ça va?", "こんにちは！お元気ですか？",
         ["I'm fine, thanks!", "Fine you", "I is good"], ["Estou bem, obrigado!", "Bem você", "Eu sou bom"], ["¡Muy bien, gracias!", "Bien tú", "Yo es bueno"], ["Ça va bien, merci!", "Bien toi", "Je suis bien"], ["元気です、ありがとう！", "元気あなた", "私は良い"]),
-    
+
     q(0, 0, "What is your name?", "Qual é o seu nome?", "¿Cómo te llamas?", "Comment t'appelles-tu?", "お名前は何ですか？",
         ["My name is John", "Name John", "Me John"], ["Meu nome é João", "Nome João", "Eu João"], ["Me llamo Juan", "Llamo Juan", "Yo Juan"], ["Je m'appelle Jean", "Nom Jean", "Moi Jean"], ["私の名前はケンです", "名前ケン", "私ケン"]),
-    
+
     q(0, 0, "Where are you from?", "De onde você é?", "¿De dónde eres?", "D'où viens-tu?", "どこの出身ですか？",
         ["I'm from Brazil", "Brazil I am", "From Brazil"], ["Eu sou do Brasil", "Brasil eu", "De Brasil"], ["Soy de Brasil", "Brasil yo", "De Brasil"], ["Je viens du Brésil", "Brésil moi", "De Brésil"], ["ブラジル出身です", "ブラジル私", "ブラジルから"]),
-    
+
     q(0, 0, "Do you speak English?", "Você fala inglês?", "¿Hablas inglés?", "Parles-tu anglais?", "英語を話しますか？",
         ["Yes, a little", "Speak yes", "Little yes"], ["Sim, um pouco", "Falo sim", "Pouco sim"], ["Sí, un poco", "Hablo sí", "Poco sí"], ["Oui, un peu", "Parle oui", "Peu oui"], ["はい、少し話します", "話すはい", "少しはい"]),
-    
+
     q(0, 0, "Nice to meet you!", "Prazer em conhecer você!", "¡Gusto en conocerte!", "Enchanté!", "はじめまして！",
         ["Nice to meet you too", "Me too", "Same meet"], ["O prazer é meu", "Igualmente", "Prazer também"], ["El gusto es mío", "Igualmente", "Gusto también"], ["Enchanté également", "Moi aussi", "Enchanté aussi"], ["こちらこそ、よろしくお願いします", "私も", "はじめまして同じ"]),
-    
+
     q(0, 0, "Where is the bathroom?", "Onde fica o banheiro?", "¿Dónde está el baño?", "Où sont les toilettes?", "トイレはどこですか？",
         ["It's on the left", "Bathroom left", "Go left"], ["Fica à esquerda", "Banheiro esquerda", "Vá esquerda"], ["Está a la izquierda", "Baño izquierda", "Ve izquierda"], ["C'est à gauche", "Toilettes gauche", "Va gauche"], ["左側にあります", "トイレ左", "左に行きます"]),
-    
+
     q(0, 0, "How much is this?", "Quanto custa isto?", "¿Cuánto cuesta esto?", "Combien ça coûte?", "これはいくらですか？",
         ["It is ten dollars", "Ten dollars cost", "Cost ten"], ["Custa dez dólares", "Dez dólares custa", "Dez custa"], ["Cuesta diez dólares", "Diez dólares cuesta", "Diez cuesta"], ["Ça coûte dix dollars", "Dix dollars coûte", "Dix coûte"], ["十ドルです", "十ドルコスト", "十です"]),
-    
+
     q(0, 0, "Goodbye!", "Adeus!", "¡Adiós!", "Au revoir!", "さようなら！",
         ["See you later!", "Goodbye yes", "Later go"], ["Até mais!", "Tchau sim", "Mais tarde"], ["¡Hasta luego!", "Adiós sí", "Luego ve"], ["À plus tard!", "Au revoir oui", "Tard va"], ["またね！", "さようならはい", "後で"]),
-    
+
     q(0, 0, "Thank you!", "Obrigado!", "¡Gracias!", "Merci!", "ありがとうございます！",
         ["You're welcome!", "Welcome yes", "Thanks go"], ["De nada!", "Imagina", "Obrigado também"], ["¡De nada!", "No hay de qué", "Gracias también"], ["De rien!", "Je vous en prie", "Merci aussi"], ["どういたしまして！", "どういたしましてはい", "ありがとう同じ"]),
 
@@ -11754,25 +11754,25 @@ const rawQuestions = [
     // ==========================================
     q(1, 0, "Would you like to order now?", "Gostaria de pedir agora?", "¿Le gustaría pedir ahora?", "Souhaitez-vous commander maintenant?", "今ご注文なさいますか？",
         ["Yes, I'll have the steak, please", "Yes, want steak", "Give steak"], ["Sim, eu vou querer o bife, por favor", "Quero bife", "Dá bife"], ["Sí, voy a querer el filete, por favor", "Quiero filete", "Dame filete"], ["Oui, je vais prendre le steak, s'il vous plaît", "Veux steak", "Donne steak"], ["はい、ステーキをお願いします", "ステーキ欲しい", "ステーキくれ"]),
-    
+
     q(1, 0, "What is your favorite hobby?", "Qual é o seu passatempo favorito?", "¿Cuál es tu pasatiempo favorito?", "Quel est ton passe-temps favori?", "あなたの好きな趣味は何ですか？",
         ["I enjoy reading books", "I like read", "Read is my hobby"], ["Eu gosto de ler livros", "Gosto ler", "Ler é meu hobby"], ["Disfruto leyendo libros", "Gusta leer", "Leer es hobby"], ["J'aime lire des livres", "Aime lire", "Lire est mon passe-temps"], ["本を読むのが好きです", "読むの好き", "読書は趣味です"]),
-    
+
     q(1, 0, "How do I get to the station?", "Como chego à estação?", "¿Cómo llego a la estación?", "Comment aller à la gare?", "駅にはどうやって行きますか？",
         ["Go straight and turn right", "Straight and right", "Go station right"], ["Siga em frente e vire à direita", "Direto e direita", "Vá estação direita"], ["Sigue recto y gira a la derecha", "Recto y derecha", "Ve estación derecha"], ["Allez tout droit et tournez à droite", "Tout droit droite", "Va gare droite"], ["まっすぐ進んで右に曲がります", "まっすぐ右", "駅右に行きます"]),
-    
+
     q(1, 0, "What's the weather like today?", "Como está o tempo hoje?", "¿Cómo está el clima hoy?", "Quel temps fait-il aujourd'hui?", "今日の天気はどうですか？",
         ["It's sunny and warm", "Sun and warm", "Sunny today is"], ["Está ensolarado e quente", "Sol e quente", "Sol hoje está"], ["Está soleado y cálido", "Sol y cálido", "Soleado hoy está"], ["Il fait beau et chaud", "Soleil chaud", "Beau aujourd'hui est"], ["晴れていて暖かいです", "晴れ暖かい", "晴れ今日"]),
-    
+
     q(1, 0, "Have you finished your homework?", "Você terminou sua lição de casa?", "¿Terminaste tu tarea?", "As-tu fini tes devoirs?", "宿題は終わりましたか？",
         ["Not yet, I need more time", "No, need time", "Yes, I finish"], ["Ainda não, preciso de mais tempo", "Não, preciso tempo", "Sim, terminei"], ["Aún no, necesito más tiempo", "No, necesito tiempo", "Sí, terminé"], ["Pas encore, j'ai besoin de temps", "Non, besoin temps", "Oui, je fini"], ["まだです、もっと時間が必要です", "いいえ、時間必要", "はい、終わりました"]),
-    
+
     q(1, 0, "What did you do last weekend?", "O que você fez no fim de semana passado?", "¿Qué hiciste el fin de semana pasado?", "Qu'as-tu fait le week-end dernier?", "先週末は何をしましたか？",
         ["I went to the cinema with friends", "I go to cinema", "Went cinema"], ["Fui ao cinema com amigos", "Vou cinema", "Fui cinema"], ["Fui al cine con amigos", "Voy al cine", "Fui cine"], ["Je suis allé au cinéma avec des amis", "Vais cinéma", "Allé cinéma"], ["友達と映画館に行きました", "映画行く", "映画行きました"]),
-    
+
     q(1, 0, "Do you have any pets?", "Você tem algum animal de estimação?", "¿Tienes alguna mascota?", "As-tu des animaux de compagnie?", "ペットはいますか？",
         ["Yes, I have a dog and a cat", "Yes, two pets dog", "Yes, I have"], ["Sim, tenho um cachorro e um gato", "Sim, dois pet cão", "Sim, eu tenho"], ["Sí, tengo un perro y un gato", "Sí, dos mascotas", "Sí, tengo"], ["Oui, j'ai un chien et un chat", "Oui, deux animaux", "Oui, j'ai"], ["はい、犬と猫を飼っています", "はい、二匹犬", "はい、あります"]),
-    
+
     q(1, 0, "Can we meet tomorrow at 10 AM?", "Podemos nos encontrar amanhã às 10h?", "¿Podemos reunirnos mañana a las 10 AM?", "Pouvons-nous nous voir demain à 10h?", "明日午前10時に会えますか？",
         ["Yes, that works for me", "Yes, tomorrow 10", "Tomorrow yes"], ["Sim, por mim tudo bem", "Sim, amanhã 10", "Amanhã sim"], ["Sí, me parece bien", "Sí, mañana 10", "Mañana sí"], ["Oui, ça me convient", "Oui, demain 10", "Demain oui"], ["はい、都合がいいです", "はい、明日10", "明日はい"]),
 
@@ -11862,25 +11862,25 @@ const rawQuestions = [
     // ==========================================
     q(2, 0, "What are your professional strengths?", "Quais são seus pontos fortes profissionais?", "¿Cuáles son sus fortalezas profesionales?", "Quels sont vos points forts professionnels?", "仕事上のあなたの強みは何ですか？",
         ["I am proactive and highly organized", "I am good worker", "Proactive me"], ["Sou proativo e muito organizado", "Trabalho bem", "Bom funcionário"], ["Soy proactivo y muy organizado", "Trabajo bien", "Buen empleado"], ["Je suis proactif et très organisé", "Travaille bien", "Bon employé"], ["私は積極的で、とても計画的です", "よく働く", "良い社員"]),
-    
+
     q(2, 0, "How should we address the project delay?", "Como devemos tratar o atraso do projeto?", "¿Cómo deberíamos manejar el retraso del proyecto?", "Comment devrions-nous gérer le retard du projet?", "プロジェクトの遅れにどう対応すべきですか？",
         ["We should prioritize critical tasks first", "Work faster", "Delay bad"], ["Devemos priorizar as tarefas críticas primeiro", "Trabalhar rápido", "Atraso ruim"], ["Deberíamos priorizar las tareas críticas primero", "Trabajar rápido", "Retraso malo"], ["Nous devrions d'abord prioriser les tâches critiques", "Travailler vite", "Retard mauvais"], ["まずは最優先課題を優先すべきです", "早く働く", "遅延は悪い"]),
-    
+
     q(2, 0, "How do you handle stressful situations?", "Como você lida com situações estressantes?", "¿Cómo manejas las situaciones estresantes?", "Comment gérez-vous les situations stressantes?", "ストレスのかかる状況にどう対処しますか？",
         ["I practice mindfulness and prioritize work", "I rest", "Stress is ok"], ["Eu pratico meditação e organizo as tarefas", "Eu descanso", "Estresse ok"], ["Practico la meditación y organizo mis tareas", "Yo descanso", "Estrés ok"], ["Je pratique la méditation et j'organise mes tâches", "Je me repose", "Stress ok"], ["マインドフルネスを実践し、タスクを整理します", "休む", "ストレス大丈夫"]),
-    
+
     q(2, 0, "Do you agree with the current proposal?", "Você concorda com a proposta atual?", "¿Estás de acuerdo con la propuesta actual?", "Êtes-vous d'accord avec la proposition actuelle?", "現在の提案に同意しますか？",
         ["I agree, provided we adjust the budget", "Yes, I agree", "Proposal yes"], ["Eu concordo, desde que ajustemos o orçamento", "Sim, concordo", "Proposta sim"], ["Estoy de acuerdo, siempre que ajustemos el presupuesto", "Sí, de acuerdo", "Propuesta sí"], ["Je suis d'accord, à condition d'ajuster le budget", "Oui, d'accord", "Proposition oui"], ["予算を調整していただけるなら、同意します", "はい、同意します", "提案はい"]),
-    
+
     q(2, 0, "What is the sales forecast for next quarter?", "Qual é a previsão de vendas para o próximo trimestre?", "¿Cuál es el pronóstico de vendas para el próximo trimestre?", "Quelles sont les prévisions de ventes pour le trimestre prochain?", "来四半期の売上予測はどうですか？",
         ["We anticipate a ten percent growth", "Sales good", "Increase sales"], ["Prevemos um crescimento de dez por cento", "Vendas boas", "Aumento vendas"], ["Prevemos un crecimiento del diez por ciento", "Ventas buenas", "Aumento ventas"], ["Nous prévoyons une croissance de dix pour cent", "Ventes bonnes", "Hausse ventes"], ["10パーセントの成長を予測しています", "売上良い", "売上成長"]),
-    
+
     q(2, 0, "Was there a problem with the database?", "Houve algum problema com o banco de dados?", "¿Hubo algún problema con la base de datos?", "Y a-t-il eu un problème avec la base de données?", "データベースに問題がありましたか？",
         ["Yes, it went offline for an hour", "Server bad", "No server"], ["Sim, ele ficou fora do ar por uma hora", "Servidor ruim", "Sem servidor"], ["Sí, se cayó por una hora", "Servidor malo", "Sin servidor"], ["Oui, elle s'est déconnectée pendant une heure", "Serveur mauvais", "Pas serveur"], ["はい、1時間オフラインになりました", "サーバー悪い", "サーバーなし"]),
-    
+
     q(2, 0, "Could you send me the invoice, please?", "Poderia me enviar a fatura, por favor?", "¿Podría enviarme la factura, por favor?", "Pourriez-vous m'envoyer la facture, s'il vous plaît?", "請求書を送っていただけますか？",
         ["Sure, I will email it to you today", "Invoice email", "Send yes"], ["Claro, vou enviar por e-mail hoje", "Fatura e-mail", "Enviar sim"], ["Claro, te la enviaré por correo hoy", "Factura correo", "Enviar sí"], ["Bien sûr, je vous l'enverrai par e-mail aujourd'hui", "Facture e-mail", "Envoyer oui"], ["かしこまりました、本日メールでお送りします", "請求書メール", "送るはい"]),
-    
+
     q(2, 0, "What is the impact of the new policy?", "Qual é o impacto da nova política?", "¿Cuál es el impacto de la nueva política?", "Quel est l'impact de la nouvelle politique?", "新方針の影響は何ですか？",
         ["It will reduce operational costs", "New taxes", "Law change"], ["Ela reduzirá os custos operacionais", "Novos impostos", "Mudança lei"], ["Reducirá los costos operativos", "Nuevos impuestos", "Cambio ley"], ["Elle réduira les coûts opérationnels", "Nouveaux impôts", "Changement loi"], ["運営コストを削減する見込みです", "新しい税金", "法律変更"]),
 
@@ -11971,12 +11971,12 @@ const idiomasDisponiveis = ["en", "pt", "es", "fr", "ja", "it", "de", "nl", "pl"
 
 idiomasDisponiveis.forEach(lang => {
     baseDeDados[lang] = [];
-    
+
     rawQuestions.forEach(qItem => {
         // Pega os textos do idioma ou usa o fallback
         const npcText = qItem.npc[lang] || qItem.npc['en'];
         const optionsText = qItem.opcoes[lang] || qItem.opcoes['en'];
-        
+
         baseDeDados[lang].push({
             npc: npcText,
             opcoes: optionsText,
