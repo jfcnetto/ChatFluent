@@ -67,17 +67,7 @@ function prepararSessao() {
     
     if (typeof baseDeDados === 'undefined' || !baseDeDados[target] || baseDeDados[target].length === 0) {
         console.error("Erro: Banco de dados não encontrado para o idioma alvo: " + target);
-        
-        const langInfo = typeof idiomasSuportados !== 'undefined' ? idiomasSuportados.find(i => i.id === target) : null;
-        const targetName = langInfo ? langInfo.nativo : target.toUpperCase();
-        
-        let errorMsg = "Desculpe! O banco de dados para aprender " + targetName + " ainda está sendo construído. Volte em breve!";
-        const { ui } = getUrlParams();
-        if (typeof uiTranslations !== 'undefined' && uiTranslations[ui] && uiTranslations[ui].dbError) {
-            errorMsg = uiTranslations[ui].dbError.replace("{lang}", targetName);
-        }
-        
-        document.getElementById("pergunta").innerHTML = "<b>" + errorMsg + "</b>";
+        document.getElementById("pergunta").innerHTML = "<b>Desculpe! O banco de dados para aprender " + target.toUpperCase() + " ainda está sendo construído. Volte em breve!</b>";
         return;
     }
 
@@ -299,39 +289,29 @@ function finalizarTreino() {
     const aproveitamento = totalAcoes > 0 ? Math.round((totalAcertos / totalAcoes) * 100) : 0;
     const passou = aproveitamento >= 80;
     
-    const { ui } = getUrlParams();
-    const trans = (typeof uiTranslations !== 'undefined' && uiTranslations[ui]) 
-        ? uiTranslations[ui] 
-        : (typeof uiTranslations !== 'undefined' ? uiTranslations['en'] : {
-            excellent: "Excellent!", tryAgainTitle: "Better luck next time!", levelUp: " LEVEL UP! 🔓", mastered: "MASTERED! 🏆",
-            failed: "FAILED 📚", tryAgainSub: "Try again", performance: "Performance:", goalToAdvance: "(Goal to advance: 80%)",
-            totalPoints: "Total Points:", nextLevel: "Next Level", restartJourney: "Restart Journey", tryAgainBtn: "Try Again",
-            share: "📱 Share"
-        });
-
     let acaoBotao = "";
     let mensagemStatus = "";
 
     if (passou && nivelAtual < 2) {
-        mensagemStatus = `<span style="color: #58cc02;">${trans.levelUp}</span>`;
-        acaoBotao = `<button onclick="irParaProximoNivel()" style="width:100%; padding:15px; cursor:pointer;">${trans.nextLevel}</button>`;
+        mensagemStatus = `<span style="color: #58cc02;"> LEVEL UP! 🔓</span>`;
+        acaoBotao = `<button onclick="irParaProximoNivel()" style="width:100%; padding:15px; cursor:pointer;">Próximo Nível</button>`;
     } else if (passou && nivelAtual === 2) {
-        mensagemStatus = `<span style="color: #58cc02;">${trans.mastered}</span>`;
-        acaoBotao = `<button onclick="location.reload()" style="width:100%; padding:15px; cursor:pointer;">${trans.restartJourney}</button>`;
+        mensagemStatus = `<span style="color: #58cc02;">MASTERED! 🏆</span>`;
+        acaoBotao = `<button onclick="location.reload()" style="width:100%; padding:15px; cursor:pointer;">Reiniciar Jornada</button>`;
     } else {
-        mensagemStatus = `<span style="color: #ff4b4b;">${trans.failed}</span><br><small>${trans.tryAgainSub}</small>`;
-        acaoBotao = `<button onclick="location.reload()" style="width:100%; padding:15px; cursor:pointer;">${trans.tryAgainBtn}</button>`;
+        mensagemStatus = `<span style="color: #ff4b4b;">FAILED 📚</span><br><small>Tente novamente</small>`;
+        acaoBotao = `<button onclick="location.reload()" style="width:100%; padding:15px; cursor:pointer;">Tentar Novamente</button>`;
     }
 
     container.innerHTML = `
         <div id="resultado-final" style="text-align: center; padding: 20px;">
-            <h2 style="font-size: 28px; color: var(--primary);">${passou ? trans.excellent : trans.tryAgainTitle}</h2>
+            <h2 style="font-size: 28px; color: var(--primary);">${passou ? 'Excelente!' : 'Não foi dessa vez!'}</h2>
             <p style="margin: 10px 0; font-size: 18px; font-weight: 900;">${mensagemStatus}</p>
             
             <div style="background: #f0f0f0; border-radius: 15px; padding: 15px; margin: 20px 0;">
-                <p style="font-size: 14px; color: #666; margin-bottom: 5px;">${trans.performance}</p>
+                <p style="font-size: 14px; color: #666; margin-bottom: 5px;">Aproveitamento:</p>
                 <h3 style="font-size: 32px; color: ${passou ? '#58cc02' : '#ff4b4b'};">${aproveitamento}%</h3>
-                <p style="font-size: 12px; color: #999;">${trans.goalToAdvance}</p>
+                <p style="font-size: 12px; color: #999;">(Meta para avançar: 80%)</p>
             </div>
 
             <div class="stats-card" style="display: flex; justify-content: space-around; margin-bottom: 20px;">
@@ -340,12 +320,12 @@ function finalizarTreino() {
                 <div class="stat"><span>❌ </span><br><strong>${totalErros}</strong></div>
             </div>
 
-            <p style="font-size: 18px; margin-bottom: 20px;">${trans.totalPoints} <b>${pontos}</b></p>
+            <p style="font-size: 18px; margin-bottom: 20px;">Pontuação Total: <b>${pontos}</b></p>
             
             <div style="display: flex; flex-direction: column; gap: 10px;">
                 ${acaoBotao}
                 <button onclick="compartilharDesempenho()" style="background: #25d366; border-color: #128c7e; width: 100%;">
-                   ${trans.share}
+                   📱 Compartilhe 
                 </button>
             </div>
         </div>
