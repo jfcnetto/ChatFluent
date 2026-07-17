@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Privacy Policy | ChatFluent</title>
-    <meta name="description" content="Learn how ChatFluent collects, uses, and protects your data when using our platform.">
+    <meta name="description" content="Saiba como o ChatFluent coleta, usa e protege seus dados ao utilizar nossa plataforma.">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/style.css">
     <link rel="icon" type="image/png" href="../img/favicon.png">
@@ -16,7 +16,7 @@
     
     <!-- LOGO -->
     <div class="brand" style="flex-shrink: 0;">
-      <a href="../en/index.html" id="headerLogoLink">
+      <a href="../pt/index.html" id="headerLogoLink">
         <img src="../img/logo.png" class="logo-img" alt="ChatFluent" id="headerLogoImg">
       </a>
     </div>
@@ -24,8 +24,8 @@
     <!-- MENU (CENTRALIZADO) -->
     <nav id="headerMenu" style="flex: 1; display: flex; justify-content: center; gap: 20px;">
       <a href="#" id="headerMenuHome" style="text-decoration: none; color: #333; font-weight: 600; font-size: 15px;">Home</a>
-      <a href="#" id="headerMenuRegras" style="text-decoration: none; color: #333; font-weight: 600; font-size: 15px;">Rules</a>
-      <a href="#" id="headerMenuContato" style="text-decoration: none; color: #333; font-weight: 600; font-size: 15px;">Contact</a>
+      <a href="#" id="headerMenuRegras" style="text-decoration: none; color: #333; font-weight: 600; font-size: 15px;">Regras</a>
+      <a href="#" id="headerMenuContact" style="text-decoration: none; color: #333; font-weight: 600; font-size: 15px;">Contact</a>
     </nav>
 
     <!-- SELETOR DE IDIOMAS (CUSTOM DROPDOWN COM BANDEIRAS - ALINHADO À DIREITA) -->
@@ -33,8 +33,8 @@
       <div class="custom-select-wrapper" id="headerUiSelectWrapper">
          <div class="custom-select-trigger" onclick="toggleHeaderDropdown(event)">
              <div style="display:flex; align-items:center; gap:8px;">
-                 <img src="https://flagcdn.com/w20/us.png" id="headerUiFlag" alt="Flag">
-                 <span id="headerUiText">English</span>
+                 <img src="https://flagcdn.com/w20/br.png" id="headerUiFlag" alt="Flag">
+                 <span id="headerUiText">Português</span>
              </div>
              <span class="arrow-icon">▼</span>
          </div>
@@ -90,7 +90,7 @@
         };
 
         const menuTranslations = {
-            'pt': { home: 'Home', rules: 'Regras', contact: 'Contato' },
+            'pt': { home: 'Home', rules: 'Regras', contact: 'Contact' },
             'en': { home: 'Home', rules: 'Rules', contact: 'Contact' },
             'es': { home: 'Inicio', rules: 'Reglas', contact: 'Contacto' },
             'fr': { home: 'Accueil', rules: 'Règles', contact: 'Contact' },
@@ -121,7 +121,7 @@
            const tMenu = menuTranslations[ui] || menuTranslations['en'];
            const homeLink = document.getElementById('headerMenuHome');
            const rulesLink = document.getElementById('headerMenuRegras');
-           const contactLink = document.getElementById('headerMenuContato');
+           const contactLink = document.getElementById('headerMenuContact');
            if (homeLink) {
                homeLink.innerText = tMenu.home;
                homeLink.href = `${depth}${ui}/index.html`;
@@ -221,6 +221,7 @@
 </div>
 
 <main class="container">
+    <!-- Removido o style="margin-bottom: 20px;" para evitar conflito com o novo style.css -->
     <section class="hero">
         <h1>Privacy Policy</h1>
         <p>Transparency on how we take care of your data on ChatFluent.</p>
@@ -230,23 +231,23 @@
     <article class="legal-container">
         <p>This privacy policy describes how we collect, use, and protect your information when accessing ChatFluent.</p>
 
-        <h2>Information Collected</h2>
+        <h2>Collected Information</h2>
         <p>We may collect information such as IP address, browser type, pages accessed, and time spent on the site.</p>
 
         <h2>Use of Information</h2>
         <p>The data collected is used to improve the user experience, optimize content, and enhance our services.</p>
 
         <h2>Cookies</h2>
-        <p>We use cookies to store information about user preferences and personalize your browsing experience.</p>
+        <p>We use cookies to store information about user preferences and personalize the browsing experience.</p>
 
         <h2>Advertising</h2>
-        <p>This site may display advertisements through partners like Google AdSense, which uses cookies to serve relevant ads based on prior user visits.</p>
+        <p>This site may display advertisements through partners like Google AdSense, which uses cookies to serve relevant ads based on the user's prior visits.</p>
 
-        <h2>Consent</h2>
-        <p>By using our site, you agree to our privacy policy and cookie usage.</p>
+        <h2>Consentimento</h2>
+        <p>Ao utilizar nosso site, você concorda com nossa política de privacidade e com o uso de cookies.</p>
 
-        <h2>Changes to This Policy</h2>
-        <p>This policy may be updated periodically without prior notice. We recommend reviewing this page regularly.</p>
+        <h2>Alterações nesta política</h2>
+        <p>Esta política pode ser atualizada periodicamente sem aviso prévio. Recomendamos a revisão desta página regularmente.</p>
     </article>
 </main>
 
@@ -277,7 +278,7 @@
 
     const translations = {
         'pt': {
-            home: 'Home', rules: 'Regras', privacy: 'Privacidade', terms: 'Termos', contact: 'Contato',
+            home: 'Home', rules: 'Regras', privacy: 'Privacidade', terms: 'Termos', contact: 'Contact',
             copyright: '2026 ChatFluent. Aprenda brincando.',
             seoLinks: [
                 { url: 'seo/aprender-en.html', text: 'Aprender Inglês' },
@@ -394,7 +395,7 @@
                 { url: 'seo/aprender-es.html', text: 'スペイン語を学ぶ' },
                 { url: 'seo/aprender-fr.html', text: 'フランス語を学ぶ' },
                 { url: 'seo/aprender-de.html', text: 'ドイツ語を学ぶ' },
-                { url: 'seo/pt/seo/aprender-pt.html', text: 'ポルトガル語を学ぶ' }
+                { url: 'seo/aprender-pt.html', text: 'ポルトガル語を学ぶ' }
             ]
         }
     };

@@ -153,6 +153,7 @@ langs.forEach(uiLang => {
 
 <div id="footer"></div>
 <script src="/ChatFluent/js/adsense.js"></script>
+<script src="/ChatFluent/js/gdpr.js"></script>
 </body>
 </html>`;
 
@@ -194,6 +195,7 @@ langs.forEach(uiLang => {
 <script src="/ChatFluent/js/idiomas.js"></script>
 <script src="/ChatFluent/js/data.js"></script>
 <script src="/ChatFluent/js/app.js"></script>
+<script src="/ChatFluent/js/gdpr.js"></script>
 </body>
 </html>`;
 
@@ -501,7 +503,7 @@ langs.forEach(uiLang => {
             content = content.replace(/<!-- HEADER \(DINÂMICO\) -->[\s\S]*?<main/gi, '<div id="header"></div><main');
 
             // 2. Limpar rodapé estático antigo inline
-            content = content.replace(/<!-- FOOTER \(DINÂMICO\) -->[\s\S]*?<\/html>/gi, '<div id="footer"></div><script src="../js/adsense.js"></script></body></html>');
+            content = content.replace(/<!-- FOOTER \(DINÂMICO\) -->[\s\S]*?<\/html>/gi, '<div id="footer"></div><script src="../js/adsense.js"></script><script src="../js/gdpr.js"></script></body></html>');
 
             // 3. Traduzir o conteúdo inteiro se a UI não for Português
             if (uiLang !== 'pt') {
@@ -663,6 +665,7 @@ langs.forEach(uiLang => {
 </div>
 
 <div id="footer"></div>
+<script src="/ChatFluent/js/gdpr.js"></script>
 </body>
 </html>`;
 

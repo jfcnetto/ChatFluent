@@ -445,3 +445,79 @@ footer {
 .custom-select-wrapper.open .arrow-icon {
     transform: rotate(180deg);
 }
+
+/* =========================================
+   GDPR / LGPD COOKIE CONSENT BANNER
+   ========================================= */
+.gdpr-banner {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: var(--bg);
+    color: var(--text);
+    padding: 20px;
+    box-shadow: 0 -4px 12px rgba(0,0,0,0.1);
+    z-index: 10000;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+    border-top: 2px solid var(--border);
+}
+
+.gdpr-content {
+    flex: 1;
+    min-width: 250px;
+    font-weight: 700;
+    font-size: 15px;
+}
+
+.gdpr-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.gdpr-btn {
+    padding: 10px 20px;
+    border-radius: 12px;
+    font-weight: 900;
+    font-size: 14px;
+    text-transform: uppercase;
+    cursor: pointer;
+    border: none;
+    border-bottom: 3px solid;
+    transition: all 0.1s ease;
+}
+
+.gdpr-btn:active {
+    border-bottom-width: 0;
+    transform: translateY(3px);
+}
+
+.gdpr-btn-accept {
+    background-color: var(--primary);
+    color: #fff;
+    border-bottom-color: var(--primary-dark);
+}
+
+.gdpr-btn-decline {
+    background-color: #f1f0f0;
+    color: var(--text-light);
+    border-bottom-color: var(--border);
+}
+
+@media (max-width: 768px) {
+    .gdpr-banner {
+        flex-direction: column;
+        text-align: center;
+    }
+    .gdpr-buttons {
+        width: 100%;
+        justify-content: stretch;
+    }
+    .gdpr-btn {
+        flex: 1;
+    }
+}

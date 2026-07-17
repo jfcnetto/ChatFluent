@@ -25,7 +25,7 @@
     <nav id="headerMenu" style="flex: 1; display: flex; justify-content: center; gap: 20px;">
       <a href="#" id="headerMenuHome" style="text-decoration: none; color: #333; font-weight: 600; font-size: 15px;">Home</a>
       <a href="#" id="headerMenuRegras" style="text-decoration: none; color: #333; font-weight: 600; font-size: 15px;">Regras</a>
-      <a href="#" id="headerMenuContato" style="text-decoration: none; color: #333; font-weight: 600; font-size: 15px;">Contato</a>
+      <a href="#" id="headerMenuContacto" style="text-decoration: none; color: #333; font-weight: 600; font-size: 15px;">Contacto</a>
     </nav>
 
     <!-- SELETOR DE IDIOMAS (CUSTOM DROPDOWN COM BANDEIRAS - ALINHADO À DIREITA) -->
@@ -90,7 +90,7 @@
         };
 
         const menuTranslations = {
-            'pt': { home: 'Home', rules: 'Regras', contact: 'Contato' },
+            'pt': { home: 'Home', rules: 'Regras', contact: 'Contacto' },
             'en': { home: 'Home', rules: 'Rules', contact: 'Contact' },
             'es': { home: 'Inicio', rules: 'Reglas', contact: 'Contacto' },
             'fr': { home: 'Accueil', rules: 'Règles', contact: 'Contact' },
@@ -121,7 +121,7 @@
            const tMenu = menuTranslations[ui] || menuTranslations['en'];
            const homeLink = document.getElementById('headerMenuHome');
            const rulesLink = document.getElementById('headerMenuRegras');
-           const contactLink = document.getElementById('headerMenuContato');
+           const contactLink = document.getElementById('headerMenuContacto');
            if (homeLink) {
                homeLink.innerText = tMenu.home;
                homeLink.href = `${depth}${ui}/index.html`;
